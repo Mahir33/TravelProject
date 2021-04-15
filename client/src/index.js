@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MobileNavbar from './components/_mobileNavbar.jsx'
-import MobileLogin from './components/_mobileLogin.jsx'
-import MobileRegister1 from './components/_mobileRegister1.jsx'
-import MobileRegister2 from './components/_mobileRegister2.jsx';
+import '../src/css/main.css'
+import MobileNavbar from './components/MobileNavbar.jsx'
+import MobileLogin from './components/MobileLogin.jsx'
+import MobileRegister1 from './components/MobileRegister1.jsx'
+import MobileRegister2 from './components/MobileRegister2.jsx';
 
 ReactDOM.render(
   <React.StrictMode>

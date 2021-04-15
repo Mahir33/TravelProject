@@ -1,5 +1,3 @@
-import '../css/main.css'
-
 function MobileLogin() {
     return (
         <div className="log-in">

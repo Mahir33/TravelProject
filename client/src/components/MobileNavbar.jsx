@@ -1,5 +1,3 @@
-import '../css/main.css'
-
 function MobileNavbar() {
   return (
         <div class="mobile-navbar">

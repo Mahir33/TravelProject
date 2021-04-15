@@ -1,5 +1,3 @@
-import '../css/main.css'
-
 function MobileRegister1(){
     return (
         <div className="register">
