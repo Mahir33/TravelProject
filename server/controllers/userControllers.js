@@ -22,4 +22,24 @@ const signup = async (req, res) => {
 	}
 };
 
-module.exports = {signup};
+const login = async (req, res) => {
+	const {email, password} = req.body;
+
+	try {
+		const user = await User.login(email, password);
+
+		res.status(200).json({message: "Successfully logged in", user_id: user._id});
+	} catch (err) {
+		console.log(err);
+		res.status(401).json({err});
+	}
+};
+
+// Temporary testing
+const getUser = async (req, res) => {
+	const {username} = req.params;
+	const user = await User.findOne({username});
+	res.send({user});
+};
+
+module.exports = {signup, login, getUser};
