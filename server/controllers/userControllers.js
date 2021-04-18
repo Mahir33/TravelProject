@@ -26,13 +26,20 @@ const login = async (req, res) => {
 	const {email, password} = req.body;
 
 	try {
-		const user = await User.login(email, password);
+		const user = await User.findOne({email});
 
-		res.status(200).json({message: "Successfully logged in", user_id: user._id});
-	} catch (err) {
-		console.log(err);
-		res.status(401).json({err});
-	}
+		if (user) {
+			const auth = await bcrypt.compare(password, user.password);
+
+			if (auth) {
+				res.status(200).json({message: "Successfully logged in!", user});
+			}
+
+			res.status(402).json({message: "Incorrect password!"});
+		}
+
+		res.status(402).json({message: "E-mail does not exist!"});
+	} catch (err) {}
 };
 
 // Temporary testing
