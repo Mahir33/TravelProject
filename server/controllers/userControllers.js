@@ -1,23 +1,42 @@
 const User = require("../models/userModels");
 const bcrypt = require("bcrypt");
+const { dataUri } = require("../middleware/multerMiddleware");
+const { uploader } = require("cloudinary");
 
 const signup = async (req, res) => {
-	const {email, username, password, profile_picture} = req.body;
-	console.log(req.body);
+	const { email, username, password } = req.body;
 
 	try {
-		const user = await User.create({
-			email,
-			username,
-			password,
-			profile_picture,
-		});
+		if(req.file) {
+			const file = await dataUri(req).content;
+			const upload = await uploader.upload(file, (err) => {
+				if(err) console.error(err);
+			}, {folder: "testing"});
+	
+			const profile_picture = upload.secure_url;
+			const user = await User.create({
+				email,
+				username,
+				password,
+				profile_picture,
+			});
 
-		console.log("created");
+			res.status(201).json({message: "User created!", user: user._id});
+		
+		}else {
+			const user = await User.create({
+				email,
+				username,
+				password,
+				profile_picture,
+			});
 
-		res.status(201).json({message: "User created!", user: user._id});
+			res.status(201).json({message: "User created!", user: user._id});
+		}
+
+
+
 	} catch (err) {
-		console.log(err);
 		res.status(400).json(err);
 	}
 };

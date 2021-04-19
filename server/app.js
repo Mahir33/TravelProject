@@ -4,17 +4,11 @@ const cors = require("cors");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
-
-// temp stuff
-const path = require("path");
+const { cloudinaryConfig } = require("./middleware/cloudinaryMiddleware");
 
 // Initialize APP and PORT
 const app = express();
 const PORT = process.env.PORT || 3001;
-
-// temp public
-const PUBLIC = path.join(__dirname, "public");
-app.use(express.static("public"));
 
 // Connect to the databse
 const MongoURI = process.env.MONGO_URI;
@@ -35,4 +29,6 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 // routes
+app.use("*", cloudinaryConfig);
 app.use(userRoutes);
+
