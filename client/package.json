@@ -12,7 +12,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "watch": "sass --watch --no-source-map ./src/Sass/main.scss:./src/main.css"
+    "dev": "concurrently --names 'SASS, REACT' -c 'red.dim, blue.dim' 'npm run sass:watch' 'npm run start'",
+    "sass:watch": "sass --watch --no-source-map ./src/Sass/main.scss:./src/main.css"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,6 +31,7 @@
     ]
   },
   "devDependencies": {
-    "sass": "^1.32.8"
+    "sass": "^1.32.8",
+    "concurrently": "^6.0.2"
   }
 }
