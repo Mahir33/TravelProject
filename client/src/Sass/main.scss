@@ -1,0 +1,187 @@
+:root {
+    font-size: 16px;
+  }
+  
+  * {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+  }
+  
+  .register {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .register .back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+  
+  .register .back a {
+    color: black;
+    text-decoration: none;
+    font-size: 2rem;
+  }
+  
+  .register .reg {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    display: block;
+    width: 95%;
+    height: 50%;
+    padding: 0 10px;
+  }
+  
+  .register .reg h1 {
+    font-size: 3rem;
+    font-weight: lighter;
+    text-transform: capitalize;
+  }
+  
+  .register .reg input {
+    width: 100%;
+    height: 40px;
+    margin: 10px 0;
+    border: 2.5px solid black;
+    text-indent: 10px;
+  }
+  
+  .register .reg .btn-next {
+    width: 100%;
+    height: 50px;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #000;
+    border-radius: 8px;
+  }
+  
+  .log-in {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    padding: 10px;
+  }
+  
+  .log-in .back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+  
+  .log-in .back a {
+    color: black;
+    text-decoration: none;
+    font-size: 2rem;
+  }
+  
+  .log-in .log {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    display: block;
+    width: 95%;
+    height: 50%;
+    padding: 0 10px
+  }
+  
+  .log-in .log h1 {
+    font-size: 3rem;
+    font-weight: lighter;
+    text-transform: capitalize;
+  }
+  
+  .log-in .log input {
+    width: 100%;
+    height: 40px;
+    margin: 10px 0;
+    border: 2.5px solid black;
+    text-indent: 10px;
+  }
+  
+  .log-in .log .btn-next {
+    width: 100%;
+    height: 50px;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #000;
+    border-radius: 8px;
+  }
+  
+  .mobile-navbar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 80px;
+    border-top: 1px solid gray;
+  }
+  
+  .mobile-navbar ul {
+    text-align: center;
+  }
+  
+  .mobile-navbar ul li {
+    display: inline-block;
+    line-height: 70px;
+  }
+  
+  .mobile-navbar ul li a {
+    display: block;
+    padding: 0 15px;
+    text-decoration: none;
+    color: black;
+    font-size: 1.4rem;
+  }
+  
+  .mobile-navbar ul li button {
+    position: relative;
+    bottom: 5px;
+    width: 80px;
+    height: 45px;
+    line-height: 45px;
+    background-image: linear-gradient(30deg, #ff6f00, #ff6f00, #fb5571, #ff6f00, #fb5571,#ff6f00, #fb5571, #ff6f00, #fb5571, #ff6f00, #fb5571,#ff6f00, #fb5571, #ff6f00, #ff6f00 );
+    background-size: 400px;
+    color: white;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: 20px;
+    animation: navbarColorsBtn 20s infinite;
+  }
+  
+  @keyframes navbarColorsBtn {
+    from {
+        background-position: 0 0;
+    }
+  
+    to {
+        background-position: 100% 0;
+    }
+  }
+  
+  .mobile-navbar .underline {
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    width: 40vw;
+    height: 7px;
+    border-radius: 5px;
+    background-color: #000;
+    
+  }
+  /*# sourceMappingURL=style.css.map */
