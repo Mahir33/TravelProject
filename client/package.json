@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "concurrently": "^6.0.2",
     "node-sass": "^5.0.0",
+    "nodemon": "^2.0.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3"
@@ -13,7 +15,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "watch": "sass --watch --no-source-map ./src/Sass/main.scss:./src/css/main.css"
+    "dev": "concurrently --names 'SASS, REACT' -c 'red.dim, blue.dim' 'npm run sass:watch' 'npm run start'",
+    "sass:watch": "sass --watch --no-source-map ./src/Sass/main.scss:./src/css/main.css"
   },
   "eslintConfig": {
     "extends": "react-app"
