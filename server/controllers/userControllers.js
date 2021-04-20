@@ -12,7 +12,9 @@ const signup = async (req, res) => {
 			const upload = await uploader.upload(file, (err) => {
 				if(err) console.error(err);
 			}, {folder: "testing"});
-	
+
+			console.log(upload);
+
 			const profile_picture = upload.secure_url;
 			const user = await User.create({
 				email,
