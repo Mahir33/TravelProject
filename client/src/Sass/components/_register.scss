@@ -1,0 +1,24 @@
+@use '../abstracts/index' as abstracts;
+
+.register {
+    @include abstracts.mainContainer;
+
+    .reg{
+      @include abstracts.subContainer;
+
+      h1{
+        @include abstracts.h1;
+      }
+
+      input{
+        @include abstracts.inputStyle;
+      }
+      .btn-next{
+        @include abstracts.btn-next;
+      }
+    }
+
+    .back{
+      @include abstracts.backButtonDiv;
+    }
+  }
