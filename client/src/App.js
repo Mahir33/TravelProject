@@ -1,21 +1,25 @@
 import React from 'react'
 import '../src/css/main.css'
-import MobileNavbar from './components/MobileNavbar.jsx'
-import MobileLogin from './components/MobileLogin.jsx'
-import MobileRegister1 from './components/MobileRegister1.jsx'
-import MobileRegister2 from './components/MobileRegister2.jsx'
-import MobileHome from './components/MobileHome'
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import MobilHome from './components/MobileHome'
+import MobilLogin from './components/MobileLogin'
+import MobilRegister from './components/MobileRegister1'
+
+const routes = (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={MobilHome} />
+        <Route path="/login" component={MobilLogin} />
+        <Route exact path="/register" component={MobilRegister} />
+      </Switch>
+    </BrowserRouter>
+  )
 
 function App() {
     return (
-        <div>
-            <MobileHome />
-            <MobileLogin />
-            <MobileRegister1 />
-            <MobileNavbar />
-            <MobileRegister2 />
-            <MobileNavbar />
-        </div>
+        <>
+        {routes}
+        </>
     )
 }
 
