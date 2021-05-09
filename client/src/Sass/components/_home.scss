@@ -24,11 +24,5 @@
     margin-top: 5px;
     display: flex;
     justify-content: space-between;
-    .btn-login {
-      @include abstracts.btn-login;
-    }
-    .btn-register {
-      @include abstracts.btn-register;
-    }
   }
 }
