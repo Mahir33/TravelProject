@@ -188,6 +188,47 @@
   justify-content: space-between;
 }
 
+.home .login-reg-button .btn-login {
+  width: 49%;
+  height: 50px;
+  transition: background 400ms;
+  text-transform: uppercase;
+  color: #000;
+  background-color: #fff;
+  border-radius: 8px;
+  border: solid 2.5px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.home .login-reg-button .btn-login:active {
+  color: #fff;
+  background-color: #000;
+}
+
+.home .login-reg-button .btn-register {
+  width: 49%;
+  height: 50px;
+  transition: background 400ms;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #000;
+  border-radius: 8px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.home .login-reg-button .btn-register:active {
+  color: #000;
+  background-color: #fff;
+}
+
 :root {
   font-size: 16px;
 }

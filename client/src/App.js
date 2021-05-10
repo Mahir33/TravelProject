@@ -10,7 +10,7 @@ const routes = (
       <Switch>
         <Route exact path="/" component={MobilHome} />
         <Route path="/login" component={MobilLogin} />
-        <Route exact path="/register" component={MobilRegister} />
+        <Route path="/register" component={MobilRegister} />
       </Switch>
     </BrowserRouter>
   )

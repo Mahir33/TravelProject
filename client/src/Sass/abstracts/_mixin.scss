@@ -57,3 +57,42 @@
   background-color: #000;
   border-radius: 8px;
 }
+
+@mixin btn-login {
+  width: 49%;
+  height: 50px;
+  transition: background 400ms;
+  text-transform: uppercase;
+  color: #000;
+  background-color: #fff;
+  border-radius: 8px;
+  border: solid 2.5px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  &:active {
+    color: #fff;
+    background-color: #000;
+  }
+}
+
+@mixin btn-register {
+  width: 49%;
+  height: 50px;
+  transition: background 400ms;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #000;
+  border-radius: 8px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  &:active {
+    color: #000;
+    background-color: #fff;
+  }
+}
