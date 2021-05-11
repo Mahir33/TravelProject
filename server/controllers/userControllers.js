@@ -4,70 +4,70 @@ const { dataUri } = require("../middleware/multerMiddleware");
 const { uploader } = require("cloudinary");
 
 const signup = async (req, res) => {
-	const { email, username, password } = req.body;
+  const { email, username, password } = req.body;
 
-	try {
-		if(req.file) {
-			const file = await dataUri(req).content;
-			const upload = await uploader.upload(file, (err) => {
-				if(err) console.error(err);
-			}, {folder: "testing"});
+  try {
+    if (req.file) {
+      const file = await dataUri(req).content;
+      const upload = await uploader.upload(
+        file,
+        err => {
+          if (err) console.error(err);
+        },
+        { folder: "profile_picture" }
+      );
 
-			console.log(upload);
+      console.log(upload);
 
-			const profile_picture = upload.secure_url;
-			const user = await User.create({
-				email,
-				username,
-				password,
-				profile_picture,
-			});
+      const profile_picture = upload.secure_url;
+      const user = await User.create({
+        email,
+        username,
+        password,
+        profile_picture,
+      });
 
-			res.status(201).json({message: "User created!", user: user._id});
-		
-		}else {
-			const user = await User.create({
-				email,
-				username,
-				password,
-				profile_picture,
-			});
+      res.status(201).json({ message: "User created!", user: user._id });
+    } else {
+      const user = await User.create({
+        email,
+        username,
+        password,
+        profile_picture,
+      });
 
-			res.status(201).json({message: "User created!", user: user._id});
-		}
-
-
-
-	} catch (err) {
-		res.status(400).json(err);
-	}
+      res.status(201).json({ message: "User created!", user: user._id });
+    }
+  } catch (err) {
+    res.status(400).json(err);
+  }
 };
 
 const login = async (req, res) => {
-	const {email, password} = req.body;
+  const { email, password } = req.body;
 
-	try {
-		const user = await User.findOne({email});
+  try {
+    const user = await User.findOne({ email });
 
-		if (user) {
-			const auth = await bcrypt.compare(password, user.password);
+    if (user) {
+      const auth = await bcrypt.compare(password, user.password);
 
-			if (auth) {
-				res.status(200).json({message: "Successfully logged in!", user});
-			}
+      if (auth) {
+        res.status(200).json({ message: "Successfully logged in!", user });
+      }
 
-			res.status(402).json({message: "Incorrect password!"});
-		}
+      res.status(402).json({ message: "Incorrect password!" });
+    }
 
-		res.status(402).json({message: "E-mail does not exist!"});
-	} catch (err) {}
+    res.status(402).json({ message: "E-mail does not exist!" });
+  } catch (err) {}
 };
 
 // Temporary testing
 const getUser = async (req, res) => {
-	const {username} = req.params;
-	const user = await User.findOne({username});
-	res.send({user});
+  const { username } = req.params;
+  const user = await User.findOne({ username });
+  res.send({ user });
 };
 
-module.exports = {signup, login, getUser};
+module.exports = { signup, login, getUser };
