@@ -12,12 +12,7 @@ function MobileLogin() {
       <div className="log">
         <h1>log in</h1>
         <input type="text" name="username" placeholder="E-mail" required />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          required
-        />
+        <input type="password" name="password" placeholder="Password" required />
         <Link to="/home" class="btn-next">
           log in
         </Link>
