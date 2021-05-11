@@ -5,14 +5,17 @@
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3"
+    "react-icons": "^4.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "watch": "sass --watch --no-source-map ./src/Sass/main.scss:./src/main.css"
+    "dev": "concurrently --names 'SASS, REACT' -c 'red.dim, blue.dim' 'npm run sass:watch' 'npm run start'",
+    "sass:watch": "sass --watch --no-source-map ./src/Sass/main.scss:./src/css/main.css"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,6 +33,7 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "^3.5.1",
     "sass": "^1.32.8"
   }
 }
