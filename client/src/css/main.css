@@ -64,6 +64,9 @@
 }
 
 .mobile-navbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100vw;
   height: 80px;
   border-top: 1px solid gray;
@@ -75,10 +78,10 @@
 
 .mobile-navbar ul li {
   display: inline-block;
-  line-height: 70px;
+  line-height: 74px;
 }
 
-.mobile-navbar ul li a {
+.mobile-navbar ul li .navlink {
   display: block;
   padding: 0 15px;
   text-decoration: none;
@@ -99,6 +102,10 @@
   border: none;
   border-radius: 20px;
   animation: navbarColorsBtn 20s infinite;
+}
+
+.mobile-navbar ul li button .plus {
+  margin-top: 11px;
 }
 
 @keyframes navbarColorsBtn {

@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
+import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 
 function MobileLogin() {
   return (
     <div className="log-in">
       <div className="back">
         <Link to="/">
-          <i className="far fa-arrow-alt-circle-left"></i>
+          <FaRegArrowAltCircleLeft />
         </Link>
       </div>
       <div className="log">

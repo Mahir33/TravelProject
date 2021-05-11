@@ -1,7 +1,14 @@
+import MobileNavbar from "./MobileNavbar";
+
 function MobileHome() {
   return (
     <div>
-      <h1>Home</h1>
+      <section className="home-header">
+        <h1>Feed</h1>
+        <input type="text" name="search" />
+      </section>
+
+      <MobileNavbar />
     </div>
   );
 }

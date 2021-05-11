@@ -1,15 +1,44 @@
+import { Link } from "react-router-dom";
+import {
+  FaHome,
+  FaSearch,
+  FaPlus,
+  FaRegComment,
+  FaUserAlt,
+} from "react-icons/fa";
+
 function MobileNavbar() {
   return (
-        <div class="mobile-navbar">
-          <ul>
-              <li><a href="/"><i className="fas fa-home"></i></a></li>
-              <li><a href="/"><i className="fas fa-search"></i></a></li>
-              <li><button><i class="fas fa-plus"></i></button></li>
-              <li><a href="/"><i className="far fa-comment"></i></a></li>
-              <li><a href="/"><i className="fas fa-user"></i></a></li>
-          </ul>
-        <div className="underline"></div>
-        </div> 
+    <div class="mobile-navbar">
+      <ul>
+        <li>
+          <Link to="/" className="navlink">
+            <FaHome />
+          </Link>
+        </li>
+        <li>
+          <Link to="/" className="navlink">
+            <FaSearch />
+          </Link>
+        </li>
+        <li>
+          <button>
+            <FaPlus className="plus" />
+          </button>
+        </li>
+        <li>
+          <Link to="/" className="navlink">
+            <FaRegComment />
+          </Link>
+        </li>
+        <li>
+          <Link to="/" className="navlink">
+            <FaUserAlt />
+          </Link>
+        </li>
+      </ul>
+      <div className="underline"></div>
+    </div>
   );
 }
 
