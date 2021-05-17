@@ -16,6 +16,13 @@
     .btn-next {
       @include abstracts.btn-next;
     }
+    .errorStyleShow {
+      display: block;
+      color: rgb(255, 73, 73);
+      border-radius: 8px;
+      margin-bottom: 13px;
+      font-size: 0.8em;
+    }
   }
 
   .back {
