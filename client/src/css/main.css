@@ -63,6 +63,14 @@
   background-color: #fff;
 }
 
+.log-in .log .errorStyleShow {
+  display: block;
+  color: #ff4949;
+  border-radius: 8px;
+  margin-bottom: 13px;
+  font-size: 0.8em;
+}
+
 .mobile-navbar {
   position: absolute;
   bottom: 0;

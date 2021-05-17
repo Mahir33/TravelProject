@@ -1,7 +1,20 @@
 import { Link } from "react-router-dom";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { schema } from "./mobileLoginSchema";
 
 function MobileLogin() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+  const onSubmit = async (data) => {
+    console.log(data);
+  };
   return (
     <div className="log-in">
       <div className="back">
@@ -11,17 +24,25 @@ function MobileLogin() {
       </div>
       <div className="log">
         <h1>log in</h1>
-        <form action="#">
-          <input type="text" name="email" placeholder="E-mail" required />
+        <form onSubmit={(e) => e.preventDefault()}>
+          <input type="text" placeholder="E-mail" {...register("email")} />
+          <span className="errorStyleShow">{errors.email?.message}</span>
           <input
             type="password"
-            name="password"
             placeholder="Password"
-            required
+            {...register("password", {
+              minLength: {
+                value: 8,
+              },
+            })}
           />
-          <Link to="/home" class="btn-next">
+          <button
+            onClick={handleSubmit(onSubmit)}
+            class="btn-next"
+            type="submit"
+          >
             log in
-          </Link>
+          </button>
         </form>
       </div>
     </div>
