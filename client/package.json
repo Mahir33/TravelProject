@@ -12,9 +12,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "server": "cd ../server && nodemon app.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "concurrently --names 'SASS, REACT' -c 'red.dim, blue.dim' 'npm run sass:watch' 'npm run start'",
+    "dev": "concurrently --names 'SASS, REACT, SERVER' -c 'red.dim,blue.dim,green.dim' 'npm run sass:watch' 'npm run start' 'npm run server'",
     "sass:watch": "sass --watch --no-source-map ./src/Sass/main.scss:./src/css/main.css"
   },
   "eslintConfig": {
