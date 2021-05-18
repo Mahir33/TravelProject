@@ -13,7 +13,17 @@ function MobileLogin() {
     resolver: yupResolver(schema),
   });
   const onSubmit = async (data) => {
-    console.log(data);
+    const { email, password } = data;
+    await fetch("http://localhost:3001/login", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
   };
   return (
     <div className="log-in">
@@ -36,6 +46,9 @@ function MobileLogin() {
               },
             })}
           />
+          <span className="errorStyleShow">
+            {errors.password && "*Password must have at least 8 characters"}
+          </span>
           <button
             onClick={handleSubmit(onSubmit)}
             class="btn-next"

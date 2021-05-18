@@ -13,7 +13,18 @@ function MobileRegister1() {
     resolver: yupResolver(schema),
   });
   const onSubmit = async (data) => {
-    console.log(data);
+    const { username, email, password } = data;
+    await fetch("http://localhost:3001/signup", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        email,
+        password,
+      }),
+    });
   };
 
   return (
