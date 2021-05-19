@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./Profile.scss";
 
 // function Profile(username) {
 //   const [profile, setProfile] = useState();
