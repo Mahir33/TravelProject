@@ -4,6 +4,7 @@ const { dataUri } = require("../middleware/multerMiddleware");
 const { uploader } = require("cloudinary");
 
 const signup = async (req, res) => {
+	console.log(req.body)
 	const { email, username, password } = req.body;
 
 	try {
@@ -39,7 +40,7 @@ const signup = async (req, res) => {
 
 
 	} catch (err) {
-		res.status(400).json(err);
+		res.json(err);
 	}
 };
 
