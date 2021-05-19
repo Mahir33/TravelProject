@@ -12,12 +12,12 @@ function MobileNavbar() {
     <div class="mobile-navbar">
       <ul>
         <li>
-          <Link to="/" className="navlink">
+          <Link to="/home" className="navlink">
             <FaHome />
           </Link>
         </li>
         <li>
-          <Link to="/" className="navlink">
+          <Link to="/search" className="navlink">
             <FaSearch />
           </Link>
         </li>

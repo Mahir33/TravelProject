@@ -72,12 +72,13 @@
 }
 
 .mobile-navbar {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100vw;
   height: 80px;
   border-top: 1px solid gray;
+  background-color: white;
 }
 
 .mobile-navbar ul {
@@ -332,6 +333,40 @@
 }
 
 .profile-display .album img {
+  margin: 20px;
+  width: 80vw;
+  max-width: 300px;
+  max-height: 375px;
+}
+
+.search-container {
+  padding-top: 5vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-container .semantic-input {
+  margin-bottom: 5vh;
+  width: 100%;
+  height: 40px;
+  margin: 5px 0;
+  border: 2.5px solid black;
+  text-indent: 10px;
+  max-width: 69vw;
+}
+
+.search-container .album {
+  max-width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-container .album img {
   margin: 20px;
   width: 80vw;
   max-width: 300px;

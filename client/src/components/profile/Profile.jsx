@@ -74,18 +74,54 @@ class Profile extends Component {
         <button className="follow-btn">Follow</button>
         <button>Message</button>
         <div className="album">
-          <img src="https://source.unsplash.com/collection/190727/400x500" />
-          <img src="https://source.unsplash.com/collection/190728/400x500" />
-          <img src="https://source.unsplash.com/collection/1907200/400x500" />
-          <img src="https://source.unsplash.com/collection/190726/400x500" />
-          <img src="https://source.unsplash.com/collection/190723/400x500" />
-          <img src="https://source.unsplash.com/collection/1907289/400x500" />
-          <img src="https://source.unsplash.com/collection/190727/400x500" />
-          <img src="https://source.unsplash.com/collection/190728/400x500" />
-          <img src="https://source.unsplash.com/collection/1907200/400x500" />
-          <img src="https://source.unsplash.com/collection/190726/400x500" />
-          <img src="https://source.unsplash.com/collection/190723/400x500" />
-          <img src="https://source.unsplash.com/collection/1907289/400x500" />
+          <img
+            src="https://source.unsplash.com/collection/190727/400x500"
+            alt="profile"
+          />
+          <img
+            src="https://source.unsplash.com/collection/190728/400x500"
+            alt="profile"
+          />
+          <img
+            src="https://source.unsplash.com/collection/1907200/400x500"
+            alt="profile"
+          />
+          <img
+            src="https://source.unsplash.com/collection/190726/400x500"
+            alt="profile"
+          />
+          <img
+            src="https://source.unsplash.com/collection/190723/400x500"
+            alt="profile"
+          />
+          <img
+            src="https://source.unsplash.com/collection/1907289/400x500"
+            alt="profile"
+          />
+          <img
+            src="https://source.unsplash.com/collection/190727/400x500"
+            alt="profile"
+          />
+          <img
+            src="https://source.unsplash.com/collection/190728/400x500"
+            alt="profile"
+          />
+          <img
+            src="https://source.unsplash.com/collection/1907200/400x500"
+            alt="profile"
+          />
+          <img
+            src="https://source.unsplash.com/collection/190726/400x500"
+            alt="profile"
+          />
+          <img
+            src="https://source.unsplash.com/collection/190723/400x500"
+            alt="profile"
+          />
+          <img
+            src="https://source.unsplash.com/collection/1907289/400x500"
+            alt="profile"
+          />
         </div>
       </div>
     );

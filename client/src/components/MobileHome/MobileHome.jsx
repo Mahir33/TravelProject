@@ -1,4 +1,4 @@
-import MobileNavbar from "./MobileNavbar";
+import MobileNavbar from "../MobileNavbar/MobileNavbar";
 
 function MobileHome() {
   return (
