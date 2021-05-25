@@ -38,7 +38,7 @@
 .log-in .log input {
   width: 100%;
   height: 40px;
-  margin: 10px 0;
+  margin: 5px 0;
   border: 2.5px solid black;
   text-indent: 10px;
 }
@@ -63,13 +63,22 @@
   background-color: #fff;
 }
 
+.log-in .log .errorStyleShow {
+  display: block;
+  color: #ff4949;
+  border-radius: 8px;
+  margin-bottom: 13px;
+  font-size: 0.8em;
+}
+
 .mobile-navbar {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100vw;
   height: 80px;
   border-top: 1px solid gray;
+  background-color: white;
 }
 
 .mobile-navbar ul {
@@ -155,7 +164,7 @@
 .register .reg input {
   width: 100%;
   height: 40px;
-  margin: 10px 0;
+  margin: 5px 0;
   border: 2.5px solid black;
   text-indent: 10px;
 }
@@ -178,6 +187,14 @@
 .register .reg .btn-next:active {
   color: #000;
   background-color: #fff;
+}
+
+.register .reg .errorStyleShow {
+  display: block;
+  color: #ff4949;
+  border-radius: 8px;
+  margin-bottom: 13px;
+  font-size: 0.8em;
 }
 
 .register .back {
@@ -256,6 +273,104 @@
 .home .login-reg-button .btn-register:active {
   color: #000;
   background-color: #fff;
+}
+
+.profile-display {
+  padding-top: 10vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-display .profile-picture-container {
+  min-width: 100px;
+  min-height: 100px;
+  max-width: 250px;
+  max-height: 250px;
+  text-align: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-display .profile-picture-container .profile-image {
+  min-width: 150px;
+  min-height: 150px;
+  width: 15vw;
+  height: 15vw;
+  display: inline-block;
+  background-size: cover;
+  background-position: center;
+}
+
+.profile-display h2 {
+  margin: 10px 0 5px 0;
+}
+
+.profile-display h6 {
+  margin-bottom: 20px;
+}
+
+.profile-display button {
+  max-width: 300px;
+  width: 80vw;
+  height: 5vh;
+  margin-bottom: 8px;
+}
+
+.profile-display .follow-btn {
+  background-color: black;
+  color: white;
+}
+
+.profile-display .album {
+  max-width: 80vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.profile-display .album img {
+  margin: 20px;
+  width: 80vw;
+  max-width: 300px;
+  max-height: 375px;
+}
+
+.search-container {
+  padding-top: 5vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-container .semantic-input {
+  margin-bottom: 5vh;
+  width: 100%;
+  height: 40px;
+  margin: 5px 0;
+  border: 2.5px solid black;
+  text-indent: 10px;
+  max-width: 69vw;
+}
+
+.search-container .album {
+  max-width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-container .album img {
+  margin: 20px;
+  width: 80vw;
+  max-width: 300px;
+  max-height: 375px;
 }
 
 :root {

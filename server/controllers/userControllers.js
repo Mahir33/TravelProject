@@ -13,7 +13,10 @@ const signup = async (req, res) => {
       password,
     });
 
-    res.json({ message: "User created!", user_id: user._id, user_email: user.email });
+    res.status(201).json({
+      message: "User created!",
+      user: user._id,
+    });
   } catch (err) {
     res.json(err);
   }
@@ -23,7 +26,9 @@ const login = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({
+      email,
+    });
 
     if (user) {
       const auth = await bcrypt.compare(password, user.password);

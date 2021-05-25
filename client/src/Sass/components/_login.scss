@@ -1,23 +1,30 @@
 @use '../abstracts/index' as abstracts;
 
 .log-in {
-    @include abstracts.mainContainer;
-    padding: 10px;
+  @include abstracts.mainContainer;
+  padding: 10px;
 
-    .back{
-      @include abstracts.backButtonDiv;
+  .back {
+    @include abstracts.backButtonDiv;
+  }
+  .log {
+    @include abstracts.subContainer;
+
+    h1 {
+      @include abstracts.h1;
     }
-    .log{
-      @include abstracts.subContainer;
-
-      h1{
-        @include abstracts.h1;
-      }
-      input{
-        @include abstracts.inputStyle;
-      }
-      .btn-next{
-        @include abstracts.btn-next;
-      }
+    input {
+      @include abstracts.inputStyle;
+    }
+    .btn-next {
+      @include abstracts.btn-next;
+    }
+    .errorStyleShow {
+      display: block;
+      color: rgb(255, 73, 73);
+      border-radius: 8px;
+      margin-bottom: 13px;
+      font-size: 0.8em;
     }
   }
+}
