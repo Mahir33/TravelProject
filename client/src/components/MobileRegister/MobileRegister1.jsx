@@ -24,7 +24,9 @@ function MobileRegister1() {
         email,
         password,
       }),
-    });
+    })
+      .then((res) => console.log(res))
+      .catch((e) => console.log(e));
   };
 
   return (
