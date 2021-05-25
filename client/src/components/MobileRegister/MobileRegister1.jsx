@@ -12,7 +12,7 @@ function MobileRegister1() {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const onSubmit = async (data) => {
+  const onSubmit = async data => {
     const { username, email, password } = data;
     await fetch("http://localhost:3001/signup", {
       method: "post",
@@ -24,13 +24,7 @@ function MobileRegister1() {
         email,
         password,
       }),
-<<<<<<< HEAD
     });
-=======
-    })
-      .then((res) => console.log(res))
-      .catch((e) => console.log(e));
->>>>>>> origin/MobileHeader
   };
 
   return (
@@ -42,7 +36,7 @@ function MobileRegister1() {
       </div>
       <div className="reg">
         <h1>register</h1>
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form onSubmit={e => e.preventDefault()}>
           <input
             type="text"
             placeholder="Username"
@@ -73,11 +67,7 @@ function MobileRegister1() {
           <span className="errorStyleShow">
             {errors.confirm_password && "*Passwords should match!"}
           </span>
-          <button
-            className="btn-next"
-            type="submit"
-            onClick={handleSubmit(onSubmit)}
-          >
+          <button className="btn-next" type="submit" onClick={handleSubmit(onSubmit)}>
             next
           </button>
         </form>
