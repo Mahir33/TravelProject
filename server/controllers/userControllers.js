@@ -7,39 +7,15 @@ const signup = async (req, res) => {
   const { email, username, password } = req.body;
 
   try {
-    if (req.file) {
-      const file = await dataUri(req).content;
-      const upload = await uploader.upload(
-        file,
-        err => {
-          if (err) console.error(err);
-        },
-        { folder: "profile_picture" }
-      );
+    const user = await User.create({
+      email,
+      username,
+      password,
+    });
 
-      console.log(upload);
-
-      const profile_picture = upload.secure_url;
-      const user = await User.create({
-        email,
-        username,
-        password,
-        profile_picture,
-      });
-
-      res.status(201).json({ message: "User created!", user: user._id });
-    } else {
-      const user = await User.create({
-        email,
-        username,
-        password,
-        profile_picture,
-      });
-
-      res.status(201).json({ message: "User created!", user: user._id });
-    }
+    res.json({ message: "User created!", user_id: user._id, user_email: user.email });
   } catch (err) {
-    res.status(400).json(err);
+    res.json(err);
   }
 };
 
@@ -53,21 +29,25 @@ const login = async (req, res) => {
       const auth = await bcrypt.compare(password, user.password);
 
       if (auth) {
-        res.status(200).json({ message: "Successfully logged in!", user });
+        res.json({ message: "Successfully logged in!", user });
       }
 
-      res.status(402).json({ message: "Incorrect password!" });
+      res.json({ message: "Incorrect password!" });
     }
 
-    res.status(402).json({ message: "E-mail does not exist!" });
+    res.json({ message: "E-mail does not exist!" });
   } catch (err) {}
 };
 
 // Temporary testing
 const getUser = async (req, res) => {
-  const { username } = req.params;
-  const user = await User.findOne({ username });
-  res.send({ user });
+  try {
+    const { username } = req.params;
+    const user = await User.findOne({ username });
+    res.send({ user });
+  } catch (err) {
+    res.json(err);
+  }
 };
 
 module.exports = { signup, login, getUser };
