@@ -3,6 +3,16 @@ const bcrypt = require("bcrypt");
 const { dataUri } = require("../middleware/multerMiddleware");
 const { uploader } = require("cloudinary");
 
+const errHandler = err => {
+  if (err.keyValue.email) {
+    return { message: "Email already exists!" };
+  }
+
+  if (err.keyValue.username) {
+    return { message: "Username already exists!" };
+  }
+};
+
 const signup = async (req, res) => {
   const { email, username, password } = req.body;
 
@@ -13,9 +23,14 @@ const signup = async (req, res) => {
       password,
     });
 
-    res.status(201).json({ message: "User created!", user: user._id });
+    res.status(201).json({
+      message: "User created!",
+      username: user.username,
+      email: user.email,
+      id: user._id,
+    });
   } catch (err) {
-    res.json(err);
+    res.json(errHandler(err));
   }
 };
 
@@ -31,14 +46,21 @@ const login = async (req, res) => {
       const auth = await bcrypt.compare(password, user.password);
 
       if (auth) {
-        res.status(200).json({ message: "Successfully logged in!", user });
+        res.status(200).json({
+          message: "Successfully logged in!",
+          username: user.username,
+          email: user.email,
+          id: user._id,
+        });
       }
 
       res.json({ message: "Incorrect password!" });
     }
 
     res.json({ message: "E-mail does not exist!" });
-  } catch (err) {}
+  } catch (err) {
+    res.json(err);
+  }
 };
 
 // Temporary testing
