@@ -14,7 +14,7 @@ function MobileLogin(props) {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const onSubmit = async (data) => {
+  const onSubmit = async data => {
     const { email, password } = data;
     await fetch("http://localhost:3001/login", {
       method: "post",
@@ -26,16 +26,16 @@ function MobileLogin(props) {
         password,
       }),
     })
-      .then((response) => response.json())
-      .then((res) => {
-        if (res.user) {
+      .then(response => response.json())
+      .then(res => {
+        if (res.username) {
           //if we have a user then we want to redirect
           console.log(props);
           props.history.push("/home");
         }
         setMessage(res.message);
       })
-      .catch((e) => console.log(e));
+      .catch(e => console.log(e));
   };
   return (
     <div className="log-in">
@@ -46,20 +46,12 @@ function MobileLogin(props) {
       </div>
       <div className="log">
         <h1>log in</h1>
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form onSubmit={e => e.preventDefault()}>
           <input type="text" placeholder="E-mail" {...register("email")} />
           <span className="errorStyleShow">{errors.email?.message}</span>
-          <input
-            type="password"
-            placeholder="Password"
-            {...register("password", {})}
-          />
+          <input type="password" placeholder="Password" {...register("password", {})} />
           <span className="errorStyleShow">{errors.password?.message}</span>
-          <button
-            onClick={handleSubmit(onSubmit)}
-            class="btn-next"
-            type="submit"
-          >
+          <button onClick={handleSubmit(onSubmit)} class="btn-next" type="submit">
             log in
           </button>
           <span className="errorStyleShow">{message}</span>
