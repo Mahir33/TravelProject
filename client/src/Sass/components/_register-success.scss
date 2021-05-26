@@ -1,0 +1,14 @@
+@use '../abstracts/index' as abstracts;
+
+.main-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .box {
+    text-align: center;
+    .btn-login {
+      @include abstracts.btn-login;
+    }
+  }
+}

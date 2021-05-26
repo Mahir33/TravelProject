@@ -3,8 +3,10 @@ import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "./mobileLoginSchema";
+import { useState } from "react";
 
-function MobileLogin() {
+function MobileLogin(props) {
+  const [message, setMessage] = useState("");
   const {
     register,
     handleSubmit,
@@ -23,7 +25,17 @@ function MobileLogin() {
         email,
         password,
       }),
-    });
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        if (res.user) {
+          //if we have a user then we want to redirect
+          console.log(props);
+          props.history.push("/home");
+        }
+        setMessage(res.message);
+      })
+      .catch((e) => console.log(e));
   };
   return (
     <div className="log-in">
@@ -40,15 +52,9 @@ function MobileLogin() {
           <input
             type="password"
             placeholder="Password"
-            {...register("password", {
-              minLength: {
-                value: 8,
-              },
-            })}
+            {...register("password", {})}
           />
-          <span className="errorStyleShow">
-            {errors.password && "*Password must have at least 8 characters"}
-          </span>
+          <span className="errorStyleShow">{errors.password?.message}</span>
           <button
             onClick={handleSubmit(onSubmit)}
             class="btn-next"
@@ -56,6 +62,7 @@ function MobileLogin() {
           >
             log in
           </button>
+          <span className="errorStyleShow">{message}</span>
         </form>
       </div>
     </div>

@@ -7,6 +7,7 @@ import MobileRegister1 from "./components/MobileRegister/MobileRegister1";
 import MobileHome from "./components/MobileHome/MobileHome";
 import Profile from "./components/profile/Profile";
 import MobileSearch from "./components/MobileSearch/MobileSearch";
+import RegisterSuccess from "./components/RegisterSuccess/RegisterSuccess";
 
 const routes = (
   <BrowserRouter>
@@ -20,6 +21,7 @@ const routes = (
         component={() => <Profile username={"postman_test1"} />}
       />
       <Route path="/search" component={MobileSearch} />
+      <Route path="/register-success" component={RegisterSuccess} />
     </Switch>
   </BrowserRouter>
 );

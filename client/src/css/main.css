@@ -373,6 +373,38 @@
   max-height: 375px;
 }
 
+.main-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-container .box {
+  text-align: center;
+}
+
+.main-container .box .btn-login {
+  width: 49%;
+  height: 50px;
+  transition: background 400ms;
+  text-transform: uppercase;
+  color: #000;
+  background-color: #fff;
+  border-radius: 8px;
+  border: solid 2.5px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.main-container .box .btn-login:active {
+  color: #fff;
+  background-color: #000;
+}
+
 :root {
   font-size: 16px;
 }
