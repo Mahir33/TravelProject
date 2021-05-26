@@ -13,10 +13,7 @@ const signup = async (req, res) => {
       password,
     });
 
-    res.status(201).json({
-      message: "User created!",
-      user: user._id,
-    });
+    res.status(201).json({ message: "User created!", user: user._id });
   } catch (err) {
     res.json(err);
   }
@@ -34,7 +31,7 @@ const login = async (req, res) => {
       const auth = await bcrypt.compare(password, user.password);
 
       if (auth) {
-        res.json({ message: "Successfully logged in!", user });
+        res.status(200).json({ message: "Successfully logged in!", user });
       }
 
       res.json({ message: "Incorrect password!" });

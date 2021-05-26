@@ -4,6 +4,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
+const postRoutes = require("./routes/postRoutes");
 const { cloudinaryConfig } = require("./middleware/cloudinaryMiddleware");
 
 // Initialize APP and PORT
@@ -31,3 +32,4 @@ app.use(express.urlencoded({ extended: false }));
 // routes
 app.use("*", cloudinaryConfig);
 app.use(userRoutes);
+app.use(postRoutes);
