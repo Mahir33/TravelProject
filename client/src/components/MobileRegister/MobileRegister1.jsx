@@ -3,8 +3,10 @@ import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "./mobileRegisterSchema.js";
+import { useState } from "react";
 
 function MobileRegister1() {
+  const [response, setResponse] = useState("");
   const {
     register,
     handleSubmit,
@@ -12,7 +14,7 @@ function MobileRegister1() {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const onSubmit = async data => {
+  const onSubmit = async (data) => {
     const { username, email, password } = data;
     await fetch("http://localhost:3001/signup", {
       method: "post",
@@ -24,7 +26,10 @@ function MobileRegister1() {
         email,
         password,
       }),
-    });
+    })
+      .then((response) => response.json())
+      .then((res) => console.log(res))
+      .catch((e) => console.log(e));
   };
 
   return (
@@ -36,15 +41,15 @@ function MobileRegister1() {
       </div>
       <div className="reg">
         <h1>register</h1>
-        <form onSubmit={e => e.preventDefault()}>
+        <form onSubmit={(e) => e.preventDefault()}>
           <input
             type="text"
             placeholder="Username"
-            {...register("userName", {
+            {...register("username", {
               maxLength: 20,
             })}
           />
-          <span className="errorStyleShow">{errors.userName?.message}</span>
+          <span className="errorStyleShow">{errors.username?.message}</span>
           <input type="text" placeholder="E-mail" {...register("email")} />
           <span className="errorStyleShow">{errors.email?.message}</span>
           <input
@@ -56,9 +61,7 @@ function MobileRegister1() {
               },
             })}
           />
-          <span className="errorStyleShow">
-            {errors.password && "*Password must have at least 8 characters"}
-          </span>
+          <span className="errorStyleShow">{errors.password?.message}</span>
           <input
             type="password"
             placeholder="Confirm Password"
@@ -67,7 +70,11 @@ function MobileRegister1() {
           <span className="errorStyleShow">
             {errors.confirm_password && "*Passwords should match!"}
           </span>
-          <button className="btn-next" type="submit" onClick={handleSubmit(onSubmit)}>
+          <button
+            className="btn-next"
+            type="submit"
+            onClick={handleSubmit(onSubmit)}
+          >
             next
           </button>
         </form>
