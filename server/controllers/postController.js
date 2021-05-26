@@ -15,8 +15,6 @@ const createPost = async (req, res) => {
       { folder: "posts" }
     );
 
-    console.log(upload);
-
     const post_img = upload.secure_url;
 
     const post = await Post.create({
@@ -42,4 +40,15 @@ const editPost = async (req, res) => {
   }
 };
 
-module.exports = { createPost, editPost };
+const deletePost = async (req, res) => {
+  try {
+    const { id } = req.body;
+    const post = await Post.findByIdAndDelete(id);
+
+    res.json({ msg: "Deleted sucessfully!", result: post });
+  } catch (err) {
+    res.json(err);
+  }
+};
+
+module.exports = { createPost, editPost, deletePost };
