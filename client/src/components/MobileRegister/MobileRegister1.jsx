@@ -5,8 +5,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "./mobileRegisterSchema.js";
 import { useState } from "react";
 
-function MobileRegister1() {
-  const [response, setResponse] = useState("");
+function MobileRegister1(props) {
+  const [message, setMessage] = useState("");
   const {
     register,
     handleSubmit,
@@ -28,7 +28,14 @@ function MobileRegister1() {
       }),
     })
       .then((response) => response.json())
-      .then((res) => console.log(res))
+      .then((res) => {
+        if (res.username) {
+          //if we have a user then we want to redirect
+          console.log(props);
+          props.history.push("/register-success");
+        }
+        setMessage(res.message);
+      })
       .catch((e) => console.log(e));
   };
 
@@ -77,6 +84,7 @@ function MobileRegister1() {
           >
             next
           </button>
+          <span className="errorStyleShow">{message}</span>
         </form>
       </div>
     </div>

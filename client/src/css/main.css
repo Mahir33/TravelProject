@@ -382,10 +382,10 @@
 
 .main-container .box {
   text-align: center;
+  padding: 1em;
 }
 
 .main-container .box .btn-login {
-  width: 49%;
   height: 50px;
   transition: background 400ms;
   text-transform: uppercase;

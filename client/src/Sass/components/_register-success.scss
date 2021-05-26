@@ -7,8 +7,24 @@
   align-items: center;
   .box {
     text-align: center;
+    padding: 1em;
     .btn-login {
-      @include abstracts.btn-login;
+      height: 50px;
+      transition: background 400ms;
+      text-transform: uppercase;
+      color: #000;
+      background-color: #fff;
+      border-radius: 8px;
+      border: solid 2.5px;
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      &:active {
+        color: #fff;
+        background-color: #000;
+      }
     }
   }
 }

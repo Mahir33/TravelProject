@@ -28,7 +28,7 @@ function MobileLogin(props) {
     })
       .then((response) => response.json())
       .then((res) => {
-        if (res.user) {
+        if (res.username) {
           //if we have a user then we want to redirect
           console.log(props);
           props.history.push("/home");
