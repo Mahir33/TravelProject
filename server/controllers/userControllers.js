@@ -4,12 +4,13 @@ const { dataUri } = require("../middleware/multerMiddleware");
 const { uploader } = require("cloudinary");
 
 const errHandler = err => {
-  if (err.keyValue.email) {
-    return { message: "Email already exists!" };
-  }
-
-  if (err.keyValue.username) {
-    return { message: "Username already exists!" };
+  if (err.keyValue) {
+    if (err.keyValue.email) return { message: "Email already exists!" };
+    if (err.keyValue.username) return { message: "Username already exists!" };
+  } else if (err.errors.password) {
+    return { message: "Password too weak!" };
+  } else {
+    return err;
   }
 };
 
@@ -52,10 +53,12 @@ const login = async (req, res) => {
           email: user.email,
           id: user._id,
         });
-      }else{
+      } else {
         res.json({ message: "Incorrect password!" });
       }
-    }else res.json({ message: "E-mail does not exist!" });
+    } else {
+      res.json({ message: "E-mail does not exist!" });
+    }
   } catch (err) {
     res.json(err);
   }
