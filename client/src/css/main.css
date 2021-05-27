@@ -71,6 +71,11 @@
   font-size: 0.8em;
 }
 
+.log-in .log .forget-register {
+  text-align: center;
+  margin-top: 2rem;
+}
+
 .mobile-navbar {
   position: fixed;
   bottom: 0;
@@ -195,6 +200,11 @@
   border-radius: 8px;
   margin-bottom: 13px;
   font-size: 0.8em;
+}
+
+.register .reg .have-account {
+  text-align: center;
+  margin-top: 2rem;
 }
 
 .register .back {

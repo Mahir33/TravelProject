@@ -86,6 +86,9 @@ function MobileRegister1(props) {
           </button>
           <span className="errorStyleShow">{message}</span>
         </form>
+        <p className="have-account">
+          If you have an account already <Link to="/login">Sign In</Link>
+        </p>
       </div>
     </div>
   );

@@ -64,6 +64,10 @@ function MobileLogin(props) {
           </button>
           <span className="errorStyleShow">{message}</span>
         </form>
+        <p className="forget-register">
+          If you don't have an account, Register{" "}
+          <Link to="/register">here</Link>
+        </p>
       </div>
     </div>
   );
