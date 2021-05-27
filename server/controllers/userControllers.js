@@ -52,12 +52,10 @@ const login = async (req, res) => {
           email: user.email,
           id: user._id,
         });
+      }else{
+        res.json({ message: "Incorrect password!" });
       }
-
-      res.json({ message: "Incorrect password!" });
-    }
-
-    res.json({ message: "E-mail does not exist!" });
+    }else res.json({ message: "E-mail does not exist!" });
   } catch (err) {
     res.json(err);
   }
