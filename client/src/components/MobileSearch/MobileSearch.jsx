@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import MobileNavbar from "../MobileNavbar/MobileNavbar";
 import { Input } from "semantic-ui-react";
 
 function MobileSearch() {
+  const [popup, setPopup] = useState(false);
+
+  const togglePop = () => {
+    setPopup(true);
+  };
   return (
     <>
       <div className="search-container">
@@ -14,10 +19,12 @@ function MobileSearch() {
         />
 
         <div className="album">
-          <img
-            src="https://source.unsplash.com/collection/190727/400x500"
-            alt="profile"
-          />
+          <div onClick={togglePop}>
+            <img
+              src="https://source.unsplash.com/collection/190727/400x500"
+              alt="profile"
+            />
+          </div>
           <img
             src="https://source.unsplash.com/collection/190728/400x500"
             alt="profile"

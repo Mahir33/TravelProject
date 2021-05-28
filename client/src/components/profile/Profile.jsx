@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { useParams } from "react-router-dom";
 
 // function Profile(username) {
 //   const [profile, setProfile] = useState();
@@ -38,24 +39,28 @@ import React, { Component } from "react";
 
 // export default Profile;
 
+console.log(useParams);
+
 class Profile extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      username: "",
+      username: useParams.username,
       picture: "",
       location: "Berlin, DE",
     };
   }
 
   componentDidMount() {
-    fetch(`http://localhost:3001/user/${this.props.username}`)
-      .then((res) => res.json())
+    fetch(`http://localhost:3001/user/${this.state.username}`)
+      .then((res) => {
+        res.json();
+        console.log(res);
+      })
       .then((json) =>
         this.setState({
-          username: json.user.username,
-          picture: json.user.profile_picture,
+          picture: json.picture,
         })
       );
   }
@@ -66,7 +71,10 @@ class Profile extends Component {
         <div className="profile-picture-container">
           <div
             className="profile-image"
-            style={{ backgroundImage: "url(" + this.state.picture + ")" }}
+            style={{
+              backgroundImage:
+                "url(" + this.state.picture ? this.state.picture : null + ")",
+            }}
           ></div>
         </div>
         <h2>{this.state.username}</h2>

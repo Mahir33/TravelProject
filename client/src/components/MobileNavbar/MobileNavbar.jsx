@@ -32,7 +32,7 @@ function MobileNavbar() {
           </Link>
         </li>
         <li>
-          <Link to="/" className="navlink">
+          <Link to="/profile" className="navlink">
             <FaUserAlt />
           </Link>
         </li>
