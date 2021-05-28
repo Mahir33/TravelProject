@@ -69,7 +69,8 @@ const getUser = async (req, res) => {
   try {
     const { username } = req.params;
     const user = await User.findOne({ username });
-    res.json({ picture:user.profile_picture });
+    console.log(user);
+    res.json({ picture: user.profile_picture });
   } catch (err) {
     res.json(err);
   }
