@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -7,6 +7,7 @@ import { useState } from "react";
 
 function MobileRegister1(props) {
   const [message, setMessage] = useState("");
+  const [registered, setRegistered] = useState(false);
   const {
     register,
     handleSubmit,
@@ -30,9 +31,9 @@ function MobileRegister1(props) {
       .then((response) => response.json())
       .then((res) => {
         if (res.username) {
+          setRegistered(true);
           //if we have a user then we want to redirect
-          console.log(props);
-          props.history.push("/register-success");
+          // props.history.push("/register-success");
         }
         setMessage(res.message);
       })
@@ -90,6 +91,7 @@ function MobileRegister1(props) {
           If you have an account already <Link to="/login">Sign In</Link>
         </p>
       </div>
+      {registered ? <Redirect to={`/register-success`} /> : null}
     </div>
   );
 }

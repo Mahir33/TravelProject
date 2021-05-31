@@ -12,26 +12,28 @@ import RegisterSuccess from "./components/RegisterSuccess/RegisterSuccess";
 function App() {
   const [id, setId] = useState("");
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState();
 
   const routes = (
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={MobileIndex} />
-        <Route
-          path="/login"
-          component={MobileLogin}
-          username={username}
-          id={id}
-          email={email}
-        />
-        <Route
-          path="/register"
-          component={MobileRegister1}
-          username={username}
-          id={id}
-          email={email}
-        />
+        <Route path="/login">
+          <MobileLogin
+            username={username}
+            setUsername={setUsername}
+            id={id}
+            email={email}
+          />
+        </Route>
+        <Route path="/register">
+          <MobileRegister1
+            username={username}
+            setUsername={setUsername}
+            id={id}
+            email={email}
+          />
+        </Route>
         <Route path="/home" component={MobileHome} />
         <Route path="/profile/:username" component={Profile} />
         <Route path="/search/:username" component={MobileSearch} />

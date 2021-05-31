@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -6,6 +6,7 @@ import { schema } from "./mobileLoginSchema";
 import { useState } from "react";
 
 function MobileLogin(props) {
+  console.log(props);
   const [message, setMessage] = useState("");
   const {
     register,
@@ -29,9 +30,10 @@ function MobileLogin(props) {
       .then((response) => response.json())
       .then((res) => {
         if (res.username) {
+          props.setUsername(res.username);
+          console.log(props.username);
           //if we have a user then we want to redirect
-          console.log(props);
-          props.history.push("/home");
+          // props.history.push("/home");
         }
         setMessage(res.message);
       })
@@ -69,6 +71,7 @@ function MobileLogin(props) {
           <Link to="/register">here</Link>
         </p>
       </div>
+      {props.username ? <Redirect to={`/home`} /> : null}
     </div>
   );
 }
