@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa";
 
 function MobileNavbar(props) {
-  console.log(props);
+  console.log(props.username);
   return (
     <div class="mobile-navbar">
       <ul>
