@@ -8,6 +8,7 @@ import MobileHome from "./components/MobileHome/MobileHome";
 import Profile from "./components/profile/Profile";
 import MobileSearch from "./components/MobileSearch/MobileSearch";
 import RegisterSuccess from "./components/RegisterSuccess/RegisterSuccess";
+import MobileNavbar from "./components/MobileNavbar/MobileNavbar";
 
 function App() {
   const [id, setId] = useState("");
@@ -38,6 +39,14 @@ function App() {
         <Route path="/profile/:username" component={Profile} />
         <Route path="/search/:username" component={MobileSearch} />
         <Route path="/register-success" component={RegisterSuccess} />
+        <Route path="/navbar">
+          <MobileNavbar
+            username={username}
+            setUsername={setUsername}
+            id={id}
+            email={email}
+          />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

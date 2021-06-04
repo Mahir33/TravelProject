@@ -31,7 +31,9 @@ function Profile(props) {
           style={{
             backgroundImage: "url(" + picture ? picture : null + ")",
           }}
-        ></div>
+        >
+          <img src={picture} alt="" />
+        </div>
       </div>
       <h2>{props.username}</h2>
       <h6>{location}</h6>

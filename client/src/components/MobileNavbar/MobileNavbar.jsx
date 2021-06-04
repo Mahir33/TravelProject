@@ -7,7 +7,8 @@ import {
   FaUserAlt,
 } from "react-icons/fa";
 
-function MobileNavbar() {
+function MobileNavbar(props) {
+  console.log(props);
   return (
     <div class="mobile-navbar">
       <ul>
@@ -32,7 +33,7 @@ function MobileNavbar() {
           </Link>
         </li>
         <li>
-          <Link to="/profile/" className="navlink">
+          <Link to={`/profile/${props.username}`} className="navlink">
             <FaUserAlt />
           </Link>
         </li>
