@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import {useParams} from "react-router-dom";
 
 function Profile(props) {
   const [profile, setProfile] = useState("");
@@ -8,91 +8,98 @@ function Profile(props) {
   const [username, setUsername] = useState(useParams().username);
 
   const fetchProfile = async () => {
-    const req = await fetch(`http://localhost:3001/user/${username}`)
+    const req = await fetch(`http://localhost:3001/user/${username}`, {
+      method: "get",
+    })
       .then((res) => res.json())
       .then((json) => {
-        console.log(json.picture);
-        setPicture(json.picture);
-        console.log(picture);
+        console.log(json);
+        setUsername(json.user.username);
+        setPicture(json.user.profile_picture);
+        setLocation("Berlin");
       })
       .catch((err) => console.log(err));
-    console.log(req);
-    console.log(picture);
   };
+  console.log(picture);
   useEffect(() => {
     fetchProfile();
   }, []);
 
   var displayProfile = (
-    <div className="profile-display">
-      <div className="profile-picture-container">
+    <div className='profile-display'>
+      <div className='profile-picture-container'>
         <div
-          className="profile-image"
+          className='profile-image'
           style={{
+<<<<<<< HEAD
             backgroundImage: "url(" + picture ? picture : null + ")",
           }}
         >
           <img src={picture} alt="" />
         </div>
+=======
+            backgroundImage: `url(${picture})`,
+          }}></div>
+>>>>>>> 6c9153fbf5a05714b88fcc27f300bc436775cdf4
       </div>
-      <h2>{props.username}</h2>
+      <h2>{username}</h2>
       <h6>{location}</h6>
-      <button className="follow-btn">Follow</button>
+      <button className='follow-btn'>Follow</button>
       <button>Message</button>
-      <div className="album">
+      <div className='album'>
         <img
-          src="https://source.unsplash.com/collection/190727/400x500"
-          alt="profile"
+          src='https://source.unsplash.com/collection/190727/400x500'
+          alt='profile'
         />
         <img
-          src="https://source.unsplash.com/collection/190728/400x500"
-          alt="profile"
+          src='https://source.unsplash.com/collection/190728/400x500'
+          alt='profile'
         />
         <img
-          src="https://source.unsplash.com/collection/1907200/400x500"
-          alt="profile"
+          src='https://source.unsplash.com/collection/1907200/400x500'
+          alt='profile'
         />
         <img
-          src="https://source.unsplash.com/collection/190726/400x500"
-          alt="profile"
+          src='https://source.unsplash.com/collection/190726/400x500'
+          alt='profile'
         />
         <img
-          src="https://source.unsplash.com/collection/190723/400x500"
-          alt="profile"
+          src='https://source.unsplash.com/collection/190723/400x500'
+          alt='profile'
         />
         <img
-          src="https://source.unsplash.com/collection/1907289/400x500"
-          alt="profile"
+          src='https://source.unsplash.com/collection/1907289/400x500'
+          alt='profile'
         />
         <img
-          src="https://source.unsplash.com/collection/190727/400x500"
-          alt="profile"
+          src='https://source.unsplash.com/collection/190727/400x500'
+          alt='profile'
         />
         <img
-          src="https://source.unsplash.com/collection/190728/400x500"
-          alt="profile"
+          src='https://source.unsplash.com/collection/190728/400x500'
+          alt='profile'
         />
         <img
-          src="https://source.unsplash.com/collection/1907200/400x500"
-          alt="profile"
+          src='https://source.unsplash.com/collection/1907200/400x500'
+          alt='profile'
         />
         <img
-          src="https://source.unsplash.com/collection/190726/400x500"
-          alt="profile"
+          src='https://source.unsplash.com/collection/190726/400x500'
+          alt='profile'
         />
         <img
-          src="https://source.unsplash.com/collection/190723/400x500"
-          alt="profile"
+          src='https://source.unsplash.com/collection/190723/400x500'
+          alt='profile'
         />
         <img
-          src="https://source.unsplash.com/collection/1907289/400x500"
-          alt="profile"
+          src='https://source.unsplash.com/collection/1907289/400x500'
+          alt='profile'
         />
       </div>
     </div>
   );
 
-  return <div className="profile">{displayProfile}</div>;
+  return <div className='profile'>{displayProfile}</div>;
 }
 
 export default Profile;
