@@ -35,17 +35,16 @@ function App() {
             email={email}
           />
         </Route>
-        <Route path="/home" component={MobileHome} />
-        <Route path="/profile/:username" component={Profile} />
+        <Route path="/home">
+          <MobileHome username={username} setUsername={setUsername} />
+        </Route>
+        <Route path="/profile/:username">
+          <Profile username={username} setUsername={setUsername} />
+        </Route>
         <Route path="/search/:username" component={MobileSearch} />
         <Route path="/register-success" component={RegisterSuccess} />
         <Route path="/navbar">
-          <MobileNavbar
-            username={username}
-            setUsername={setUsername}
-            id={id}
-            email={email}
-          />
+          <MobileNavbar id={id} email={email} />
         </Route>
       </Switch>
     </BrowserRouter>
