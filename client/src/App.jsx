@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "../src/css/main.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import MobileIndex from "./components/MobileIndex/MobileIndex";
@@ -11,40 +11,26 @@ import RegisterSuccess from "./components/RegisterSuccess/RegisterSuccess";
 import MobileNavbar from "./components/MobileNavbar/MobileNavbar";
 
 function App() {
-  const [id, setId] = useState("");
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState();
-
   const routes = (
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={MobileIndex} />
         <Route path="/login">
-          <MobileLogin
-            username={username}
-            setUsername={setUsername}
-            id={id}
-            email={email}
-          />
+          <MobileLogin />
         </Route>
         <Route path="/register">
-          <MobileRegister1
-            username={username}
-            setUsername={setUsername}
-            id={id}
-            email={email}
-          />
+          <MobileRegister1 />
         </Route>
         <Route path="/home">
-          <MobileHome username={username} setUsername={setUsername} />
+          <MobileHome />
         </Route>
         <Route path="/profile/:username">
-          <Profile username={username} setUsername={setUsername} />
+          <Profile />
         </Route>
         <Route path="/search/:username" component={MobileSearch} />
         <Route path="/register-success" component={RegisterSuccess} />
         <Route path="/navbar">
-          <MobileNavbar id={id} email={email} />
+          <MobileNavbar />
         </Route>
       </Switch>
     </BrowserRouter>

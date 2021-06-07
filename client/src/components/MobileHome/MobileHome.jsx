@@ -1,6 +1,6 @@
 import MobileNavbar from "../MobileNavbar/MobileNavbar";
 
-function MobileHome({ username, setUsername }) {
+function MobileHome() {
   return (
     <div>
       <section className="home-header">
@@ -8,7 +8,7 @@ function MobileHome({ username, setUsername }) {
         <input type="text" name="search" />
       </section>
 
-      <MobileNavbar username={username} setUsername={setUsername} />
+      <MobileNavbar />
     </div>
   );
 }

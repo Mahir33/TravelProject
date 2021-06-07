@@ -3,11 +3,12 @@ import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "./mobileLoginSchema";
-import { useState } from "react";
+import { useContext } from "react";
+import { PropContainer } from "../../PropContainer";
 
-function MobileLogin(props) {
-  console.log(props);
-  const [message, setMessage] = useState("");
+function MobileLogin() {
+  const { username, setUsername, message, setMessage } =
+    useContext(PropContainer);
   const {
     register,
     handleSubmit,
@@ -30,7 +31,7 @@ function MobileLogin(props) {
       .then((response) => response.json())
       .then((res) => {
         if (res.username) {
-          props.setUsername(res.username);
+          setUsername(res.username);
           //if we have a user then we want to redirect
           // props.history.push("/home");
         }
@@ -70,7 +71,7 @@ function MobileLogin(props) {
           <Link to="/register">here</Link>
         </p>
       </div>
-      {props.username ? <Redirect to={`/home`} /> : null}
+      {username ? <Redirect to={`/home`} /> : null}
     </div>
   );
 }
