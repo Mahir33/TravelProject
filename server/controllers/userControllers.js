@@ -67,10 +67,10 @@ const login = async (req, res) => {
 // Temporary testing
 const getUser = async (req, res) => {
   try {
-    const { username } = req.params;
-    const user = await User.findOne({ username });
-    console.log(user);
-    res.json({ picture: user.profile_picture });
+    const user = await User.findOne(
+      req.params
+    );
+    res.json(user);
   } catch (err) {
     res.json(err);
   }

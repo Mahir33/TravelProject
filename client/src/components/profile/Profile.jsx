@@ -4,6 +4,7 @@ import { PropContainer } from "../../PropContainer";
 function Profile() {
   const { username, setUsername, picture, setPicture, location, setLocation } =
     useContext(PropContainer);
+
   const fetchProfile = async () => {
     const req = await fetch(`http://localhost:3001/user/${username}`, {
       method: "get",
@@ -22,7 +23,7 @@ function Profile() {
     fetchProfile();
   }, []);
 
-  var displayProfile = (
+  let displayProfile = (
     <div className="profile-display">
       <div className="profile-picture-container">
         <div
