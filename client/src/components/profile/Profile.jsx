@@ -18,7 +18,7 @@ function Profile() {
       })
       .catch((err) => console.log(err));
   };
-  console.log(picture);
+
   useEffect(() => {
     fetchProfile();
   }, []);

@@ -1,21 +1,35 @@
 const User = require("../models/userModels");
 const bcrypt = require("bcrypt");
-const { dataUri } = require("../middleware/multerMiddleware");
-const { uploader } = require("cloudinary");
+const {
+  dataUri
+} = require("../middleware/multerMiddleware");
+const {
+  uploader
+} = require("cloudinary");
 
 const errHandler = err => {
   if (err.keyValue) {
-    if (err.keyValue.email) return { message: "Email already exists!" };
-    if (err.keyValue.username) return { message: "Username already exists!" };
+    if (err.keyValue.email) return {
+      message: "Email already exists!"
+    };
+    if (err.keyValue.username) return {
+      message: "Username already exists!"
+    };
   } else if (err.errors.password) {
-    return { message: "Password too weak!" };
+    return {
+      message: "Password too weak!"
+    };
   } else {
     return err;
   }
 };
 
 const signup = async (req, res) => {
-  const { email, username, password } = req.body;
+  const {
+    email,
+    username,
+    password
+  } = req.body;
 
   try {
     const user = await User.create({
@@ -36,7 +50,10 @@ const signup = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  const { email, password } = req.body;
+  const {
+    email,
+    password
+  } = req.body;
 
   try {
     const user = await User.findOne({
@@ -54,10 +71,14 @@ const login = async (req, res) => {
           id: user._id,
         });
       } else {
-        res.json({ message: "Incorrect password!" });
+        res.json({
+          message: "Incorrect password!"
+        });
       }
     } else {
-      res.json({ message: "E-mail does not exist!" });
+      res.json({
+        message: "E-mail does not exist!"
+      });
     }
   } catch (err) {
     res.json(err);
@@ -74,6 +95,7 @@ const getUser = async (req, res) => {
   } catch (err) {
     res.json(err);
   }
+
 };
 
 module.exports = {
