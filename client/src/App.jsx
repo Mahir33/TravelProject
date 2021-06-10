@@ -9,6 +9,7 @@ import Profile from "./components/profile/Profile";
 import MobileSearch from "./components/MobileSearch/MobileSearch";
 import RegisterSuccess from "./components/RegisterSuccess/RegisterSuccess";
 import MobileNavbar from "./components/MobileNavbar/MobileNavbar";
+import ProfileSettings from "./components/ProfileSettings/ProfileSettings";
 
 function App() {
   const routes = (
@@ -29,6 +30,7 @@ function App() {
         </Route>
         <Route path="/search/:username" component={MobileSearch} />
         <Route path="/register-success" component={RegisterSuccess} />
+        <Route path="/profile-settings" component={ProfileSettings} />
         <Route path="/navbar">
           <MobileNavbar />
         </Route>
