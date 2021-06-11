@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { PropContainer } from "../../PropContainer";
 import { FiSettings } from "react-icons/fi";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
