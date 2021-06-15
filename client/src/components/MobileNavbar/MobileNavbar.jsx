@@ -6,9 +6,11 @@ import {
   FaRegComment,
   FaUserAlt,
 } from "react-icons/fa";
+import { useContext } from "react";
+import { PropContainer } from "../../PropContainer";
 
-function MobileNavbar(props) {
-  console.log(props.username);
+function MobileNavbar() {
+  const { username } = useContext(PropContainer);
   return (
     <div class="mobile-navbar">
       <ul>
@@ -33,7 +35,7 @@ function MobileNavbar(props) {
           </Link>
         </li>
         <li>
-          <Link to={`/profile/${props.username}`} className="navlink">
+          <Link to={`/profile/${username}`} className="navlink">
             <FaUserAlt />
           </Link>
         </li>

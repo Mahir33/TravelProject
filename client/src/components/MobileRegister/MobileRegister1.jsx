@@ -3,11 +3,12 @@ import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "./mobileRegisterSchema.js";
-import { useState } from "react";
+import { useContext } from "react";
+import { PropContainer } from "../../PropContainer";
 
-function MobileRegister1(props) {
-  const [message, setMessage] = useState("");
-  const [registered, setRegistered] = useState(false);
+function MobileRegister1() {
+  const { message, setMessage, registered, setRegistered } =
+    useContext(PropContainer);
   const {
     register,
     handleSubmit,

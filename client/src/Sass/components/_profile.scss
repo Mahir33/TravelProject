@@ -1,64 +1,80 @@
-.profile-display{
-        padding-top: 10vh;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        
-        .profile-picture-container{
-            min-width: 100px;
-            min-height: 100px;
-            max-width: 250px;
-            max-height: 250px;
-            text-align: center;
-            border-radius: 50%;
-            overflow: hidden;
+@use '../abstracts/index' as abstracts;
 
-            .profile-image{
-                min-width: 150px;
-                min-height: 150px;
-                width: 15vw;
-                height: 15vw;
-                display: inline-block;
-                background-size: cover;
-                background-position: center;
-            }
-               
-        }
+.profile-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 1.5em;
+  .back {
+    @include abstracts.backButtonDiv;
+    position: static;
+  }
+  .profile-settings-button {
+    @include abstracts.backButtonDiv;
+    position: static;
+    font-size: 2em;
+    margin-top: 0.1em;
+  }
+}
+.profile-display {
+  padding-top: 10vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-        h2{
-            margin: 10px 0 5px 0;
-        }
+  .profile-picture-container {
+    min-width: 100px;
+    min-height: 100px;
+    max-width: 250px;
+    max-height: 250px;
+    text-align: center;
+    border-radius: 50%;
+    overflow: hidden;
 
-        h6{
-            margin-bottom: 20px ;
-        }
-
-        button{
-            max-width: 300px;
-            width: 80vw;
-            height: 5vh;
-            margin-bottom: 8px;
-        }
-
-        .follow-btn {
-            background-color: black;
-            color: white;
-        }
-
-        .album {
-            max-width: 80vw;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-
-            img {
-                margin: 20px;
-                width: 80vw;
-                max-width: 300px;
-                max-height: 375px;
-            }
-        }
+    .profile-image {
+      min-width: 150px;
+      min-height: 150px;
+      width: 15vw;
+      height: 15vw;
+      display: inline-block;
+      background-size: cover;
+      background-position: center;
     }
+  }
+
+  h2 {
+    margin: 10px 0 5px 0;
+  }
+
+  h6 {
+    margin-bottom: 20px;
+  }
+
+  button {
+    max-width: 300px;
+    width: 80vw;
+    height: 5vh;
+    margin-bottom: 8px;
+  }
+
+  .follow-btn {
+    background-color: black;
+    color: white;
+  }
+
+  .album {
+    max-width: 80vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    img {
+      margin: 20px;
+      width: 80vw;
+      max-width: 300px;
+      max-height: 375px;
+    }
+  }
+}
