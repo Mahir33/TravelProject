@@ -6,6 +6,10 @@ const {
 const {
   uploader
 } = require("cloudinary");
+var jwt = require('jsonwebtoken');
+
+var token;
+
 
 const errHandler = err => {
   if (err.keyValue) {
@@ -25,28 +29,37 @@ const errHandler = err => {
 };
 
 const signup = async (req, res) => {
+
   const {
     email,
     username,
     password
   } = req.body;
 
-  try {
-    const user = await User.create({
+  User.create({
       email,
       username,
-      password,
-    });
+      password
+    },
+    function (err, user) {
+      if (err) return res.json(errHandler(err));
 
-    res.status(201).json({
-      message: "User created!",
-      username: user.username,
-      email: user.email,
-      id: user._id,
-    });
-  } catch (err) {
-    res.json(errHandler(err));
-  }
+      //create a token
+      token = jwt.sign({
+        id: user.id
+      }, process.env.SECRET, {
+        expiresIn: 86400 //expires in 24 hours
+      });
+      res.status(200).send({
+        message: "User created!",
+        username: user.username,
+        email: user.email,
+        id: user.id,
+        auth: true,
+        token: token
+
+      })
+    })
 };
 
 const login = async (req, res) => {
@@ -64,11 +77,19 @@ const login = async (req, res) => {
       const auth = await bcrypt.compare(password, user.password);
 
       if (auth) {
+        token = jwt.sign({
+          id: user.id
+        }, process.env.SECRET, {
+          expiresIn: 86400 //expires in 24 hours
+        });
+
         res.status(200).json({
           message: "Successfully logged in!",
           username: user.username,
           email: user.email,
           id: user._id,
+          auth: true,
+          token: token
         });
       } else {
         res.json({
@@ -86,7 +107,7 @@ const login = async (req, res) => {
 };
 
 // Temporary testing
-const getUser = async (req, res) => {
+const getUser = async (req, res, next) => {
   try {
     const user = await User.findOne(
       req.params
