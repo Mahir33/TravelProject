@@ -22,7 +22,6 @@ function Profile() {
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
         setUsername(json.username);
         setPicture(json.profile_picture);
         setLocation(json.location);
