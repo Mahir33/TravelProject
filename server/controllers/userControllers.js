@@ -8,6 +8,8 @@ const {
 } = require("cloudinary");
 var jwt = require('jsonwebtoken');
 
+var token;
+
 
 const errHandler = err => {
   if (err.keyValue) {
@@ -43,7 +45,7 @@ const signup = async (req, res) => {
       if (err) return res.json(errHandler(err));
 
       //create a token
-      var token = jwt.sign({
+      token = jwt.sign({
         id: user.id
       }, process.env.SECRET, {
         expiresIn: 86400 //expires in 24 hours
@@ -75,7 +77,7 @@ const login = async (req, res) => {
       const auth = await bcrypt.compare(password, user.password);
 
       if (auth) {
-        var token = jwt.sign({
+        token = jwt.sign({
           id: user.id
         }, process.env.SECRET, {
           expiresIn: 86400 //expires in 24 hours
