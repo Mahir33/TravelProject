@@ -1,7 +1,7 @@
 import * as yup from "yup";
 
 const schema = yup.object().shape({
-    username: yup.string().matches(/^[a-zA-Z0-9]+$/i , '*Username should not contain special characters!'),
+    username: yup.string(),
     website: yup.string().url(),
     bio: yup.string(),
     oldPassword: yup.string().matches(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/, "*Password should contain Uppercase and lowercase letter + numbers + special charachters"),

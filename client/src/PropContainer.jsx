@@ -10,6 +10,8 @@ export const PropProvider = ({ children }) => {
   const [location, setLocation] = useState("");
   const [picture, setPicture] = useState("");
   const [message, setMessage] = useState("");
+  const [website, setWebsite] = useState("");
+  const [bio, setBio] = useState("");
   const [registered, setRegistered] = useState(false);
 
   return (
@@ -22,6 +24,8 @@ export const PropProvider = ({ children }) => {
         picture,
         message,
         registered,
+        website,
+        bio,
         setUsername,
         setEmail,
         setId,
@@ -29,6 +33,8 @@ export const PropProvider = ({ children }) => {
         setPicture,
         setMessage,
         setRegistered,
+        setWebsite,
+        setBio,
       }}
     >
       {children}

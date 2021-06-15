@@ -10,7 +10,7 @@ import { schema } from "./profileSettingsSchema";
 import PlacesAutocomplete from "react-places-autocomplete";
 
 const ProfileSettings = () => {
-  const { username, picture, location, email, setLocation } =
+  const { username, picture, location, email, setLocation, setMessage } =
     useContext(PropContainer);
   const {
     register,
@@ -20,8 +20,58 @@ const ProfileSettings = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = () => {
-    console.log("submit");
+  const onSubmit = async (data) => {
+    console.log(data);
+    const { location, website, bio, username, password } = data;
+    if (location === "" && website === "" && bio === "") {
+      await fetch("http://localhost:3001/profile_update_first", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          location,
+          website,
+          bio,
+        }),
+      })
+        .then((response) => response.json())
+        .then((res) => {
+          if (res.location) {
+            setLocation(res.location);
+            //if we have a user then we want to redirect
+            // props.history.push("/home");
+          }
+          setMessage(res.message);
+          sessionStorage.setItem("token", res.token);
+        })
+        .catch((e) => console.log(e));
+    } else {
+      await fetch("http://localhost:3001/profile_update", {
+        method: "put",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          location,
+          website,
+          bio,
+          username,
+          password,
+        }),
+      })
+        .then((response) => response.json())
+        .then((res) => {
+          if (res.location) {
+            setLocation(res.location);
+            //if we have a user then we want to redirect
+            // props.history.push("/home");
+          }
+          setMessage(res.message);
+          sessionStorage.setItem("token", res.token);
+        })
+        .catch((e) => console.log(e));
+    }
   };
 
   // const handleSelect = async (value) => {};
@@ -60,7 +110,7 @@ const ProfileSettings = () => {
         <h6>{location}</h6>
         {/*Form Starts*/}
         <div className="profile-form-container">
-          <form action="#">
+          <form onSubmit={(e) => e.preventDefault()}>
             <div className="rowTab">
               <div className="labels">
                 <label for="username">Username</label>
