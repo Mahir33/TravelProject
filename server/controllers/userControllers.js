@@ -29,7 +29,6 @@ const errHandler = err => {
 };
 
 const signup = async (req, res) => {
-
   const {
     email,
     username,
