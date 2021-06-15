@@ -233,7 +233,7 @@ const ProfileSettings = () => {
                   type="submit"
                   onClick={handleSubmit(onSubmit)}
                 >
-                  next
+                  Save Changes
                 </button>
               </div>
             </div>
