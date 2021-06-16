@@ -450,6 +450,7 @@
 }
 
 .profile-form-container {
+  margin: auto;
   background-color: whitesmoke;
   padding: 2em;
   width: 90vw;

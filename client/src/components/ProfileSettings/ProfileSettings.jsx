@@ -1,305 +1,242 @@
-import React, { useContext } from "react";
-import { PropContainer } from "../../PropContainer";
-import { FiSettings } from "react-icons/fi";
-import { FaRegArrowAltCircleLeft } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { Input } from "semantic-ui-react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { schema } from "./profileSettingsSchema";
+import React, {useContext} from "react";
+import {PropContainer} from "../../PropContainer";
+import {FiSettings} from "react-icons/fi";
+import {FaRegArrowAltCircleLeft} from "react-icons/fa";
+import {Link} from "react-router-dom";
+import {Input} from "semantic-ui-react";
+import {useForm} from "react-hook-form";
+import {yupResolver} from "@hookform/resolvers/yup";
+import {schema} from "./profileSettingsSchema";
 import PlacesAutocomplete from "react-places-autocomplete";
 
 const ProfileSettings = () => {
-  const { username, picture, location, email, setLocation, setMessage } =
-    useContext(PropContainer);
+  const {
+    username,
+    picture,
+    location,
+    email,
+    website,
+    bio,
+    setLocation,
+    setMessage,
+  } = useContext(PropContainer);
+
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: {errors},
   } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async (data) => {
-    console.log(data);
-    const { location, website, bio, username, password } = data;
-    if (location === "" && website === "" && bio === "") {
-      await fetch("http://localhost:3001/profile_update_first", {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          location,
-          website,
-          bio,
-        }),
-      })
-        .then((response) => response.json())
-        .then((res) => {
-          if (res.location) {
-            setLocation(res.location);
-            //if we have a user then we want to redirect
-            // props.history.push("/home");
-          }
-          setMessage(res.message);
-          sessionStorage.setItem("token", res.token);
-        })
-        .catch((e) => console.log(e));
-    } else {
-      await fetch("http://localhost:3001/profile_update", {
-        method: "put",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          location,
-          website,
-          bio,
-          username,
-          password,
-        }),
-      })
-        .then((response) => response.json())
-        .then((res) => {
-          if (res.location) {
-            setLocation(res.location);
-            //if we have a user then we want to redirect
-            // props.history.push("/home");
-          }
-          setMessage(res.message);
-          sessionStorage.setItem("token", res.token);
-        })
-        .catch((e) => console.log(e));
+  const onSubmit = (data) => console.log(data);
+
+  const inputsMap = [
+    {
+      label: "Username",
+      name: "username",
+      type: "text",
+      placeholder: username,
+      className: "input-field",
+    },
+    {
+      label: "E-mail",
+      name: "email",
+      type: "email",
+      placeholder: email,
+      className: "input-field",
+    },
+    {
+      label: "Location",
+      name: "location",
+      type: "address",
+      placeholder: location,
+      className: "input-field",
+    },
+    {
+      label: "Profile Picture",
+      name: "picture",
+      type: "file",
+      placeholder: "",
+      className: "",
+    },
+    {
+      label: "Website",
+      name: "website",
+      type: "text",
+      placeholder: website,
+      className: "input-field",
+    },
+    {
+      label: "Bio",
+      name: "bio",
+      type: "text",
+      placeholder: bio,
+      className: "input-field",
+    },
+    {
+      label: "Old Password",
+      name: "oldPassword",
+      type: "password",
+      placeholder: "",
+      className: "input-field",
+    },
+    {
+      label: "New Password",
+      name: "newPassword",
+      type: "password",
+      placeholder: "",
+      className: "input-field",
+    },
+    {
+      label: "Confirm New Password",
+      name: "confirmPassword",
+      type: "password",
+      placeholder: "",
+      className: "input-field",
+    },
+  ];
+
+  const displayError = (errors, name) => {
+    switch (name) {
+      case "username":
+        return errors.username?.message;
+      case "email":
+        return errors.email?.message;
+      case "location":
+        return errors.location?.message;
+      case "picture":
+        return errors.location?.message;
+      case "website":
+        return errors.website?.message;
+      case "bio":
+        return errors.bio?.message;
+      case "oldPassword":
+        return errors.oldPassword?.message;
+      case "newPassword":
+        return errors.newPassword?.message;
+      case "confirmPassword":
+        return errors.confirmPassword?.message;
+
+      default:
+        return "";
     }
   };
 
-  // const handleSelect = async (value) => {};
-
   return (
     <div>
-      <div className="profile-container">
-        <div className="back">
+      <div className='profile-container'>
+        <div className='back'>
           <Link to={`/profile/${username}`}>
             <FaRegArrowAltCircleLeft />
           </Link>
         </div>
-        <div className="search-input">
+        <div className='search-input'>
           <Input
-            icon="search"
-            placeholder="Search..."
-            className="semantic-input"
+            icon='search'
+            placeholder='Search...'
+            className='semantic-input'
           />
         </div>
-        <div className="profile-settings-button">
-          <Link to="/profile-settings">
+        <div className='profile-settings-button'>
+          <Link to='/profile-settings'>
             <FiSettings />
           </Link>
         </div>
       </div>
-      <div className="profile-display">
-        <div className="profile-picture-container">
+
+      <div className='profile-display'>
+        <div className='profile-picture-container'>
           <div
-            className="profile-image"
+            className='profile-image'
             style={{
               backgroundImage: `url(${picture})`,
-            }}
-          ></div>
+            }}></div>
         </div>
         <h2>{username}</h2>
         <h6>{location}</h6>
-        {/*Form Starts*/}
-        <div className="profile-form-container">
-          <form onSubmit={(e) => e.preventDefault()}>
-            <div className="rowTab">
-              <div className="labels">
-                <label for="username">Username</label>
+      </div>
+
+      <div className='profile-form-container'>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          {inputsMap.map(({label, name, type, placeholder, className}) => (
+            <div className='rowTab' key={name}>
+              <div className='labels'>
+                <label htmlFor={name}>{label}</label>
               </div>
-              <div className="rightTab">
+
+              {/* {displayInputs(name, type, placeholder, className)} */}
+              <div className='rightTab'>
                 <input
-                  type="text"
-                  className="input-field"
-                  placeholder={username}
-                  {...register("username", {
-                    maxLength: 20,
-                  })}
+                  id={name}
+                  type={type}
+                  className={className}
+                  placeholder={placeholder}
+                  {...register(name)}
                 />
-                <span className="errorStyleShow">
-                  {errors.username?.message}
+                <span className='errorStyleShow'>
+                  {displayError(errors, name)}
                 </span>
               </div>
             </div>
-
-            <div className="rowTab">
-              <div className="labels">
-                <p>E-mail</p>
-              </div>
-              <div className="rightTab">
-                <p>{email}</p>
-                <span className="errorStyleShow">{errors.email?.message}</span>
-              </div>
+          ))}
+          <div className='rowTab'>
+            <div className='labels'>
+              <button className='btn-next' type='submit'>
+                Save Changes
+              </button>
             </div>
-
-            <div className="rowTab">
-              <div className="labels">
-                <label for="profilepic">Location</label>
-              </div>
-              <div className="rightTab">
-                <PlacesAutocomplete
-                  value={location}
-                  onChange={setLocation}
-                  // onSelect={handleSelect}
-                >
-                  {({
-                    getInputProps,
-                    suggestions,
-                    getSuggestionItemProps,
-                    loading,
-                  }) => (
-                    <div>
-                      <input
-                        {...getInputProps({ placeholder: "Type Location" })}
-                        className="input-field"
-                      />
-                      <div>
-                        {loading ? <div>...Loading</div> : null}
-                        {suggestions.map((suggestion) => {
-                          const style = suggestion.active
-                            ? { backgroundColor: "#41b6e6", cursor: "pointer" }
-                            : { backgroundColor: "#fff", cursor: "pointer" };
-
-                          return (
-                            <div
-                              {...getSuggestionItemProps(suggestion, { style })}
-                            >
-                              {suggestion.description}
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  )}
-                </PlacesAutocomplete>
-              </div>
-            </div>
-
-            <div className="rowTab">
-              <div className="labels">
-                <label for="profilepic">Update Profile Picture</label>
-              </div>
-              <div className="rightTab">
-                <input
-                  type="file"
-                  className="input-field-upload"
-                  {...register("profile-picture")}
-                ></input>
-              </div>
-            </div>
-
-            <div className="rowTab">
-              <div className="labels">
-                <label for="website">Website</label>
-              </div>
-              <div className="rightTab">
-                <input
-                  type="text"
-                  className="input-field"
-                  {...register("website")}
-                />
-              </div>
-            </div>
-
-            <div className="rowTab">
-              <div className="labels">
-                <label for="bio">Bio</label>
-              </div>
-              <div className="rightTab">
-                <textarea
-                  className="input-field"
-                  style={{ height: "50px", resize: "vertical" }}
-                  {...register("bio")}
-                />
-              </div>
-            </div>
-            <div className="rowTab">
-              <div className="labels">
-                <label for="oldPassword">Old Password</label>
-              </div>
-              <div className="rightTab">
-                <input
-                  type="password"
-                  className="input-field"
-                  {...register("oldPassword", {
-                    minLength: {
-                      value: 8,
-                    },
-                  })}
-                />
-                <span className="errorStyleShow">
-                  {errors.password?.message}
-                </span>
-              </div>
-            </div>
-
-            <div className="rowTab">
-              <div className="labels">
-                <label for="newPassword">New Password</label>
-              </div>
-              <div className="rightTab">
-                <input
-                  type="password"
-                  className="input-field"
-                  {...register("newPassword", {
-                    minLength: {
-                      value: 8,
-                    },
-                  })}
-                />
-                <span className="errorStyleShow">
-                  {errors.password?.message}
-                </span>
-              </div>
-            </div>
-
-            <div className="rowTab">
-              <div className="labels">
-                <label for="confirm-new-password">Confirm New Password</label>
-              </div>
-              <div className="rightTab">
-                <input
-                  type="password"
-                  className="input-field"
-                  {...register("confirm_new_password")}
-                />
-                <span className="errorStyleShow">
-                  {errors.confirm_password && "*Passwords should match!"}
-                </span>
-              </div>
-            </div>
-            <div className="rowTab">
-              <div className="labels">
-                <button
-                  className="btn-next"
-                  type="submit"
-                  onClick={handleSubmit(onSubmit)}
-                >
-                  Save Changes
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-        {/* form
-        name
-        email
-        location
-        update profile pic
-        website
-        Bio
-        change Password*/}
+          </div>
+        </form>
       </div>
     </div>
   );
 };
 
 export default ProfileSettings;
+
+// const displayInputs = (name, type, placeholder, className) => {
+//   if (name === "location") {
+//     return (
+//       <PlacesAutocomplete value={location} onChange={setLocation}>
+//         {({getInputProps, suggestions, getSuggestionItemProps, loading}) => (
+//           <div className='rightTab'>
+//             <input
+//               id={name}
+//               type={type}
+//               className={className}
+//               placeholder={placeholder}
+//               {...register(name)}
+//             />
+//             <div>
+//               {loading ? <div>...Loading</div> : null}
+//               {suggestions.map((suggestion) => {
+//                 const style = suggestion.active
+//                   ? {backgroundColor: "#41b6e6", cursor: "pointer"}
+//                   : {backgroundColor: "#fff", cursor: "pointer"};
+
+//                 return (
+//                   <div {...getSuggestionItemProps(suggestion, {style})}>
+//                     {suggestion.description}
+//                   </div>
+//                 );
+//               })}
+//             </div>
+//           </div>
+//         )}
+//       </PlacesAutocomplete>
+//     );
+//   } else
+//     return (
+//       <div className='rightTab'>
+//         <input
+//           id={name}
+//           type={type}
+//           className={className}
+//           placeholder={placeholder}
+//           {...register(name)}
+//         />
+//         <span className='errorStyleShow'>{displayError(errors, name)}</span>
+//       </div>
+//     );
+// };
