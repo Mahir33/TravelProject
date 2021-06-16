@@ -3,23 +3,15 @@ import { PropContainer } from "../../PropContainer";
 import { FiSettings } from "react-icons/fi";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { Input } from "semantic-ui-react";
+import { Input, Select } from "semantic-ui-react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "./profileSettingsSchema";
 import PlacesAutocomplete from "react-places-autocomplete";
 
 const ProfileSettings = () => {
-  const {
-    username,
-    picture,
-    location,
-    email,
-    website,
-    bio,
-    setLocation,
-    setMessage,
-  } = useContext(PropContainer);
+  const { username, picture, location, email, website, bio, setLocation } =
+    useContext(PropContainer);
 
   const {
     register,
@@ -29,7 +21,7 @@ const ProfileSettings = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => console.log({ ...data, location });
 
   const inputsMap = [
     {
@@ -96,6 +88,60 @@ const ProfileSettings = () => {
       className: "input-field",
     },
   ];
+
+  const displayInputs = (name, type, placeholder, className) => {
+    if (name === "location") {
+      return (
+        <PlacesAutocomplete value={location} onChange={setLocation}>
+          {({
+            getInputProps,
+            suggestions,
+            getSuggestionItemProps,
+            loading,
+          }) => (
+            <div className="rightTab">
+              <input
+                name={name}
+                id={name}
+                type={type}
+                className={className}
+                placeholder={placeholder}
+                {...getInputProps(name)}
+                // {...register(name)}
+              />
+              <div>
+                {loading ? <div>...Loading</div> : null}
+                {suggestions.map((suggestion) => {
+                  const style = suggestion.active
+                    ? { backgroundColor: "#41b6e6", cursor: "pointer" }
+                    : { backgroundColor: "#fff", cursor: "pointer" };
+
+                  return (
+                    <div {...getSuggestionItemProps(suggestion, { style })}>
+                      {suggestion.description}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </PlacesAutocomplete>
+      );
+    } else
+      return (
+        <div className="rightTab">
+          <input
+            name={name}
+            id={name}
+            type={type}
+            className={className}
+            placeholder={placeholder}
+            {...register(name)}
+          />
+          <span className="errorStyleShow">{displayError(errors, name)}</span>
+        </div>
+      );
+  };
 
   const displayError = (errors, name) => {
     switch (name) {
