@@ -1,12 +1,12 @@
-import React, {useContext} from "react";
-import {PropContainer} from "../../PropContainer";
-import {FiSettings} from "react-icons/fi";
-import {FaRegArrowAltCircleLeft} from "react-icons/fa";
-import {Link} from "react-router-dom";
-import {Input} from "semantic-ui-react";
-import {useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
-import {schema} from "./profileSettingsSchema";
+import React, { useContext } from "react";
+import { PropContainer } from "../../PropContainer";
+import { FiSettings } from "react-icons/fi";
+import { FaRegArrowAltCircleLeft } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { Input } from "semantic-ui-react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { schema } from "./profileSettingsSchema";
 import PlacesAutocomplete from "react-places-autocomplete";
 
 const ProfileSettings = () => {
@@ -24,7 +24,7 @@ const ProfileSettings = () => {
   const {
     register,
     handleSubmit,
-    formState: {errors},
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -123,50 +123,102 @@ const ProfileSettings = () => {
     }
   };
 
+  const displayInputs = (name, type, placeholder, className) => {
+    if (name === "location") {
+      return (
+        <PlacesAutocomplete value={location} onChange={setLocation}>
+          {({
+            getInputProps,
+            suggestions,
+            getSuggestionItemProps,
+            loading,
+          }) => (
+            <div className="rightTab">
+              <input
+                id={name}
+                type={type}
+                className={className}
+                {...getInputProps({ placeholder: "Type Location" })}
+                {...register("location")}
+              />
+              <div>
+                {loading ? <div>...Loading</div> : null}
+                {suggestions.map((suggestion) => {
+                  const style = suggestion.active
+                    ? { backgroundColor: "#41b6e6", cursor: "pointer" }
+                    : { backgroundColor: "#fff", cursor: "pointer" };
+
+                  return (
+                    <div {...getSuggestionItemProps(suggestion, { style })}>
+                      {suggestion.description}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </PlacesAutocomplete>
+      );
+    } else
+      return (
+        <div className="rightTab">
+          <input
+            id={name}
+            type={type}
+            className={className}
+            placeholder={placeholder}
+            {...register(name)}
+          />
+          <span className="errorStyleShow">{displayError(errors, name)}</span>
+        </div>
+      );
+  };
+
   return (
     <div>
-      <div className='profile-container'>
-        <div className='back'>
+      <div className="profile-container">
+        <div className="back">
           <Link to={`/profile/${username}`}>
             <FaRegArrowAltCircleLeft />
           </Link>
         </div>
-        <div className='search-input'>
+        <div className="search-input">
           <Input
-            icon='search'
-            placeholder='Search...'
-            className='semantic-input'
+            icon="search"
+            placeholder="Search..."
+            className="semantic-input"
           />
         </div>
-        <div className='profile-settings-button'>
-          <Link to='/profile-settings'>
+        <div className="profile-settings-button">
+          <Link to="/profile-settings">
             <FiSettings />
           </Link>
         </div>
       </div>
 
-      <div className='profile-display'>
-        <div className='profile-picture-container'>
+      <div className="profile-display">
+        <div className="profile-picture-container">
           <div
-            className='profile-image'
+            className="profile-image"
             style={{
               backgroundImage: `url(${picture})`,
-            }}></div>
+            }}
+          ></div>
         </div>
         <h2>{username}</h2>
         <h6>{location}</h6>
       </div>
 
-      <div className='profile-form-container'>
+      <div className="profile-form-container">
         <form onSubmit={handleSubmit(onSubmit)}>
-          {inputsMap.map(({label, name, type, placeholder, className}) => (
-            <div className='rowTab' key={name}>
-              <div className='labels'>
+          {inputsMap.map(({ label, name, type, placeholder, className }) => (
+            <div className="rowTab" key={name}>
+              <div className="labels">
                 <label htmlFor={name}>{label}</label>
               </div>
 
-              {/* {displayInputs(name, type, placeholder, className)} */}
-              <div className='rightTab'>
+              {displayInputs(name, type, placeholder, className)}
+              {/* <div className='rightTab'>
                 <input
                   id={name}
                   type={type}
@@ -177,12 +229,12 @@ const ProfileSettings = () => {
                 <span className='errorStyleShow'>
                   {displayError(errors, name)}
                 </span>
-              </div>
+              </div> */}
             </div>
           ))}
-          <div className='rowTab'>
-            <div className='labels'>
-              <button className='btn-next' type='submit'>
+          <div className="rowTab">
+            <div className="labels">
+              <button className="btn-next" type="submit">
                 Save Changes
               </button>
             </div>
@@ -194,49 +246,3 @@ const ProfileSettings = () => {
 };
 
 export default ProfileSettings;
-
-// const displayInputs = (name, type, placeholder, className) => {
-//   if (name === "location") {
-//     return (
-//       <PlacesAutocomplete value={location} onChange={setLocation}>
-//         {({getInputProps, suggestions, getSuggestionItemProps, loading}) => (
-//           <div className='rightTab'>
-//             <input
-//               id={name}
-//               type={type}
-//               className={className}
-//               placeholder={placeholder}
-//               {...register(name)}
-//             />
-//             <div>
-//               {loading ? <div>...Loading</div> : null}
-//               {suggestions.map((suggestion) => {
-//                 const style = suggestion.active
-//                   ? {backgroundColor: "#41b6e6", cursor: "pointer"}
-//                   : {backgroundColor: "#fff", cursor: "pointer"};
-
-//                 return (
-//                   <div {...getSuggestionItemProps(suggestion, {style})}>
-//                     {suggestion.description}
-//                   </div>
-//                 );
-//               })}
-//             </div>
-//           </div>
-//         )}
-//       </PlacesAutocomplete>
-//     );
-//   } else
-//     return (
-//       <div className='rightTab'>
-//         <input
-//           id={name}
-//           type={type}
-//           className={className}
-//           placeholder={placeholder}
-//           {...register(name)}
-//         />
-//         <span className='errorStyleShow'>{displayError(errors, name)}</span>
-//       </div>
-//     );
-// };
