@@ -169,57 +169,6 @@ const ProfileSettings = () => {
     }
   };
 
-  const displayInputs = (name, type, placeholder, className) => {
-    if (name === "location") {
-      return (
-        <PlacesAutocomplete value={location} onChange={setLocation}>
-          {({
-            getInputProps,
-            suggestions,
-            getSuggestionItemProps,
-            loading,
-          }) => (
-            <div className="rightTab">
-              <input
-                id={name}
-                type={type}
-                className={className}
-                {...getInputProps({ placeholder: "Type Location" })}
-                {...register("location")}
-              />
-              <div>
-                {loading ? <div>...Loading</div> : null}
-                {suggestions.map((suggestion) => {
-                  const style = suggestion.active
-                    ? { backgroundColor: "#41b6e6", cursor: "pointer" }
-                    : { backgroundColor: "#fff", cursor: "pointer" };
-
-                  return (
-                    <div {...getSuggestionItemProps(suggestion, { style })}>
-                      {suggestion.description}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-        </PlacesAutocomplete>
-      );
-    } else
-      return (
-        <div className="rightTab">
-          <input
-            id={name}
-            type={type}
-            className={className}
-            placeholder={placeholder}
-            {...register(name)}
-          />
-          <span className="errorStyleShow">{displayError(errors, name)}</span>
-        </div>
-      );
-  };
-
   return (
     <div>
       <div className="profile-container">
