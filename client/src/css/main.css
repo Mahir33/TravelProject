@@ -9,12 +9,10 @@
   position: absolute;
   top: 20px;
   left: 20px;
-}
-
-.log-in .back a {
   color: black;
   text-decoration: none;
   font-size: 2rem;
+  cursor: pointer;
 }
 
 .log-in .log {
@@ -109,6 +107,7 @@
   width: 80px;
   height: 45px;
   line-height: 45px;
+  cursor: pointer;
   background-image: linear-gradient(30deg, #ff6f00, #ff6f00, #fb5571, #ff6f00, #fb5571, #ff6f00, #fb5571, #ff6f00, #fb5571, #ff6f00, #fb5571, #ff6f00, #fb5571, #ff6f00, #ff6f00);
   background-size: 400px;
   color: white;
@@ -211,12 +210,10 @@
   position: absolute;
   top: 20px;
   left: 20px;
-}
-
-.register .back a {
   color: black;
   text-decoration: none;
   font-size: 2rem;
+  cursor: pointer;
 }
 
 .home {
@@ -283,40 +280,6 @@
 .home .login-reg-button .btn-register:active {
   color: #000;
   background-color: #fff;
-}
-
-.profile-container {
-  display: flex;
-  justify-content: space-evenly;
-  padding-top: 1.5em;
-}
-
-.profile-container .back {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  position: static;
-}
-
-.profile-container .back a {
-  color: black;
-  text-decoration: none;
-  font-size: 2rem;
-}
-
-.profile-container .profile-settings-button {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  position: static;
-  font-size: 2em;
-  margin-top: 0.1em;
-}
-
-.profile-container .profile-settings-button a {
-  color: black;
-  text-decoration: none;
-  font-size: 2rem;
 }
 
 .profile-display {
@@ -450,18 +413,23 @@
 }
 
 .profile-form-container {
-  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: whitesmoke;
+}
+
+.profile-form-container .profile-form {
   padding: 2em;
   width: 90vw;
 }
 
-.profile-form-container .rowTab .labels {
+.profile-form-container .profile-form .rowTab .labels {
   margin: 1em 0;
   font-size: 17px;
 }
 
-.profile-form-container .rowTab .labels .btn-next {
+.profile-form-container .profile-form .rowTab .labels .btn-next {
   width: 100%;
   height: 50px;
   transition: background 400ms;
@@ -476,17 +444,76 @@
   text-decoration: none;
 }
 
-.profile-form-container .rowTab .labels .btn-next:active {
+.profile-form-container .profile-form .rowTab .labels .btn-next:active {
   color: #000;
   background-color: #fff;
 }
 
-.profile-form-container .rowTab .rightTab .input-field {
+.profile-form-container .profile-form .rowTab .rightTab .input-field {
   width: 100%;
   height: 40px;
   margin: 5px 0;
   border: 2.5px solid black;
   text-indent: 10px;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 1.5em;
+}
+
+.profile-container .back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: black;
+  text-decoration: none;
+  font-size: 2rem;
+  cursor: pointer;
+  position: static;
+}
+
+.profile-container .profile-settings-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: black;
+  text-decoration: none;
+  font-size: 2rem;
+  cursor: pointer;
+  position: static;
+  margin-top: 0.1em;
+}
+
+.profile-container .profile-settings-button a {
+  color: black;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.popup .popup-inner {
+  padding: 32px;
+  width: 100%;
+  max-width: 640px;
+  background-color: #fff;
+  line-height: 2em;
+  text-align: left;
+}
+
+.popup .close {
+  display: flex;
+  justify-content: flex-end;
 }
 
 :root {

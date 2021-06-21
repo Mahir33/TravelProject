@@ -1,13 +1,11 @@
 import React, { useContext } from "react";
 import { PropContainer } from "../../PropContainer";
-import { FiSettings } from "react-icons/fi";
-import { FaRegArrowAltCircleLeft } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { Input, Select } from "semantic-ui-react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "./profileSettingsSchema";
 import PlacesAutocomplete from "react-places-autocomplete";
+import ProfileNavbar from "../ProfileNavbar/ProfileNavbar";
+import MobileNavbar from "../MobileNavbar/MobileNavbar";
 
 const ProfileSettings = () => {
   const { username, picture, location, email, website, bio, setLocation } =
@@ -171,25 +169,7 @@ const ProfileSettings = () => {
 
   return (
     <div>
-      <div className="profile-container">
-        <div className="back">
-          <Link to={`/profile/${username}`}>
-            <FaRegArrowAltCircleLeft />
-          </Link>
-        </div>
-        <div className="search-input">
-          <Input
-            icon="search"
-            placeholder="Search..."
-            className="semantic-input"
-          />
-        </div>
-        <div className="profile-settings-button">
-          <Link to="/profile-settings">
-            <FiSettings />
-          </Link>
-        </div>
-      </div>
+      <ProfileNavbar />
 
       <div className="profile-display">
         <div className="profile-picture-container">
@@ -205,15 +185,16 @@ const ProfileSettings = () => {
       </div>
 
       <div className="profile-form-container">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          {inputsMap.map(({ label, name, type, placeholder, className }) => (
-            <div className="rowTab" key={name}>
-              <div className="labels">
-                <label htmlFor={name}>{label}</label>
-              </div>
+        <div className="profile-form">
+          <form onSubmit={handleSubmit(onSubmit)}>
+            {inputsMap.map(({ label, name, type, placeholder, className }) => (
+              <div className="rowTab" key={name}>
+                <div className="labels">
+                  <label htmlFor={name}>{label}</label>
+                </div>
 
-              {displayInputs(name, type, placeholder, className)}
-              {/* <div className='rightTab'>
+                {displayInputs(name, type, placeholder, className)}
+                {/* <div className='rightTab'>
                 <input
                   id={name}
                   type={type}
@@ -225,17 +206,19 @@ const ProfileSettings = () => {
                   {displayError(errors, name)}
                 </span>
               </div> */}
+              </div>
+            ))}
+            <div className="rowTab">
+              <div className="labels">
+                <button className="btn-next" type="submit">
+                  Save Changes
+                </button>
+              </div>
             </div>
-          ))}
-          <div className="rowTab">
-            <div className="labels">
-              <button className="btn-next" type="submit">
-                Save Changes
-              </button>
-            </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
+      <MobileNavbar />
     </div>
   );
 };

@@ -8,9 +8,10 @@ import {
 } from "react-icons/fa";
 import { useContext } from "react";
 import { PropContainer } from "../../PropContainer";
+import PictureUploadPopup from "../PictureUploadPopup/PictureUploadPopup";
 
 function MobileNavbar() {
-  const { username } = useContext(PropContainer);
+  const { username, buttonPopup, setButtonPopup } = useContext(PropContainer);
   return (
     <div class="mobile-navbar">
       <ul>
@@ -25,9 +26,12 @@ function MobileNavbar() {
           </Link>
         </li>
         <li>
-          <button>
-            <FaPlus className="plus" />
-          </button>
+          <div className="btn">
+            <button onClick={() => setButtonPopup(true)}>
+              <FaPlus className="plus" />
+            </button>
+            <PictureUploadPopup trigger={buttonPopup}></PictureUploadPopup>
+          </div>
         </li>
         <li>
           <Link to="/" className="navlink">

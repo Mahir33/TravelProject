@@ -1,0 +1,19 @@
+@use '../abstracts/index' as abstracts;
+
+.profile-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 1.5em;
+  .back {
+    @include abstracts.backButtonDiv;
+    position: static;
+  }
+  .profile-settings-button {
+    @include abstracts.backButtonDiv;
+    position: static;
+    margin-top: 0.1em;
+    a {
+      color: black;
+    }
+  }
+}

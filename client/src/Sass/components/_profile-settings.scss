@@ -1,20 +1,25 @@
 @use '../abstracts/index' as abstracts;
 
 .profile-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: whitesmoke;
-  padding: 2em;
-  width: 90vw;
-  .rowTab {
-    .labels {
-      margin: 1em 0;
-      font-size: 17px;
-      .btn-next {
-        @include abstracts.btn-next;
+  .profile-form {
+    padding: 2em;
+    width: 90vw;
+    .rowTab {
+      .labels {
+        margin: 1em 0;
+        font-size: 17px;
+        .btn-next {
+          @include abstracts.btn-next;
+        }
       }
-    }
-    .rightTab {
-      .input-field {
-        @include abstracts.inputStyle;
+      .rightTab {
+        .input-field {
+          @include abstracts.inputStyle;
+        }
       }
     }
   }

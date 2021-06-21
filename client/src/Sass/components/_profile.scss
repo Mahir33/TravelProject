@@ -1,20 +1,5 @@
 @use '../abstracts/index' as abstracts;
 
-.profile-container {
-  display: flex;
-  justify-content: space-evenly;
-  padding-top: 1.5em;
-  .back {
-    @include abstracts.backButtonDiv;
-    position: static;
-  }
-  .profile-settings-button {
-    @include abstracts.backButtonDiv;
-    position: static;
-    font-size: 2em;
-    margin-top: 0.1em;
-  }
-}
 .profile-display {
   padding-top: 10vh;
   height: auto;
