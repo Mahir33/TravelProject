@@ -222,6 +222,7 @@ const ProfileSettings = () => {
 
       <div className="profile-form-container">
         <form
+          className="profile-form"
           onSubmit={handleSubmit(onSubmit)}
           method="put"
           encType="multipart/form-data">
