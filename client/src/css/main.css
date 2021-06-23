@@ -44,7 +44,7 @@
 .log-in .log .btn-next {
   width: 100%;
   height: 50px;
-  transition: background 400ms;
+  transition: 400ms;
   text-transform: uppercase;
   color: #fff;
   background-color: #000;
@@ -176,7 +176,7 @@
 .register .reg .btn-next {
   width: 100%;
   height: 50px;
-  transition: background 400ms;
+  transition:  400ms;
   text-transform: uppercase;
   color: #fff;
   background-color: #000;
@@ -550,6 +550,134 @@
   margin: 5px 0;
   border: 2.5px solid black;
   text-indent: 10px;
+.home-container {
+  width: 100vw;
+  padding: 16px 16px 16px 16px;
+  overflow-x: hidden;
+}
+
+.home-container__header {
+  position: relative;
+  margin: 10px 0 10px;
+}
+
+.home-container__header h1 {
+  font-size: 1.6rem;
+  font-weight: lighter;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+.home-container__p-home {
+  margin: 20px 0 4px;
+}
+
+.home-container__p-home p {
+  font-size: 0.6rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-shadow: 0.6px 0 black;
+  letter-spacing: 1px;
+}
+
+.new-pic-scroller {
+  display: flex;
+  width: 100vw;
+  height: 380px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.new-pic-scroller .section {
+  width: 300px;
+  height: 100%;
+  align-items: flex-start;
+  flex-direction: row;
+  align-content: space-between;
+  padding: 10px 10px 10px 0;
+  margin-right: 11px;
+}
+
+.new-pic-scroller .section .picture-section img {
+  width: 290px;
+  height: 290px;
+  object-fit: cover;
+}
+
+.new-pic-scroller .section .profile {
+  position: relative;
+}
+
+.new-pic-scroller .section .profile .profile-data {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  height: 50px;
+}
+
+.new-pic-scroller .section .profile .profile-data .profile-photo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.new-pic-scroller .section .profile .profile-data .profile-name-username {
+  position: absolute;
+  top: 0;
+  left: 60px;
+}
+
+.new-pic-scroller .section .profile .profile-data .profile-name-username .name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bolder;
+}
+
+.new-pic-scroller .section .profile .profile-data .profile-name-username .username {
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.browse-all-gallery {
+  margin-bottom: 100px;
+  text-align: center;
+}
+
+.browse-all-gallery .gallery-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.browse-all-gallery .gallery-container .column {
+  width: 50vw;
+  height: auto;
+}
+
+.browse-all-gallery .gallery-container .column .pic img {
+  width: 95%;
+}
+
+.browse-all-gallery .show-more-btn {
+  box-sizing: border-box;
+  width: 280px;
+  height: 50px;
+  margin-top: 5px;
+  border: 3px solid black;
+  border-radius: 5px;
+  background-color: white;
+  font-size: 1.3rem;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+
+.browse-all-gallery .show-more-btn:hover {
+  cursor: pointer;
+  background-color: #dfdfdf;
 }
 
 :root {
