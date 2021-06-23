@@ -2,14 +2,19 @@ const router = require("express").Router();
 const {
     signup,
     login,
-    getUser
+    getUser,
+    updateUser
 } = require("../controllers/userControllers");
-const {
-    upload_img
-} = require("../middleware/multerMiddleware");
-var verifyToken = require('../controllers/VerifyToken');
 
-router.post("/signup", upload_img, signup);
+var verifyToken = require('../authentication/verifyToken');
+const {
+    uploadCloudinary
+} = require('../middleware/cloudinaryMiddleware');
+
+
+
+
+router.post("/signup", signup);
 router.post("/login", login);
 
 // parameter has to be a key relevant to the database! Learned the hard way.
@@ -17,5 +22,8 @@ router.get("/user/:username", verifyToken, getUser);
 
 // Get a post from a user
 router.get("/:username/:post");
+
+//Update user
+router.put("/user/update", verifyToken, uploadCloudinary, updateUser);
 
 module.exports = router;

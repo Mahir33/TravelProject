@@ -1,9 +1,19 @@
 const multer = require("multer");
 const Datauri = require("datauri/parser");
 const storage = multer.memoryStorage();
-const upload_img = multer({ storage }).single("upload_img");
-const dUri = new Datauri();
+const upload = multer({
+    dest: '../uploads/'
+});
+// const dUri = new Datauri();
 
-const dataUri = req => dUri.format(req.file.originalname.toString(), req.file.buffer);
+const multerUploads = (req, res, next) => {
+    console.log(req)
+    if (req.files[0]) upload.single('avatar');
+    next();
+}
 
-module.exports = { upload_img, dataUri };
+
+
+module.exports = {
+    multerUploads
+};

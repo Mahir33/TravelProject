@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
-const { isEmail, isStrongPassword } = require("validator");
+const {
+  isEmail,
+  isStrongPassword
+} = require("validator");
 const bcrypt = require("bcrypt");
 
 const userSchema = new mongoose.Schema({
@@ -22,11 +25,22 @@ const userSchema = new mongoose.Schema({
     validate: [isStrongPassword, "Password too weak"],
   },
 
-  profile_picture: {
+  profilePicture: {
     type: String,
-    default:
-      "https://res.cloudinary.com/dciproject/image/upload/v1622193570/profile_vbcwpo.jpg",
+    default: "https://res.cloudinary.com/dciproject/image/upload/v1622193570/profile_vbcwpo.jpg",
   },
+  location: {
+    type: String,
+    required: [false]
+  },
+  website: {
+    type: String,
+    required: [false]
+  },
+  bio: {
+    type: String,
+    required: [false]
+  }
 });
 
 userSchema.pre("save", async function (next) {

@@ -22,29 +22,6 @@ const ProfileSettings = () => {
     resolver: yupResolver(schema),
   });
 
-  // const onSubmit = async (data) => {
-  //   const fileData = new FormData();
-  //   fileData.append("file", picture);
-  //   console.log({...data, location});
-  //   await fetch("http://localhost:3001/user/update", {
-  //     method: "put",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "x-access-token": sessionStorage.getItem("token"),
-  //       "user-id": sessionStorage.getItem("id"),
-  //     },
-  //     body: JSON.stringify({
-  //       ...data,
-  //       location,
-  //     }),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((json) => {
-  //       console.log(json);
-  //     })
-  //     .catch((e) => console.log(e));
-  // };
-
   const onSubmit = async (data) => {
     console.log(data.picture[0].name);
     var form_data = new FormData();
