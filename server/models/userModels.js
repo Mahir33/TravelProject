@@ -4,6 +4,7 @@ const {
   isStrongPassword
 } = require("validator");
 const bcrypt = require("bcrypt");
+const Post = require('./postModel')
 
 const userSchema = new mongoose.Schema({
   email: {
@@ -40,7 +41,8 @@ const userSchema = new mongoose.Schema({
   bio: {
     type: String,
     required: [false]
-  }
+  },
+  album: [String]
 });
 
 userSchema.pre("save", async function (next) {
@@ -50,6 +52,6 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-const User = mongoose.model("users", userSchema);
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;

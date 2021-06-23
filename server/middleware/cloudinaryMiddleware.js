@@ -17,7 +17,7 @@ const uploadCloudinary = async (req, res, next) => {
         if (error) console.log(error);
         req.body = Object.assign({
             ...req.body,
-            "profilePicture": result.url
+            "picture": result.url
         });
     })
 
@@ -29,4 +29,4 @@ const uploadCloudinary = async (req, res, next) => {
 
 module.exports = {
     uploadCloudinary
-}
+};

@@ -119,23 +119,17 @@ const updateUser = async (req, res) => {
   console.log(req.body)
   var dataToUpdate = {};
 
-
   try {
     const user = await User.findById(req.headers['user-id']);
     if (user) {
 
       for (const key in req.body) {
         // console.log('key' + key, 'req.body[key]' + req.body[key])
+        if (key === picture) {
+          dataToUpdate['profilePicture'] = req.body[key]
+        } else
         if (req.body[key] !== '') {
-
           dataToUpdate[key] = req.body[key]
-          // dataToUpdate = {
-          //   ...dataToUpdate,
-          //   [`${key}`]: req.body[`${key}`]
-          // }
-
-          // console.log('data to update' + dataToUpdate);
-
         }
       }
 
@@ -143,8 +137,13 @@ const updateUser = async (req, res) => {
       User.findByIdAndUpdate(req.headers['user-id'], dataToUpdate, {
         'useFindAndModify': false
       }, function (err, docs) {
-        if (err) console.log(err);
-        else console.log('Updated User: ', docs);
+        if (err) {
+          console.log(err);
+          res.status(400).json('Error updating the user.')
+        } else {
+          res.status(200).json('User updated successfully.')
+          console.log('Updated User: ', docs)
+        };
       })
     }
   } catch (err) {

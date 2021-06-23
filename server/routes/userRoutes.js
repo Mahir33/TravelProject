@@ -6,6 +6,10 @@ const {
     updateUser
 } = require("../controllers/userControllers");
 
+const {
+    createPost
+} = require("../controllers/postController");
+
 var verifyToken = require('../authentication/verifyToken');
 const {
     uploadCloudinary
@@ -21,9 +25,10 @@ router.post("/login", login);
 router.get("/user/:username", verifyToken, getUser);
 
 // Get a post from a user
-router.get("/:username/:post");
+// router.get("/:username/:post");
 
 //Update user
 router.put("/user/update", verifyToken, uploadCloudinary, updateUser);
+
 
 module.exports = router;
