@@ -1,3 +1,5 @@
+@use '../abstracts/index' as abstracts;
+
 .popup {
   position: fixed;
   top: 0;
@@ -9,7 +11,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   .popup-inner {
+    position: relative;
     padding: 32px;
     width: 100%;
     max-width: 640px;
@@ -20,5 +24,22 @@
   .close {
     display: flex;
     justify-content: flex-end;
+    cursor: pointer;
+  }
+  .upload-form {
+    .rowTab {
+      .labels {
+        margin: 1em 0;
+        font-size: 17px;
+        .btn-upload {
+          @include abstracts.btn-next;
+        }
+      }
+      .rightTab {
+        .input-field {
+          @include abstracts.inputStyle;
+        }
+      }
+    }
   }
 }

@@ -15,6 +15,7 @@ export const PropProvider = ({ children }) => {
   const [registered, setRegistered] = useState(false);
   const [buttonPopup, setButtonPopup] = useState(false);
   const [imageLocation, setImageLocation] = useState("");
+  const [imagesData, setImagesData] = useState({});
 
   return (
     <PropContainer.Provider
@@ -30,6 +31,7 @@ export const PropProvider = ({ children }) => {
         bio,
         buttonPopup,
         imageLocation,
+        imagesData,
         setUsername,
         setEmail,
         setId,
@@ -41,6 +43,7 @@ export const PropProvider = ({ children }) => {
         setBio,
         setButtonPopup,
         setImageLocation,
+        setImagesData,
       }}
     >
       {children}

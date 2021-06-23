@@ -13,7 +13,7 @@ import PictureUploadPopup from "../PictureUploadPopup/PictureUploadPopup";
 function MobileNavbar() {
   const { username, buttonPopup, setButtonPopup } = useContext(PropContainer);
   return (
-    <div class="mobile-navbar">
+    <div className="mobile-navbar">
       <ul>
         <li>
           <Link to="/home" className="navlink">
@@ -27,7 +27,7 @@ function MobileNavbar() {
         </li>
         <li>
           <div className="btn">
-            <button onClick={() => setButtonPopup(true)}>
+            <button onClick={() => setButtonPopup(true)} className="btn-plus">
               <FaPlus className="plus" />
             </button>
             <PictureUploadPopup trigger={buttonPopup}></PictureUploadPopup>

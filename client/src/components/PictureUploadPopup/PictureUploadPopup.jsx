@@ -1,28 +1,49 @@
 import PlacesAutocomplete from "react-places-autocomplete";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { FaWindowClose } from "react-icons/fa";
 import { PropContainer } from "../../PropContainer";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { schema } from "./pictureuploadSchema";
 
-function PictureUploadPopup(props) {
-  const { imageLocation, setImageLocation, setButtonPopup } =
+function PictureUploadPopup() {
+  const { imagesData, setImagesData, setButtonPopup, buttonPopup } =
     useContext(PropContainer);
-  return props.trigger ? (
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log(e);
+  };
+
+  return buttonPopup ? (
     <div className="popup">
       <div className="popup-inner">
         <div className="close">
           <FaWindowClose onClick={() => setButtonPopup(false)} />
         </div>
         <div className="upload-form">
-          <form>
+          <form
+            onSubmit={(e) => onSubmit(e)}
+            method="post"
+            encType="multipart/form-data"
+          >
             <div className="rowTab">
               <div className="labels">
                 <label htmlFor="label">Picture Upload</label>
               </div>
               <div className="rightTab">
                 <input
+                  {...register("image")}
+                  className="input-field"
                   type="file"
-                  name="image"
-                  accept="image/png, image/gif, image/jpeg"
+                  accept="image/png, image/jpeg, image/jpg"
                 />
               </div>
             </div>
@@ -31,10 +52,7 @@ function PictureUploadPopup(props) {
                 <label>Location</label>
               </div>
               <div className="rightTab">
-                <PlacesAutocomplete
-                  value={imageLocation}
-                  onChange={setImageLocation}
-                >
+                <PlacesAutocomplete value={imagesData} onChange={setImagesData}>
                   {({
                     getInputProps,
                     suggestions,
@@ -43,10 +61,12 @@ function PictureUploadPopup(props) {
                   }) => (
                     <div className="places-autocomplete-image-location">
                       <input
-                        {...getInputProps({
-                          placeholder: "Type the location of the image",
-                          className: "image-location",
-                        })}
+                        name="location"
+                        id="location"
+                        type="string"
+                        placeholder="Type the location of the image"
+                        className="input-field"
+                        {...getInputProps()}
                       />
                       <div>
                         {loading ? <div>...Loading</div> : null}
@@ -74,12 +94,18 @@ function PictureUploadPopup(props) {
                 <label>Description</label>
               </div>
               <div className="rightTab">
-                <textarea />
+                <textarea
+                  {...register("description")}
+                  className="input-field"
+                />
               </div>
+              <span className="errorStyleShow">
+                {errors.description?.message}
+              </span>
             </div>
             <div className="rowTab">
               <div className="labels">
-                <button className="btn-next" type="submit">
+                <button className="btn-upload" type="submit">
                   Upload Picture
                 </button>
               </div>
@@ -87,7 +113,7 @@ function PictureUploadPopup(props) {
           </form>
         </div>
       </div>
-      {props.children}
+      {buttonPopup.children}
     </div>
   ) : (
     ""
