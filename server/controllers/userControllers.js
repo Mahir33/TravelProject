@@ -1,12 +1,7 @@
 const User = require("../models/userModels");
 const bcrypt = require("bcrypt");
-const {
-  dataUri
-} = require("../middleware/multerMiddleware");
-const {
-  uploader
-} = require("cloudinary");
 var jwt = require('jsonwebtoken');
+
 
 var token;
 
@@ -34,6 +29,7 @@ const signup = async (req, res) => {
     username,
     password
   } = req.body;
+  console.log(req.file)
 
   User.create({
       email,
@@ -118,8 +114,50 @@ const getUser = async (req, res, next) => {
 
 };
 
+
+const updateUser = async (req, res) => {
+  console.log(req.body)
+  var dataToUpdate = {};
+
+
+  try {
+    const user = await User.findById(req.headers['user-id']);
+    if (user) {
+
+      for (const key in req.body) {
+        // console.log('key' + key, 'req.body[key]' + req.body[key])
+        if (req.body[key] !== '') {
+
+          dataToUpdate[key] = req.body[key]
+          // dataToUpdate = {
+          //   ...dataToUpdate,
+          //   [`${key}`]: req.body[`${key}`]
+          // }
+
+          // console.log('data to update' + dataToUpdate);
+
+        }
+      }
+
+
+      User.findByIdAndUpdate(req.headers['user-id'], dataToUpdate, {
+        'useFindAndModify': false
+      }, function (err, docs) {
+        if (err) console.log(err);
+        else console.log('Updated User: ', docs);
+      })
+    }
+  } catch (err) {
+    console.log(err)
+  }
+
+}
+
+
+
 module.exports = {
   signup,
   login,
   getUser,
+  updateUser
 };

@@ -1,0 +1,13 @@
+@forward './login';
+@forward './navbar';
+@forward './register';
+@forward './pageIndex';
+@forward './profile';
+@forward './search';
+@forward './register-success';
+@forward './profile-settings';
+@forward './profile_navbar';
+@forward './picture-upload-popup';
+@forward './home';
+@forward './reset';
+/*# sourceMappingURL=main.css.map */

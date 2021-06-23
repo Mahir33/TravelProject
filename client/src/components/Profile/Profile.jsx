@@ -1,7 +1,9 @@
-import React, { useEffect, useContext } from "react";
-import { PropContainer } from "../../PropContainer";
-import ProfileNavbar from "../ProfileNavbar/ProfileNavbar";
-import MobileNavbar from "../MobileNavbar/MobileNavbar";
+import React, {useEffect, useContext} from "react";
+import {PropContainer} from "../../PropContainer";
+import {FiSettings} from "react-icons/fi";
+import {FaRegArrowAltCircleLeft} from "react-icons/fa";
+import {Link} from "react-router-dom";
+import {Input} from "semantic-ui-react";
 
 function Profile() {
   const {
@@ -15,6 +17,7 @@ function Profile() {
   } = useContext(PropContainer);
 
   const fetchProfile = async () => {
+    console.log("fetching");
     const req = await fetch(`http://localhost:3001/user/${username}`, {
       method: "get",
       headers: {
@@ -24,7 +27,7 @@ function Profile() {
       .then((res) => res.json())
       .then((json) => {
         setUsername(json.username);
-        setPicture(json.profile_picture);
+        setPicture(json.profilePicture);
         setLocation(json.location);
         setEmail(json.email);
       })
@@ -32,20 +35,38 @@ function Profile() {
   };
 
   useEffect(() => {
+    console.log("hi");
     fetchProfile();
   }, []);
 
   let displayProfile = (
     <div>
-      <ProfileNavbar />
+      <div className="profile-container">
+        <div className="back">
+          <Link to="/home">
+            <FaRegArrowAltCircleLeft />
+          </Link>
+        </div>
+        <div className="search-input">
+          <Input
+            icon="search"
+            placeholder="Search..."
+            className="semantic-input"
+          />
+        </div>
+        <div className="profile-settings-button">
+          <Link to="/profile-settings">
+            <FiSettings />
+          </Link>
+        </div>
+      </div>
       <div className="profile-display">
         <div className="profile-picture-container">
           <div
             className="profile-image"
             style={{
               backgroundImage: `url(${picture})`,
-            }}
-          ></div>
+            }}></div>
         </div>
         <h2>{username}</h2>
         <h6>{location}</h6>
@@ -102,7 +123,6 @@ function Profile() {
           />
         </div>
       </div>
-      <MobileNavbar />
     </div>
   );
 

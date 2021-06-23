@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "ACAA,QAAQ,CAAR,SAAQ;AACR,QAAQ,CAAR,UAAQ;AACR,QAAQ,CAAR,YAAQ;AACR,QAAQ,CAAR,aAAQ;AACR,QAAQ,CAAR,WAAQ;AACR,QAAQ,CAAR,UAAQ;AACR,QAAQ,CAAR,oBAAQ;AACR,QAAQ,CAAR,oBAAQ;AACR,QAAQ,CAAR,kBAAQ;AACR,QAAQ,CAAR,wBAAQ;AACR,QAAQ,CAAR,QAAQ;ACVR,QAAQ,CAAR,SAAQ",
+    "sources": [
+        "../../client/src/Sass/main.scss",
+        "../../client/src/Sass/components/_index.scss",
+        "../../client/src/Sass/base/_index.scss"
+    ],
+    "names": [],
+    "file": "main.css"
+}
