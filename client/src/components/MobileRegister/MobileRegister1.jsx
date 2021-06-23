@@ -1,23 +1,23 @@
-import { Link, Redirect } from "react-router-dom";
-import { FaRegArrowAltCircleLeft } from "react-icons/fa";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { schema } from "./mobileRegisterSchema.js";
-import { useContext } from "react";
-import { PropContainer } from "../../PropContainer";
+import {Link, Redirect} from "react-router-dom";
+import {FaRegArrowAltCircleLeft} from "react-icons/fa";
+import {useForm} from "react-hook-form";
+import {yupResolver} from "@hookform/resolvers/yup";
+import {schema} from "./mobileRegisterSchema.js";
+import {useContext} from "react";
+import {PropContainer} from "../../PropContainer";
 
 function MobileRegister1() {
-  const { message, setMessage, registered, setRegistered } =
+  const {message, setMessage, registered, setRegistered} =
     useContext(PropContainer);
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: {errors},
   } = useForm({
     resolver: yupResolver(schema),
   });
   const onSubmit = async (data) => {
-    const { username, email, password } = data;
+    const {username, email, password} = data;
     await fetch("http://localhost:3001/signup", {
       method: "post",
       headers: {
@@ -37,59 +37,60 @@ function MobileRegister1() {
           // props.history.push("/register-success");
         }
         setMessage(res.message);
+        sessionStorage.setItem("token", res.token);
+        sessionStorage.setItem("id", res.id);
       })
       .catch((e) => console.log(e));
   };
 
   return (
-    <div className="register">
-      <div className="back">
-        <Link to="/">
+    <div className='register'>
+      <div className='back'>
+        <Link to='/'>
           <FaRegArrowAltCircleLeft />
         </Link>
       </div>
-      <div className="reg">
+      <div className='reg'>
         <h1>register</h1>
         <form onSubmit={(e) => e.preventDefault()}>
           <input
-            type="text"
-            placeholder="Username"
+            type='text'
+            placeholder='Username'
             {...register("username", {
               maxLength: 20,
             })}
           />
-          <span className="errorStyleShow">{errors.username?.message}</span>
-          <input type="text" placeholder="E-mail" {...register("email")} />
-          <span className="errorStyleShow">{errors.email?.message}</span>
+          <span className='errorStyleShow'>{errors.username?.message}</span>
+          <input type='text' placeholder='E-mail' {...register("email")} />
+          <span className='errorStyleShow'>{errors.email?.message}</span>
           <input
-            type="password"
-            placeholder="Password"
+            type='password'
+            placeholder='Password'
             {...register("password", {
               minLength: {
                 value: 8,
               },
             })}
           />
-          <span className="errorStyleShow">{errors.password?.message}</span>
+          <span className='errorStyleShow'>{errors.password?.message}</span>
           <input
-            type="password"
-            placeholder="Confirm Password"
+            type='password'
+            placeholder='Confirm Password'
             {...register("confirm_password")}
           />
-          <span className="errorStyleShow">
+          <span className='errorStyleShow'>
             {errors.confirm_password && "*Passwords should match!"}
           </span>
           <button
-            className="btn-next"
-            type="submit"
-            onClick={handleSubmit(onSubmit)}
-          >
+            className='btn-next'
+            type='submit'
+            onClick={handleSubmit(onSubmit)}>
             next
           </button>
-          <span className="errorStyleShow">{message}</span>
+          <span className='errorStyleShow'>{message}</span>
         </form>
-        <p className="have-account">
-          If you have an account already <Link to="/login">Sign In</Link>
+        <p className='have-account'>
+          If you have an account already <Link to='/login'>Sign In</Link>
         </p>
       </div>
       {registered ? <Redirect to={`/register-success`} /> : null}

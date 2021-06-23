@@ -8,6 +8,7 @@ import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {schema} from "./profileSettingsSchema";
 import PlacesAutocomplete from "react-places-autocomplete";
+import axios from "axios";
 
 const ProfileSettings = () => {
   const {username, picture, location, email, website, bio, setLocation} =
@@ -21,7 +22,49 @@ const ProfileSettings = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => console.log({...data, location});
+  // const onSubmit = async (data) => {
+  //   const fileData = new FormData();
+  //   fileData.append("file", picture);
+  //   console.log({...data, location});
+  //   await fetch("http://localhost:3001/user/update", {
+  //     method: "put",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "x-access-token": sessionStorage.getItem("token"),
+  //       "user-id": sessionStorage.getItem("id"),
+  //     },
+  //     body: JSON.stringify({
+  //       ...data,
+  //       location,
+  //     }),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((json) => {
+  //       console.log(json);
+  //     })
+  //     .catch((e) => console.log(e));
+  // };
+
+  const onSubmit = async (data) => {
+    console.log(data.picture[0].name);
+    var form_data = new FormData();
+    for (var key in data) {
+      if (key === "picture") {
+        form_data.append(key, data.picture[0], data.picture[0].name);
+      } else form_data.append(key, data[key]);
+    }
+    form_data.append("location", location);
+    await axios
+      .put("http://localhost:3001/user/update", form_data, {
+        headers: {
+          "Content-Type": "application/json",
+          "x-access-token": sessionStorage.getItem("token"),
+          "user-id": sessionStorage.getItem("id"),
+        },
+      })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+  };
 
   const inputsMap = [
     {
@@ -41,7 +84,7 @@ const ProfileSettings = () => {
     {
       label: "Location",
       name: "location",
-      type: "address",
+      type: "text",
       placeholder: location,
       className: "input-field",
     },
@@ -51,6 +94,7 @@ const ProfileSettings = () => {
       type: "file",
       placeholder: "",
       className: "",
+      ref: picture,
     },
     {
       label: "Website",
@@ -89,17 +133,18 @@ const ProfileSettings = () => {
     },
   ];
 
-  const displayInputs = (name, type, placeholder, className) => {
+  const displayInputs = (name, type, placeholder, className, ref) => {
     if (name === "location") {
       return (
         <PlacesAutocomplete value={location} onChange={setLocation}>
           {({getInputProps, suggestions, getSuggestionItemProps, loading}) => (
-            <div className='rightTab'>
+            <div className="rightTab">
               <input
                 name={name}
                 id={name}
                 type={type}
                 className={className}
+                ref={ref}
                 placeholder={placeholder}
                 {...getInputProps(name)}
                 // {...register(name)}
@@ -124,7 +169,7 @@ const ProfileSettings = () => {
       );
     } else
       return (
-        <div className='rightTab'>
+        <div className="rightTab">
           <input
             name={name}
             id={name}
@@ -133,7 +178,7 @@ const ProfileSettings = () => {
             placeholder={placeholder}
             {...register(name)}
           />
-          <span className='errorStyleShow'>{displayError(errors, name)}</span>
+          <span className="errorStyleShow">{displayError(errors, name)}</span>
         </div>
       );
   };
@@ -166,30 +211,30 @@ const ProfileSettings = () => {
 
   return (
     <div>
-      <div className='profile-container'>
-        <div className='back'>
+      <div className="profile-container">
+        <div className="back">
           <Link to={`/profile/${username}`}>
             <FaRegArrowAltCircleLeft />
           </Link>
         </div>
-        <div className='search-input'>
+        <div className="search-input">
           <Input
-            icon='search'
-            placeholder='Search...'
-            className='semantic-input'
+            icon="search"
+            placeholder="Search..."
+            className="semantic-input"
           />
         </div>
-        <div className='profile-settings-button'>
-          <Link to='/profile-settings'>
+        <div className="profile-settings-button">
+          <Link to="/profile-settings">
             <FiSettings />
           </Link>
         </div>
       </div>
 
-      <div className='profile-display'>
-        <div className='profile-picture-container'>
+      <div className="profile-display">
+        <div className="profile-picture-container">
           <div
-            className='profile-image'
+            className="profile-image"
             style={{
               backgroundImage: `url(${picture})`,
             }}></div>
@@ -198,15 +243,18 @@ const ProfileSettings = () => {
         <h6>{location}</h6>
       </div>
 
-      <div className='profile-form-container'>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          {inputsMap.map(({label, name, type, placeholder, className}) => (
-            <div className='rowTab' key={name}>
-              <div className='labels'>
+      <div className="profile-form-container">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          method="put"
+          encType="multipart/form-data">
+          {inputsMap.map(({label, name, type, placeholder, className, ref}) => (
+            <div className="rowTab" key={name}>
+              <div className="labels">
                 <label htmlFor={name}>{label}</label>
               </div>
 
-              {displayInputs(name, type, placeholder, className)}
+              {displayInputs(name, type, placeholder, className, ref)}
               {/* <div className='rightTab'>
                 <input
                   id={name}
@@ -221,9 +269,9 @@ const ProfileSettings = () => {
               </div> */}
             </div>
           ))}
-          <div className='rowTab'>
-            <div className='labels'>
-              <button className='btn-next' type='submit'>
+          <div className="rowTab">
+            <div className="labels">
+              <button className="btn-next" type="submit">
                 Save Changes
               </button>
             </div>

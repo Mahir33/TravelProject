@@ -37,6 +37,7 @@ function MobileLogin() {
         }
         setMessage(res.message);
         sessionStorage.setItem("token", res.token);
+        sessionStorage.setItem("id", res.id);
       })
       .catch((e) => console.log(e));
   };
