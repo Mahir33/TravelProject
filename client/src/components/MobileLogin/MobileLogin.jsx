@@ -39,7 +39,8 @@ function MobileLogin() {
         sessionStorage.setItem("token", res.token);
         sessionStorage.setItem("id", res.id);
       })
-      .catch((e) => console.log(e));
+      .catch((e) => console.log(e))  
+      
   };
   return (
     <div className='log-in'>
