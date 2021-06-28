@@ -607,11 +607,11 @@
 }
 
 .home-container {
-  position: relative;
   width: 100vw;
-  height: auto;
   padding: 16px 16px 16px 16px;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .home-container__header {

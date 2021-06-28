@@ -7,13 +7,17 @@ import React from "react";
 
 function MobileHome() {
   return (
-    <div className="home-container">
-      <ProfileNavBar />
-      <HomeHeader />
-      <HomeFullPicSection />
-      <MobileNavbar />
-      <LoadMoreBtn />
-    </div>
+    <>
+      <div>
+        <ProfileNavBar />
+      </div>
+      <div className="home-container">
+        <HomeHeader />
+        <HomeFullPicSection />
+        <LoadMoreBtn />
+        <MobileNavbar />
+      </div>
+    </>
   );
 }
 

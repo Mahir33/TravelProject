@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import "../src/css/main.css";
-import {BrowserRouter, Switch, Route} from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import MobileIndex from "./components/MobileIndex/MobileIndex";
 import MobileLogin from "./components/MobileLogin/MobileLogin";
 import MobileRegister1 from "./components/MobileRegister/MobileRegister1";
@@ -10,8 +10,7 @@ import MobileSearch from "./components/MobileSearch/MobileSearch";
 import RegisterSuccess from "./components/RegisterSuccess/RegisterSuccess";
 import MobileNavbar from "./components/MobileNavbar/MobileNavbar";
 import ProfileSettings from "./components/ProfileSettings/ProfileSettings";
-import {useContext, useEffect} from "react";
-import {PropContainer} from "./PropContainer";
+import { PropContainer } from "./PropContainer";
 
 function App() {
   const {
