@@ -9,11 +9,13 @@
   align-items: center;
 
   &__header {
-    position: relative;
+    // position: relative;
+    display: flex;
+    justify-content: center;
     width: 100vw;
     height: auto;
-    padding: 16px 16px 80px 16px;
-    overflow: hidden;
+    padding: 16px 16px 16px 16px;
+    // overflow: hidden;
 
     &__header {
       position: relative;
