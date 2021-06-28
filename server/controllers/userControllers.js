@@ -51,8 +51,8 @@ const signup = async (req, res) => {
         email: user.email,
         id: user.id,
         auth: true,
-        token: token
-
+        token: token,
+        user
       })
     })
 };
@@ -78,13 +78,13 @@ const login = async (req, res) => {
           expiresIn: 86400 //expires in 24 hours
         });
 
+        user.password = null;
+
         res.status(200).json({
           message: "Successfully logged in!",
-          username: user.username,
-          email: user.email,
-          id: user._id,
           auth: true,
-          token: token
+          token: token,
+          user
         });
       } else {
         res.json({
@@ -125,7 +125,7 @@ const updateUser = async (req, res) => {
 
       for (const key in req.body) {
         // console.log('key' + key, 'req.body[key]' + req.body[key])
-        if (key === picture) {
+        if (key === 'picture') {
           dataToUpdate['profilePicture'] = req.body[key]
         } else
         if (req.body[key] !== '') {

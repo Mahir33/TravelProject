@@ -20,6 +20,6 @@ router.put("/post/edit", verifyToken, uploadCloudinary, editPost);
 router.delete("/post/delete", verifyToken, deletePost);
 
 // Comment handling
-router.post("/post/comment", createComment);
+// router.post("/post/comment", createComment);
 
 module.exports = router;

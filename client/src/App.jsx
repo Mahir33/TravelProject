@@ -10,8 +10,38 @@ import MobileSearch from "./components/MobileSearch/MobileSearch";
 import RegisterSuccess from "./components/RegisterSuccess/RegisterSuccess";
 import MobileNavbar from "./components/MobileNavbar/MobileNavbar";
 import ProfileSettings from "./components/ProfileSettings/ProfileSettings";
+import {useContext, useEffect} from "react";
+import {PropContainer} from "./PropContainer";
 
 function App() {
+  const {
+    setUsername,
+    setEmail,
+    setAlbum,
+    setId,
+    setLocation,
+    setPicture,
+    setWebsite,
+    setBio,
+    setRegistered,
+  } = useContext(PropContainer);
+
+  useEffect(() => {
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    console.log(user);
+    if (user) {
+      setUsername(user.username);
+      setEmail(user.email);
+      setAlbum(user.album);
+      setId(user._id);
+      setLocation(user.location);
+      setPicture(user.profilePicture);
+      setWebsite(user.website);
+      setBio(user.bio);
+      setRegistered(user.registered);
+    }
+  }, []);
+
   const routes = (
     <BrowserRouter>
       <Switch>

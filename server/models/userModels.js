@@ -42,7 +42,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [false]
   },
-  album: [String]
+  album: [String] //Saves the id of the posts belonged to the user 
 });
 
 userSchema.pre("save", async function (next) {

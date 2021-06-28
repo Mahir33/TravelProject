@@ -113,5 +113,4 @@ module.exports = {
   createPost,
   editPost,
   deletePost,
-  createComment
 };

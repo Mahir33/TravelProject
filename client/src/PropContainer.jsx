@@ -1,11 +1,12 @@
-import { createContext, useState } from "react";
-import { useParams } from "react-router-dom";
+import {createContext, useState} from "react";
+import {useParams} from "react-router-dom";
 
 export const PropContainer = createContext();
 
-export const PropProvider = ({ children }) => {
+export const PropProvider = ({children}) => {
   const [username, setUsername] = useState(useParams.username);
-  const [email, setEmail] = useState();
+  const [email, setEmail] = useState("");
+  const [album, setAlbum] = useState();
   const [id, setId] = useState();
   const [location, setLocation] = useState("");
   const [picture, setPicture] = useState("");
@@ -25,6 +26,7 @@ export const PropProvider = ({ children }) => {
         email,
         location,
         picture,
+        album,
         message,
         registered,
         website,
@@ -37,6 +39,7 @@ export const PropProvider = ({ children }) => {
         setId,
         setLocation,
         setPicture,
+        setAlbum,
         setMessage,
         setRegistered,
         setWebsite,
@@ -44,8 +47,7 @@ export const PropProvider = ({ children }) => {
         setButtonPopup,
         setImageLocation,
         setImagesData,
-      }}
-    >
+      }}>
       {children}
     </PropContainer.Provider>
   );

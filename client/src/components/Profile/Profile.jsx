@@ -6,38 +6,7 @@ import {Link} from "react-router-dom";
 import {Input} from "semantic-ui-react";
 
 function Profile() {
-  const {
-    username,
-    setUsername,
-    picture,
-    setPicture,
-    location,
-    setLocation,
-    setEmail,
-  } = useContext(PropContainer);
-
-  const fetchProfile = async () => {
-    console.log("fetching");
-    const req = await fetch(`http://localhost:3001/user/${username}`, {
-      method: "get",
-      headers: {
-        "x-access-token": sessionStorage.getItem("token"),
-      },
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        setUsername(json.username);
-        setPicture(json.profilePicture);
-        setLocation(json.location);
-        setEmail(json.email);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  useEffect(() => {
-    console.log("hi");
-    fetchProfile();
-  }, []);
+  const {username, picture, location} = useContext(PropContainer);
 
   let displayProfile = (
     <div>
