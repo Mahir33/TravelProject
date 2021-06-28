@@ -15,11 +15,10 @@
         .btn-next {
           @include abstracts.btn-next;
         }
-
-        .rightTab {
-          .input-field {
-            @include abstracts.inputStyle;
-          }
+      }
+      .rightTab {
+        .input-field {
+          @include abstracts.inputStyle;
         }
       }
     }
