@@ -2,6 +2,7 @@ import MobileNavbar from "../MobileNavbar/MobileNavbar";
 import HomeFullPicSection from "./_components/HomeFullPicSection";
 import HomeHeader from "./_components/HomeHeader";
 import ProfileNavBar from "../ProfileNavbar/ProfileNavbar";
+import LoadMoreBtn from "./_components/ShowMore";
 
 
 function MobileHome({username, setUsername}) {
@@ -12,7 +13,11 @@ function MobileHome({username, setUsername}) {
       <ProfileNavBar />
       <HomeHeader />
       <HomeFullPicSection />
-      <MobileNavbar username={username} setUsername={setUsername} />
+      <MobileNavbar 
+        username={username} 
+        setUsername={setUsername} 
+      />
+      <LoadMoreBtn />
     </div>
   );
 }

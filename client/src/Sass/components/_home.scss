@@ -1,4 +1,5 @@
 .home-container {
+    position: relative;
     width: 100vw;
     height: auto;
     padding: 16px 16px 16px 16px;
@@ -29,7 +30,9 @@
         }
     }
 
-    
+    .load-more-btn {
+
+    }
 }
 
 .full-card-section {

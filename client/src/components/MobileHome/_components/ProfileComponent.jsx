@@ -7,24 +7,31 @@ import { CgArrowsExchangeAlt } from 'react-icons/cg';
 function ProfileComponent(props){
     return (
       <>
+      
         <div className="photo">
-          <img src={props.photoUrl} alt="" />
-            <CgArrowsExchangeAlt 
+          <img 
+            src={props.photoUrl} 
+            alt="" 
+          />
+
+          <CgArrowsExchangeAlt 
             className="photo__toggle-icon"
           />
-          
         </div>
+
         <div className="profile">
           <div className="profile__container">
-          <div className="profile__container--photo">
-            <img  src={props.src} alt="" />
-          </div>
-
+            <div className="profile__container--photo">
+              <img  
+                src={props.src} 
+                alt="" 
+              />
+            </div>
           <div className="profile__container--user-data">
             <p className="full-name">{props.name}</p>
             <p className="username">{props.username}</p>
           </div>
-          </div>
+        </div>
           <div className="icon-bar">
             <AiOutlineLike 
               className="icon-bar__icon" 
@@ -36,7 +43,7 @@ function ProfileComponent(props){
               className="icon-bar__icon" 
             />
           </div>
-          </div>
+        </div>
 
 
           <div className="description">

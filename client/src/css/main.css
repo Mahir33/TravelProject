@@ -224,19 +224,73 @@
 }
 
 .home .logo {
-  background: #002423;
-  background: linear-gradient(90deg, #002423 0%, #067fad 31%, #092d79 51%, #00d4ff 100%);
+  position: relative;
+  background: #22c1c3;
+  background: linear-gradient(218deg, #22c1c3 0%, #fffe5b 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 82vh;
+  height: 84vh;
   color: white;
 }
 
+.home .logo h1 {
+  position: absolute;
+  top: 45%;
+}
+
+.home .logo h1 span {
+  font-size: 3rem;
+}
+
+.home .logo h1 .one {
+  color: tomato;
+}
+
+.home .logo h1 .two {
+  color: #ffb222;
+}
+
+.home .logo h1 .three {
+  color: #f2ff62;
+}
+
+.home .logo h1 .four {
+  color: #47b147;
+}
+
+.home .logo h1 .five {
+  color: #129b00;
+}
+
+.home .logo h1 .six {
+  color: blue;
+}
+
+.home .logo h1 .seven {
+  color: darkblue;
+}
+
+.home .logo h1 .eight {
+  color: #000039;
+}
+
+.home .logo h1 .nine {
+  color: #70049e;
+}
+
+.home .logo p {
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
 .home .login-reg-button {
-  margin-top: 5px;
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
 }
@@ -553,6 +607,7 @@
 }
 
 .home-container {
+  position: relative;
   width: 100vw;
   height: auto;
   padding: 16px 16px 16px 16px;
