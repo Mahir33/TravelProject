@@ -1,17 +1,7 @@
 const mongoose = require("mongoose");
 
 const commentSchema = new mongoose.Schema({
-  userId: {
-    type: String,
-    required: true,
-  },
-
-  username: {
-    type: String,
-    required: true,
-  },
-
-  profile_picture: {
+  authorEmail: {
     type: String,
     required: true,
   },
@@ -20,8 +10,13 @@ const commentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
+  date: {
+    type: Date,
+    default: new Date(),
+  }
 });
 
 const Comment = mongoose.model("comments", commentSchema);
 
-module.exports = Comment;
+module.exports = commentSchema;

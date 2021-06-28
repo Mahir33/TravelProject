@@ -11,15 +11,15 @@ cloudinary.config({
 });
 
 const uploadCloudinary = async (req, res, next) => {
-    console.log(req.body)
-    console.log(req.files.picture.tempFilePath)
-    await cloudinary.uploader.upload(req.files.picture.tempFilePath, function (error, result) {
-        if (error) console.log(error);
-        req.body = Object.assign({
-            ...req.body,
-            "profilePicture": result.url
-        });
-    })
+    if (req.files) {
+        await cloudinary.uploader.upload(req.files.picture.tempFilePath, function (error, result) {
+            if (error) console.log(error);
+            req.body = Object.assign({
+                ...req.body,
+                "picture": result.url
+            });
+        })
+    }
 
     next();
 }
@@ -29,4 +29,4 @@ const uploadCloudinary = async (req, res, next) => {
 
 module.exports = {
     uploadCloudinary
-}
+};

@@ -1,74 +1,116 @@
 const Post = require("../models/postModel");
 const Comment = require("../models/commentModel");
-const { dataUri } = require("../middleware/multerMiddleware");
-const { uploader } = require("cloudinary");
+const User = require("../models/userModels");
+const {
+  dataUri
+} = require("../middleware/multerMiddleware");
+const {
+  uploader
+} = require("cloudinary");
+
+
+const errHandler = err => {
+  if (err) {
+    return err;
+  }
+}
+
+
+const getPost = async (req, res) => {
+  try {
+    const post = await Post.findById(req.body.id)
+    if (post) res.status(200).json(post);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+}
+
+
 
 const createPost = async (req, res) => {
+  let id;
+
+  const {
+    description,
+    picture,
+    location
+  } = req.body;
+
+
   try {
-    const { title, desc } = req.body;
+    Post.create({
+      description,
+      picture,
+      location
+    }, function (err, post) {
+      console.log(post)
+      if (err) res.json(errHandler(err));
+      User.findByIdAndUpdate(req.headers['user-id'], {
+        $push: {
+          album: post._id
+        }
+      }, {
+        'useFindAndModify': false
+      }, (err, doc) => {
+        if (err) res.status(400).json(err);
+        else {
+          res.status(200).json('Post created successfully.')
+        }
+      })
+    })
 
-    const file = await dataUri(req).content;
-    const upload = await uploader.upload(
-      file,
-      err => {
-        if (err) console.error(err);
-      },
-      { folder: "posts" }
-    );
 
-    const post_img = upload.secure_url;
 
-    const post = await Post.create({
-      title,
-      desc,
-      img: post_img,
-    });
-
-    res.status(201).json({ msg: "Post created!", id: post._id });
   } catch (err) {
-    res.json(err);
-  }
+    console.log(err)
+  };
+
 };
 
 const editPost = async (req, res) => {
-  try {
-    const { title, desc, img, id } = req.body;
+  var dataToUpdate = {};
 
-    const post = await Post.findOneAndReplace({ _id: id }, { title, desc, img });
-    res.json({ msg: "Updated sucessfully!", result: post });
+  try {
+    const post = await Post.findById(req.body.id);
+    if (post) {
+      for (const key in req.body) {
+        if (req.body[key] !== '') {
+          dataToUpdate[key] = req.body[key]
+        }
+      }
+    }
+
+    Post.findByIdAndUpdate(req.body.id, dataToUpdate, {
+      'useFindAndModify': false
+    }, (err, docs) => {
+      if (err) res.status(400).json('Error updating the post.')
+      else res.status(200).json('Post updated successfully.')
+    })
   } catch (err) {
-    res.json(err);
+    res.status(400).json(err)
   }
 };
 
 const deletePost = async (req, res) => {
   try {
-    const { id } = req.body;
+    const {
+      id
+    } = req.body;
     const post = await Post.findByIdAndDelete(id);
 
-    res.json({ msg: "Deleted sucessfully!", result: post });
+    res.status(200).json(
+      "Deleted successfully!"
+    );
   } catch (err) {
-    res.json(err);
+    res.status(400).json(err);
   }
 };
 
-const createComment = async (req, res) => {
-  try {
-    const { postId, userId, username, profile_picture, comment } = req.body;
-    const newComment = await Comment.create({
-      userId,
-      username,
-      comment,
-      profile_picture,
-    });
-    const post = await Post.findById(postId);
-    const addComment = await post.comments.push(newComment);
 
-    await post.save();
-    res.json({ msg: "Comment added sucessfully!", result: addComment });
-  } catch (err) {
-    res.json(err);
-  }
+
+module.exports = {
+  getPost,
+  createPost,
+  editPost,
+  deletePost,
 };
-
-module.exports = { createPost, editPost, deletePost, createComment };

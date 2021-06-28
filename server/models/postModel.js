@@ -1,29 +1,29 @@
 const mongoose = require("mongoose");
-const Comment = require("./commentModel");
+const commentSchema = require("./commentModel");
 
 const postSchema = new mongoose.Schema({
-  username: {
+
+  description: {
+    type: String,
+    required: false,
+  },
+
+  picture: {
     type: String,
     required: true,
   },
 
-  title: {
+  location: {
     type: String,
-    required: true,
+    required: [true, 'Enter the location of the picture.'],
   },
-
-  desc: {
-    type: String,
-    required: true,
+  date: {
+    type: Date,
+    default: new Date(),
   },
-
-  img: {
-    type: String,
-    required: true,
-  },
-
-  comments: Array,
+  comments: [commentSchema]
 });
 
-const Post = mongoose.model("posts", postSchema);
+const Post = mongoose.model("Post", postSchema);
+
 module.exports = Post;

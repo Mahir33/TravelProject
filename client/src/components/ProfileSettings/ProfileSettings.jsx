@@ -23,11 +23,11 @@ const ProfileSettings = () => {
   });
 
   const onSubmit = async (data) => {
-    console.log(data.picture[0].name);
     var form_data = new FormData();
     for (var key in data) {
       if (key === "picture") {
-        form_data.append(key, data.picture[0], data.picture[0].name);
+        if (data.picture[0])
+          form_data.append(key, data.picture[0], data.picture[0].name);
       } else form_data.append(key, data[key]);
     }
     form_data.append("location", location);
