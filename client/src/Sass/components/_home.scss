@@ -10,7 +10,22 @@
 
   &__header {
     position: relative;
-    margin: 10px 0 10px;
+    width: 100vw;
+    height: auto;
+    padding: 16px 16px 80px 16px;
+    overflow: hidden;
+
+    &__header {
+      position: relative;
+      margin: 10px 0 10px;
+
+      h1 {
+        font-size: 1.6rem;
+        font-weight: lighter;
+        text-transform: capitalize;
+        letter-spacing: 1px;
+      }
+    }
 
     h1 {
       font-size: 1.6rem;
