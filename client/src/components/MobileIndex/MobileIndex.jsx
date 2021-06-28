@@ -4,8 +4,18 @@ function MobileHome() {
   return (
     <div className="home">
       <div className="logo">
-        <h1>FCTravel</h1>
-        <p>Fuck Covid and travel :P</p>
+        <p>all roads lead to... </p>
+        <h1>
+          <span className="one">p</span>
+          <span className="two">l</span>
+          <span className="three">a</span>
+          <span className="four">n</span> 
+          <span className="five">n</span>
+          <span className="six">e</span>
+          <span className="seven">i</span>
+          <span className="eight">r</span>
+          <span className="nine">o</span>   
+        </h1>
       </div>
       <div className="login-reg-button">
         <Link to="/login" className="btn-login">
