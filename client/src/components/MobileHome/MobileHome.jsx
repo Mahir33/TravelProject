@@ -1,5 +1,5 @@
 import MobileNavbar from "../MobileNavbar/MobileNavbar";
-import HomeFullPicSection from "./_components/HomeFullPicSection";
+import HomeFullPicSection from "./_components/NewPicScroller";
 import HomeHeader from "./_components/HomeHeader";
 import ProfileNavBar from "../ProfileNavbar/ProfileNavbar";
 import LoadMoreBtn from "./_components/ShowMore";

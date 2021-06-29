@@ -141,7 +141,7 @@ const updateUser = async (req, res) => {
           console.log(err);
           res.status(400).json('Error updating the user.')
         } else {
-          res.status(200).json('User updated successfully.')
+          res.status(200).json(docs.data)
           console.log('Updated User: ', docs)
         };
       })

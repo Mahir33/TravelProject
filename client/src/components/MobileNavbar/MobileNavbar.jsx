@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import {
   FaHome,
   FaSearch,
@@ -6,12 +6,12 @@ import {
   FaRegComment,
   FaUserAlt,
 } from "react-icons/fa";
-import { useContext } from "react";
-import { PropContainer } from "../../PropContainer";
-import PictureUploadPopup from "../PictureUploadPopup/PictureUploadPopup";
+import {useContext} from "react";
+import {PropContainer} from "../../PropContainer";
+import PictureUploadPopup2 from "../PictureUploadPopup/PictureUploadPopup";
 
 function MobileNavbar() {
-  const { username, buttonPopup, setButtonPopup } = useContext(PropContainer);
+  const {username, buttonPopup, setButtonPopup} = useContext(PropContainer);
   return (
     <div className="mobile-navbar">
       <ul>
@@ -30,7 +30,7 @@ function MobileNavbar() {
             <button onClick={() => setButtonPopup(true)} className="btn-plus">
               <FaPlus className="plus" />
             </button>
-            <PictureUploadPopup trigger={buttonPopup}></PictureUploadPopup>
+            <PictureUploadPopup2 trigger={buttonPopup}></PictureUploadPopup2>
           </div>
         </li>
         <li>

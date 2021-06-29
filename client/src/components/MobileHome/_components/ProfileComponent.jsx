@@ -47,7 +47,7 @@ function ProfileComponent(props) {
         <p>@bella: You stupid men thing</p>
       </div>
       <div className="comment-type">
-        <label for="comments" />
+        <label htmlFor="comments" />
         <textarea
           id="comments"
           name="comments"

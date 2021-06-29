@@ -16,13 +16,27 @@ const errHandler = err => {
 }
 
 
+// const getPost = async (req, res) => {
+//   console.log(req.headers)
+//   const ids = req.header.ids;
+//   try {
+//     const posts = await Post.find({
+//       '_id': {
+//         $in: [ids]
+//       }
+//     })
+//     if (posts) res.status(200).json(posts);
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// }
+
 const getPost = async (req, res) => {
-  try {
-    const post = await Post.findById(req.body.id)
-    if (post) res.status(200).json(post);
-  } catch (err) {
-    res.status(400).json(err);
-  }
+  console.log(req.headers.test)
+  await User.find().where('fb.id').in([req.headers.ids]).exec((err, docs) => {
+    // if (err) console.log(err);
+    // console.log(docs)
+  })
 }
 
 
@@ -54,7 +68,7 @@ const createPost = async (req, res) => {
       }, (err, doc) => {
         if (err) res.status(400).json(err);
         else {
-          res.status(200).json('Post created successfully.')
+          res.status(200).json(post._id)
         }
       })
     })

@@ -53,7 +53,7 @@ const userProfiles = [{
     commentsNum: 21477341,
     likesNum: 3052168
 }, {
-    id: 6,
+    id: 7,
     photoUrl: "https://picsum.photos/300?random=17",
     imgUrl: "https://picsum.photos/300?random=14",
     name: "Matheus Glazier",
