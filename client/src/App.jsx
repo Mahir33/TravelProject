@@ -15,6 +15,15 @@ import {PropContainer} from "./PropContainer";
 
 function App() {
   const {
+    username,
+    email,
+    album,
+    id,
+    location,
+    picture,
+    website,
+    bio,
+    registered,
     setUsername,
     setEmail,
     setAlbum,
@@ -28,7 +37,6 @@ function App() {
 
   useEffect(() => {
     const user = JSON.parse(sessionStorage.getItem("user"));
-    console.log(user);
     if (user) {
       setUsername(user.username);
       setEmail(user.email);
@@ -39,7 +47,7 @@ function App() {
       setWebsite(user.website);
       setBio(user.bio);
       setRegistered(user.registered);
-    }
+    } else return;
   }, []);
 
   const routes = (

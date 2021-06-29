@@ -134,14 +134,15 @@ const updateUser = async (req, res) => {
       }
 
 
-      User.findByIdAndUpdate(req.headers['user-id'], dataToUpdate, {
+      await User.findByIdAndUpdate(req.headers['user-id'], dataToUpdate, {
+        'new': true,
         'useFindAndModify': false
       }, function (err, docs) {
         if (err) {
           console.log(err);
           res.status(400).json('Error updating the user.')
         } else {
-          res.status(200).json(docs.data)
+          res.status(200).json(docs)
           console.log('Updated User: ', docs)
         };
       })

@@ -37,6 +37,17 @@ const ProfileSettings = () => {
     resolver: yupResolver(schema),
   });
 
+  const updateState = async (res) => {
+    sessionStorage.setItem("user", JSON.stringify(res.data));
+    setUsername(res.data.username);
+    setPicture(res.data.profilePicture);
+    setLocation(res.data.location);
+    setEmail(res.data.email);
+    setWebsite(res.data.website);
+    setBio(res.data.bio);
+    setUpdated(true);
+  };
+
   const onSubmit = async (data) => {
     var form_data = new FormData();
     for (var key in data) {
@@ -54,14 +65,7 @@ const ProfileSettings = () => {
           "user-id": sessionStorage.getItem("id"),
         },
       })
-      .then((res) => sessionStorage.setItem("user", JSON.stringify(res.data)))
-      .then((res) => setUsername(res.data.username))
-      .then((res) => setPicture(res.data.picture))
-      .then((res) => setLocation(res.data.location))
-      .then((res) => setEmail(res.data.email))
-      .then((res) => setWebsite(res.data.website))
-      .then((res) => setBio(res.data.bio))
-      .then((res) => setUpdated(true))
+      .then((res) => updateState(res))
       .catch((err) => console.log(err));
   };
 

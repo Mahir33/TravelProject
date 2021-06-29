@@ -15,7 +15,6 @@ function Profile() {
           "Content-Type": "application/json",
           "x-access-token": sessionStorage.getItem("token"),
           "user-id": sessionStorage.getItem("id"),
-          ids: "testing",
         },
       })
       .then((res) => console.log(res))
