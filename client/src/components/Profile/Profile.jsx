@@ -1,34 +1,34 @@
-import React, {useEffect, useContext} from "react";
+import React, {useContext, useState, useEffect} from "react";
 import {PropContainer} from "../../PropContainer";
-import {FiSettings} from "react-icons/fi";
-import {FaRegArrowAltCircleLeft} from "react-icons/fa";
-import {Link} from "react-router-dom";
-import {Input} from "semantic-ui-react";
+import ProfileNavbar from "../ProfileNavbar/ProfileNavbar";
+import axios from "axios";
 
 function Profile() {
-  const {username, picture, location} = useContext(PropContainer);
+  const {username, picture, location, album} = useContext(PropContainer);
+
+  const [posts, setPosts] = useState();
+
+  const getPosts = async () => {
+    await axios
+      .get("http://localhost:3001/post/get", {
+        headers: {
+          "Content-Type": "application/json",
+          "x-access-token": sessionStorage.getItem("token"),
+          "user-id": sessionStorage.getItem("id"),
+        },
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    getPosts();
+  }, []);
 
   let displayProfile = (
     <div>
-      <div className="profile-container">
-        <div className="back">
-          <Link to="/home">
-            <FaRegArrowAltCircleLeft />
-          </Link>
-        </div>
-        <div className="search-input">
-          <Input
-            icon="search"
-            placeholder="Search..."
-            className="semantic-input"
-          />
-        </div>
-        <div className="profile-settings-button">
-          <Link to="/profile-settings">
-            <FiSettings />
-          </Link>
-        </div>
-      </div>
+      <ProfileNavbar />
+
       <div className="profile-display">
         <div className="profile-picture-container">
           <div
