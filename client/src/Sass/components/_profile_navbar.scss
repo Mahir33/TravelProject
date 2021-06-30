@@ -1,19 +1,41 @@
 @use '../abstracts/index' as abstracts;
 
-.profile-container {
-  display: flex;
-  justify-content: space-evenly;
-  padding-top: 1.5em;
-  .back {
-    @include abstracts.backButtonDiv;
-    position: static;
+.profile-navbar {
+  .mobileNavigation {
+    display: none;
   }
-  .profile-settings-button {
-    @include abstracts.backButtonDiv;
-    position: static;
-    margin-top: 0.1em;
-    a {
-      color: black;
+  .profile-container {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 1.5em;
+    .back {
+      @include abstracts.backButtonDiv;
+      position: static;
+    }
+    .profile-settings-button {
+      @include abstracts.backButtonDiv;
+      position: static;
+      margin-top: 0.1em;
+      a {
+        color: black;
+      }
+    }
+  }
+}
+
+@media (max-width: 990px) {
+  .profile-navbar {
+    .navigation {
+      display: none;
+    }
+    .mobileNavigation {
+      display: block;
+      background-color: red;
+      .hamburger {
+        position: absolute;
+        left: 5%;
+        cursor: pointer;
+      }
     }
   }
 }

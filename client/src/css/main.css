@@ -511,13 +511,17 @@
   text-indent: 10px;
 }
 
-.profile-container {
+.profile-navbar .mobileNavigation {
+  display: none;
+}
+
+.profile-navbar .profile-container {
   display: flex;
   justify-content: space-evenly;
   padding-top: 1.5em;
 }
 
-.profile-container .back {
+.profile-navbar .profile-container .back {
   position: absolute;
   top: 20px;
   left: 20px;
@@ -528,7 +532,7 @@
   position: static;
 }
 
-.profile-container .profile-settings-button {
+.profile-navbar .profile-container .profile-settings-button {
   position: absolute;
   top: 20px;
   left: 20px;
@@ -540,10 +544,26 @@
   margin-top: 0.1em;
 }
 
-.profile-container .profile-settings-button a {
+.profile-navbar .profile-container .profile-settings-button a {
   color: black;
 }
 
+@media (max-width: 990px) {
+  .profile-navbar .navigation {
+    display: none;
+  }
+
+  .profile-navbar .mobileNavigation {
+    display: block;
+    background-color: red;
+  }
+
+  .profile-navbar .mobileNavigation .hamburger {
+    position: absolute;
+    left: 5%;
+    cursor: pointer;
+  }
+}
 .popup {
   position: fixed;
   top: 0;
