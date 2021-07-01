@@ -3,10 +3,11 @@
   width: 100vw;
   //   height: auto;
   padding: 16px 16px 16px 16px;
-  //   overflow: hidden;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 
   &__header {
     // position: relative;
@@ -55,6 +56,7 @@
 
 .full-card-section {
   width: 290px;
+  margin-bottom: 50px;
 
   .photo {
     position: relative;
@@ -77,104 +79,104 @@
     }
   }
 
-  .profile {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    height: 50px;
+  
+}
 
+.card {
+  position: relative;
+  margin: 20px 0;
+  width: 290px;
+  height: 390px;
+
+  .img {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    border-radius: 15px;
+    transition: .8s;
+  }
+
+  .text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 20px;
+    border-radius: 15px;
+    background-image: linear-gradient(315deg, #f3d3ec 0%, #dcf8ef 74%);
+    text-align: left;
+    opacity: 0;
+    transition: .8s;  
+  }
+
+  .airplane {
+    font-size: 1rem;;
+  }
+  
+  .text-one {
+    transform: rotateY(-180deg);
+  }
+  
+  .profile {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
     &__container {
-      &--photo {
-        display: inline-block;
-        position: absolute;
-        top: 5px;
-        left: 7px;
-        img {
-          width: 40px;
-          height: 40px;
-          border-radius: 25px;
-        }
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-content: space-around;
+      
+      
+      &--photo{
+        width: 40px;
+        height: 40px;
+        border-radius: 25px;
       }
 
       &--user-data {
-        display: inline-block;
-        position: absolute;
-        top: 5px;
-        left: 50px;
+        display: flex;
+        flex-direction: column;
+        margin: 0 10px;
         height: 40px;
-        overflow: hidden;
-
+        width: 50%;
+    
         .full-name {
-          margin: 0;
-          font-size: 0.8rem;
-          font-weight: bolder;
+          font-size: .8rem;
+          margin-bottom: 0;
+          font-weight: 900;
+            
         }
 
         .username {
-          margin: 0;
-          font-size: 0.75rem;
+          font-size: .8rem;
           font-style: italic;
         }
       }
-    }
-  }
-  .icon-bar {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: inline-block;
-    width: 50%;
-    height: 50px;
-    text-align: center;
 
-    &__icon {
-      margin: 10px 5px;
-      width: 30px;
-      height: 30px;
-    }
-  }
+      &--likes {
+        font-size: .8rem;
 
-  .description {
-    width: 100%;
-    padding: 2px 0;
+        p {
+          margin-bottom: 0;
+        }
+      }
 
-    &__from-user {
-      .bold {
-        font-weight: bold;
+      .like-ico {
+        font-size: 1.1rem;
       }
     }
   }
+}
 
-  .comments {
-    display: inline-block;
-    width: 50%;
-    font-size: 0.8rem;
-    color: gray;
-    text-transform: capitalize;
-  }
+.card:hover .text{
+  transform: rotate(0);
+  opacity: 1;
+}
 
-  .likes {
-    display: inline-block;
-    width: 50%;
-    font-size: 0.8rem;
-    color: gray;
-    text-transform: capitalize;
-  }
+.card:hover .one {
+  transform: rotateY(-180deg);
 
-  .users-comments {
-    padding: 3px 0 3px 6px;
-    p {
-      margin: 0;
-    }
-  }
-
-  .comment-type {
-    width: 100%;
-
-    textarea {
-      padding: 3px;
-      border: 1px solid gray;
-      border-radius: 10px;
-    }
-  }
 }
