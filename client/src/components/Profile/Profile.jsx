@@ -15,6 +15,7 @@ function Profile() {
           "Content-Type": "application/json",
           "x-access-token": sessionStorage.getItem("token"),
           "user-id": sessionStorage.getItem("id"),
+          album: album,
         },
       })
       .then((res) => console.log(res))
@@ -39,8 +40,8 @@ function Profile() {
         </div>
         <h2>{username}</h2>
         <h6>{location}</h6>
-        <button className="follow-btn">Follow</button>
-        <button>Message</button>
+        {/* <button className="follow-btn">Follow</button>
+        <button>Message</button> */}
         <div className="album">
           <img
             src="https://source.unsplash.com/collection/190727/400x500"

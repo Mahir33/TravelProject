@@ -31,11 +31,17 @@ const errHandler = err => {
 //   }
 // }
 
+
+
 const getPost = async (req, res) => {
-  console.log(req.headers.test)
-  await User.find().where('fb.id').in([req.headers.ids]).exec((err, docs) => {
-    // if (err) console.log(err);
-    // console.log(docs)
+  console.log(req.headers)
+  await Post.find({
+    '_id': {
+      $in: req.params.album
+    }
+  }, (err, result) => {
+    if (err) console.log(err)
+    else res.send(result)
   })
 }
 
@@ -122,9 +128,26 @@ const deletePost = async (req, res) => {
 
 
 
+const getAlbum = async (req, res) => {
+  console.log(req.body.album);
+  try {
+    const album = await Post.find({
+      '_id': {
+        $in: req.body.album
+      }
+    })
+    res.json(album)
+  } catch (err) {
+    res.json(err)
+  }
+}
+
+
+
 module.exports = {
   getPost,
   createPost,
   editPost,
   deletePost,
+  getAlbum
 };

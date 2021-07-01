@@ -2,8 +2,9 @@ const router = require("express").Router();
 const {
     signup,
     login,
-    getUser,
-    updateUser
+    // getUser,
+    updateUser,
+    getUserByName
 } = require("../controllers/userControllers");
 
 const {
@@ -22,7 +23,7 @@ router.post("/signup", signup);
 router.post("/login", login);
 
 // parameter has to be a key relevant to the database! Learned the hard way.
-router.get("/user/:username", verifyToken, getUser);
+router.get("/user/:username", verifyToken, getUserByName);
 
 // Get a post from a user
 // router.get("/:username/:post");

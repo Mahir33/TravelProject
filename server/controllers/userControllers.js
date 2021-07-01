@@ -102,17 +102,28 @@ const login = async (req, res) => {
 };
 
 // Temporary testing
-const getUser = async (req, res, next) => {
-  try {
-    const user = await User.findOne(
-      req.params
-    );
-    res.json(user);
-  } catch (err) {
-    res.json(err);
-  }
+// const getUser = async (req, res, next) => {
+//   try {
+//     const user = await User.findOne(
+//       req.params
+//     );
+//     res.json(user);
+//   } catch (err) {
+//     res.json(err);
+//   }
 
-};
+// };
+
+const getUserByName = async (req, res) => {
+  try {
+    const usersByName = await User.find({
+      username: req.params.username
+    })
+    res.json(usersByName)
+  } catch (err) {
+    res.json(err)
+  }
+}
 
 
 const updateUser = async (req, res) => {
@@ -158,6 +169,7 @@ const updateUser = async (req, res) => {
 module.exports = {
   signup,
   login,
-  getUser,
-  updateUser
+  // getUser,
+  updateUser,
+  getUserByName
 };
