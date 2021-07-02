@@ -532,7 +532,28 @@
   position: static;
 }
 
-.profile-navbar .profile-container .profile-settings-button {
+.profile-navbar .profile-container .rightside {
+  display: flex;
+}
+
+.profile-navbar .profile-container .rightside .profile-settings-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: black;
+  text-decoration: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding-right: 0.5em;
+  position: static;
+}
+
+.profile-navbar .profile-container .rightside .profile-settings-button a {
+  display: flex;
+  color: black;
+}
+
+.profile-navbar .profile-container .rightside .logout-btn {
   position: absolute;
   top: 20px;
   left: 20px;
@@ -541,27 +562,103 @@
   font-size: 2rem;
   cursor: pointer;
   position: static;
-  margin-top: 0.1em;
 }
 
-.profile-navbar .profile-container .profile-settings-button a {
+.profile-navbar .profile-container .rightside .logout-btn a {
+  display: flex;
   color: black;
 }
 
-@media (max-width: 990px) {
+@media (max-width: 767px) {
+  .profile-navbar .profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 25px;
+  }
+
   .profile-navbar .navigation {
     display: none;
   }
 
   .profile-navbar .mobileNavigation {
-    display: block;
-    background-color: red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: whitesmoke;
+    padding: 0 0.7em 0 0.7em;
+  }
+
+  .profile-navbar .mobileNavigation .profile-settings-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: black;
+    text-decoration: none;
+    font-size: 2rem;
+    cursor: pointer;
+    border: 3px solid black;
+    border-radius: 13px;
+    position: static;
+    margin-top: 0.5em;
+    padding: 0 1.7em 0 1.7em;
+  }
+
+  .profile-navbar .mobileNavigation .profile-settings-button a {
+    display: flex;
+    color: black;
+  }
+
+  .profile-navbar .mobileNavigation .profile-settings-button a .settings-caption {
+    font-size: 1rem;
+    margin: 0.3rem 0 0 0.3rem;
+  }
+
+  .profile-navbar .mobileNavigation .logout-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: black;
+    text-decoration: none;
+    font-size: 2rem;
+    cursor: pointer;
+    border: 3px solid black;
+    border-radius: 13px;
+    position: static;
+    margin-top: 0.5em;
+    padding: 0 1.8em 0 1.8em;
+  }
+
+  .profile-navbar .mobileNavigation .logout-btn a {
+    display: flex;
+    color: black;
+  }
+
+  .profile-navbar .mobileNavigation .logout-btn a .logout-caption {
+    font-size: 1rem;
+    margin: 0.3rem 0 0 0.3rem;
+  }
+
+  .profile-navbar .mobileNavigation .back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: black;
+    text-decoration: none;
+    font-size: 2rem;
+    cursor: pointer;
+    position: static;
+    padding-top: 0.1em;
   }
 
   .profile-navbar .mobileNavigation .hamburger {
-    position: absolute;
-    left: 5%;
     cursor: pointer;
+  }
+
+  .profile-navbar .mobileNavigation .hamburger2 {
+    cursor: pointer;
+    margin-top: -15px;
   }
 }
 .popup {

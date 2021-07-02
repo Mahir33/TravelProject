@@ -1,24 +1,31 @@
-import NavLinks from "./NavLinks";
+import MobileNavLinks from "./MobileNavLinks";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
-import { FaWindowClose } from "react-icons/fa";
+import { FaWindowClose, FaRegArrowAltCircleLeft } from "react-icons/fa";
+import { useHistory } from "react-router-dom";
 
 function MobileNavigation() {
   const [open, setOpen] = useState(false);
+  const history = useHistory();
 
   const hamburgerIcon = (
-    <GiHamburgerMenu
-      className="hamburger"
-      size="40px"
-      color="black"
-      onClick={() => setOpen(!open)}
-    />
+    <>
+      <div className="back">
+        <FaRegArrowAltCircleLeft onClick={() => history.goBack()} />
+      </div>
+      <GiHamburgerMenu
+        className="hamburger"
+        size="35px"
+        color="black"
+        onClick={() => setOpen(!open)}
+      />
+    </>
   );
 
   const closeIcon = (
     <FaWindowClose
-      className="hamburger"
-      size="40px"
+      className="hamburger2"
+      size="35px"
       color="black"
       onClick={() => setOpen(!open)}
     />
@@ -27,7 +34,7 @@ function MobileNavigation() {
   return (
     <nav className="mobileNavigation">
       {open ? closeIcon : hamburgerIcon}
-      {open && <NavLinks />}
+      {open && <MobileNavLinks />}
     </nav>
   );
 }

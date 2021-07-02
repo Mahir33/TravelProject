@@ -12,29 +12,83 @@
       @include abstracts.backButtonDiv;
       position: static;
     }
-    .profile-settings-button {
-      @include abstracts.backButtonDiv;
-      position: static;
-      margin-top: 0.1em;
-      a {
-        color: black;
+    .rightside {
+      display: flex;
+      .profile-settings-button {
+        @include abstracts.backButtonDiv;
+        padding-right: 0.5em;
+        position: static;
+        a {
+          display: flex;
+          color: black;
+        }
+      }
+      .logout-btn {
+        @include abstracts.backButtonDiv;
+        position: static;
+        a {
+          display: flex;
+          color: black;
+        }
       }
     }
   }
 }
 
-@media (max-width: 990px) {
+@media (max-width: 767px) {
   .profile-navbar {
+    .profile-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 25px;
+    }
     .navigation {
       display: none;
     }
     .mobileNavigation {
-      display: block;
-      background-color: red;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: whitesmoke;
+      padding: 0 0.7em 0 0.7em;
+      .profile-settings-button {
+        @include abstracts.backButtonDiv;
+        @include abstracts.mobile-profile-navbar-btnStyle;
+        padding: 0 1.7em 0 1.7em;
+        a {
+          display: flex;
+          color: black;
+          .settings-caption {
+            @include abstracts.caption;
+          }
+        }
+      }
+      .logout-btn {
+        @include abstracts.backButtonDiv;
+        @include abstracts.mobile-profile-navbar-btnStyle;
+        padding: 0 1.8em 0 1.8em;
+        a {
+          display: flex;
+          color: black;
+          .logout-caption {
+            @include abstracts.caption;
+          }
+        }
+      }
+
+      .back {
+        @include abstracts.backButtonDiv;
+        position: static;
+        padding-top: 0.1em;
+      }
       .hamburger {
-        position: absolute;
-        left: 5%;
         cursor: pointer;
+      }
+      .hamburger2 {
+        cursor: pointer;
+        margin-top: -15px;
       }
     }
   }
