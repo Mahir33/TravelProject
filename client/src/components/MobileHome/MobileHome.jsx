@@ -9,8 +9,8 @@ import React from "react";
 function MobileHome() {
   return (
     <>
+      <ProfileNavBar />
       <div className="home-container">
-        <ProfileNavBar />
         <HomeHeader />
         <HomeFullPicSection />
         <LoadMoreBtn />
