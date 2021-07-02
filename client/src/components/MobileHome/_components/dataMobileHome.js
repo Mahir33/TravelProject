@@ -31,7 +31,7 @@ const userProfiles = [{
     imgUrl: "https://picsum.photos/300?random=9",
     name: "Lord Voldemort",
     username: "@voldi",
-    picDescUser: "I killed many people inside of this canion",
+    picDescUser: "Looking for Harry Potter",
     commentsNum: 98,
     likesNum: 23
 }, {
@@ -40,7 +40,7 @@ const userProfiles = [{
     imgUrl: "https://picsum.photos/300?random=8",
     name: "Donatella Versace",
     username: "@versace",
-    picDescUser: "My house does't produc clothes for an ugly people",
+    picDescUser: "uploader comment",
     commentsNum: 5122,
     likesNum: 75875
 }, {
@@ -51,14 +51,14 @@ const userProfiles = [{
     username: "@vicor2020",
     picDescUser: "I traveled all around the world",
     commentsNum: 21477341,
-    likesNum: 3052168
+    likesNum: 468
 }, {
-    id: 6,
+    id: 7,
     photoUrl: "https://picsum.photos/300?random=17",
     imgUrl: "https://picsum.photos/300?random=14",
     name: "Matheus Glazier",
     username: "@zierus",
-    picDescUser: "Great weed plantation!",
+    picDescUser: "Uploader comment",
     commentsNum: 764,
     likesNum: 78
 }]

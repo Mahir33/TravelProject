@@ -7,47 +7,24 @@ import {CgArrowsExchangeAlt} from "react-icons/cg";
 function ProfileComponent(props) {
   return (
     <>
-      <div className="photo">
-        <img src={props.photoUrl} alt="" />
+    
 
-        <CgArrowsExchangeAlt className="photo__toggle-icon" />
-      </div>
-
-      <div className="profile">
-        <div className="profile__container">
-          <div className="profile__container--photo">
-            <img src={props.src} alt="" />
-          </div>
-          <div className="profile__container--user-data">
-            <p className="full-name">{props.name}</p>
-            <p className="username">{props.username}</p>
-          </div>
-        </div>
+        
         <div className="icon-bar">
           <AiOutlineLike className="icon-bar__icon" />
           <FaRegComment className="icon-bar__icon" />
           <FaTelegramPlane className="icon-bar__icon" />
         </div>
-      </div>
+      
 
-      <div className="description">
-        <p className="description__from-user">
-          <span className="bold">{props.username}</span>: {props.picDescUser}
-        </p>
-      </div>
-      <div className="comments">
-        <p>all comments: {props.commentsNum}</p>
-      </div>
-      <div className="likes">
-        <p>likes: {props.likesNum}</p>
-      </div>
+      
       <div className="users-comments">
-        <p>@daniela: this pick makes me sick</p>
-        <p>@cassandra: I will find you, and kill all your family</p>
-        <p>@bella: You stupid men thing</p>
+        <p>@daniela: this pic is great!</p>
+        <p>@cassandra: this is awesome, I want to go there!</p>
+        <p>@bella: Now I have an idea for a great holiday!</p>
       </div>
       <div className="comment-type">
-        <label for="comments" />
+        <label htmlFor="comments" />
         <textarea
           id="comments"
           name="comments"

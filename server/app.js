@@ -52,4 +52,4 @@ app.use(express.urlencoded({
 // routes
 // app.use("*", cloudinaryConfig);
 app.use(userRoutes);
-app.use(postRoutes);
+app.use('/post', postRoutes);

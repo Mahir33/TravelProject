@@ -102,17 +102,28 @@ const login = async (req, res) => {
 };
 
 // Temporary testing
-const getUser = async (req, res, next) => {
-  try {
-    const user = await User.findOne(
-      req.params
-    );
-    res.json(user);
-  } catch (err) {
-    res.json(err);
-  }
+// const getUser = async (req, res, next) => {
+//   try {
+//     const user = await User.findOne(
+//       req.params
+//     );
+//     res.json(user);
+//   } catch (err) {
+//     res.json(err);
+//   }
 
-};
+// };
+
+const getUserByName = async (req, res) => {
+  try {
+    const usersByName = await User.find({
+      username: req.params.username
+    })
+    res.json(usersByName)
+  } catch (err) {
+    res.json(err)
+  }
+}
 
 
 const updateUser = async (req, res) => {
@@ -134,14 +145,15 @@ const updateUser = async (req, res) => {
       }
 
 
-      User.findByIdAndUpdate(req.headers['user-id'], dataToUpdate, {
+      await User.findByIdAndUpdate(req.headers['user-id'], dataToUpdate, {
+        'new': true,
         'useFindAndModify': false
       }, function (err, docs) {
         if (err) {
           console.log(err);
           res.status(400).json('Error updating the user.')
         } else {
-          res.status(200).json('User updated successfully.')
+          res.status(200).json(docs)
           console.log('Updated User: ', docs)
         };
       })
@@ -157,6 +169,7 @@ const updateUser = async (req, res) => {
 module.exports = {
   signup,
   login,
-  getUser,
-  updateUser
+  // getUser,
+  updateUser,
+  getUserByName
 };

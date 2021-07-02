@@ -16,13 +16,33 @@ const errHandler = err => {
 }
 
 
+// const getPost = async (req, res) => {
+//   console.log(req.headers)
+//   const ids = req.header.ids;
+//   try {
+//     const posts = await Post.find({
+//       '_id': {
+//         $in: [ids]
+//       }
+//     })
+//     if (posts) res.status(200).json(posts);
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// }
+
+
+
 const getPost = async (req, res) => {
-  try {
-    const post = await Post.findById(req.body.id)
-    if (post) res.status(200).json(post);
-  } catch (err) {
-    res.status(400).json(err);
-  }
+  console.log(req.headers)
+  await Post.find({
+    '_id': {
+      $in: req.params.album
+    }
+  }, (err, result) => {
+    if (err) console.log(err)
+    else res.send(result)
+  })
 }
 
 
@@ -54,7 +74,7 @@ const createPost = async (req, res) => {
       }, (err, doc) => {
         if (err) res.status(400).json(err);
         else {
-          res.status(200).json('Post created successfully.')
+          res.status(200).json(post._id)
         }
       })
     })
@@ -108,9 +128,26 @@ const deletePost = async (req, res) => {
 
 
 
+const getAlbum = async (req, res) => {
+  console.log(req.body.album);
+  try {
+    const album = await Post.find({
+      '_id': {
+        $in: req.body.album
+      }
+    })
+    res.json(album)
+  } catch (err) {
+    res.json(err)
+  }
+}
+
+
+
 module.exports = {
   getPost,
   createPost,
   editPost,
   deletePost,
+  getAlbum
 };
