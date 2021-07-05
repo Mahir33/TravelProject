@@ -6,28 +6,29 @@ import axios from "axios";
 function Profile() {
   const {username, picture, location, album} = useContext(PropContainer);
 
-  const [posts, setPosts] = useState();
+  const [posts, setPosts] = useState([]);
 
   const getPosts = async () => {
     await axios
-      .get("http://localhost:3001/post/get", {
+      .get(`http://localhost:3001/post/album/${JSON.stringify(album)}`, {
         headers: {
           "Content-Type": "application/json",
           "x-access-token": sessionStorage.getItem("token"),
           "user-id": sessionStorage.getItem("id"),
-          album: album,
         },
       })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => setPosts(res.data))
+      .catch((err) => console.log(err, "err"));
   };
 
   useEffect(() => {
     getPosts();
   }, []);
 
-  let displayProfile = (
-    <div>
+  console.log(posts);
+
+  return (
+    <div className="profile">
       <ProfileNavbar />
 
       <div className="profile-display">
@@ -39,64 +40,17 @@ function Profile() {
             }}></div>
         </div>
         <h2>{username}</h2>
-        <h6>{location}</h6>
+        <h5>{location}</h5>
         {/* <button className="follow-btn">Follow</button>
         <button>Message</button> */}
         <div className="album">
-          <img
-            src="https://source.unsplash.com/collection/190727/400x500"
-            alt="profile"
-          />
-          <img
-            src="https://source.unsplash.com/collection/190728/400x500"
-            alt="profile"
-          />
-          <img
-            src="https://source.unsplash.com/collection/1907200/400x500"
-            alt="profile"
-          />
-          <img
-            src="https://source.unsplash.com/collection/190726/400x500"
-            alt="profile"
-          />
-          <img
-            src="https://source.unsplash.com/collection/190723/400x500"
-            alt="profile"
-          />
-          <img
-            src="https://source.unsplash.com/collection/1907289/400x500"
-            alt="profile"
-          />
-          <img
-            src="https://source.unsplash.com/collection/190727/400x500"
-            alt="profile"
-          />
-          <img
-            src="https://source.unsplash.com/collection/190728/400x500"
-            alt="profile"
-          />
-          <img
-            src="https://source.unsplash.com/collection/1907200/400x500"
-            alt="profile"
-          />
-          <img
-            src="https://source.unsplash.com/collection/190726/400x500"
-            alt="profile"
-          />
-          <img
-            src="https://source.unsplash.com/collection/190723/400x500"
-            alt="profile"
-          />
-          <img
-            src="https://source.unsplash.com/collection/1907289/400x500"
-            alt="profile"
-          />
+          {posts.map((post) => (
+            <img src={post.picture} key={post._id}></img>
+          ))}
         </div>
       </div>
     </div>
   );
-
-  return <div className="profile">{displayProfile}</div>;
 }
 
 export default Profile;

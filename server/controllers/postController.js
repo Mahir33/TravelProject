@@ -1,6 +1,8 @@
 const Post = require("../models/postModel");
 const Comment = require("../models/commentModel");
 const User = require("../models/userModels");
+// const mongoose = require("mongoose");
+var ObjectId = require('mongodb').ObjectID;
 const {
   dataUri
 } = require("../middleware/multerMiddleware");
@@ -129,14 +131,16 @@ const deletePost = async (req, res) => {
 
 
 const getAlbum = async (req, res) => {
-  console.log(req.body.album);
+  console.log(req.params.album);
+
+
   try {
     const album = await Post.find({
       '_id': {
-        $in: req.body.album
+        $in: JSON.parse(req.params.album)
       }
     })
-    res.json(album)
+    return res.json(album);
   } catch (err) {
     res.json(err)
   }

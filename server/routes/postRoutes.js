@@ -22,7 +22,7 @@ router.delete("/delete", verifyToken, deletePost);
 
 
 //album
-router.get("/album", verifyToken, getAlbum);
+router.get("/album/:album", verifyToken, getAlbum);
 
 // Comment handling
 // router.post("/post/comment", createComment);

@@ -6,7 +6,8 @@ import axios from "axios";
 import {v4 as uuidv4} from "uuid";
 
 const PictureUploadPopup2 = () => {
-  const {buttonPopup, setButtonPopup} = useContext(PropContainer);
+  const {buttonPopup, album, setButtonPopup, setAlbum} =
+    useContext(PropContainer);
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
   const [picture, setPicture] = useState();
@@ -37,6 +38,8 @@ const PictureUploadPopup2 = () => {
       .then((res) => {
         userToUpdate.album.push(res.data);
         sessionStorage.setItem("user", JSON.stringify(userToUpdate));
+        setAlbum([...album, res.data]);
+        setButtonPopup(false);
       })
       .catch((err) => console.log(err));
   };
