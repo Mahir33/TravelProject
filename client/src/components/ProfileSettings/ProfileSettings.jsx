@@ -222,10 +222,7 @@ const ProfileSettings = () => {
 
   return (
     <div>
-      <div className="profile-container">
-        <ProfileNavbar />
-      </div>
-
+      <ProfileNavbar />
       <div className="profile-display">
         <div className="profile-picture-container">
           <div

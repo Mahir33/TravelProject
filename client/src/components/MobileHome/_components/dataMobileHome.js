@@ -67,8 +67,6 @@ const userProfiles = [{
     location: "Sitges"
 }, {
     id: 7,
-<<<<<<< HEAD
-=======
     photoUrl: "https://picsum.photos/300?random=17",
     imgUrl: "https://picsum.photos/300?random=14",
     name: "Matheus Glazier",
@@ -146,7 +144,6 @@ const userProfiles = [{
     location: "Kairo"
 }, {
     id: 14,
->>>>>>> home_loggin4
     photoUrl: "https://picsum.photos/300?random=17",
     imgUrl: "https://picsum.photos/300?random=14",
     name: "Matheus Glazier",

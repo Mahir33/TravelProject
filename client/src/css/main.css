@@ -571,6 +571,13 @@
 }
 
 @media (max-width: 767px) {
+  .profile-navbar {
+    position: sticky;
+    top: 10px;
+    left: 0;
+    z-index: 500;
+  }
+
   .profile-navbar .profile-container {
     display: flex;
     flex-direction: column;
