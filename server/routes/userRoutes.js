@@ -4,7 +4,8 @@ const {
     login,
     // getUser,
     updateUser,
-    getUserByName
+    getUserByName,
+    searchUserByName,
 } = require("../controllers/userControllers");
 
 const {
@@ -24,6 +25,7 @@ router.post("/login", login);
 
 // parameter has to be a key relevant to the database! Learned the hard way.
 router.get("/user/:username", verifyToken, getUserByName);
+router.get("/search/:username", verifyToken, searchUserByName);
 
 // Get a post from a user
 // router.get("/:username/:post");

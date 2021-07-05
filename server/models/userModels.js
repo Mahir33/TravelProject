@@ -42,7 +42,8 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [false]
   },
-  album: [String] //Saves the id of the posts belonged to the user 
+  album: [String], //Saves the id of the posts belonged to the user 
+  followers: [String] //Array of followers id's
 });
 
 userSchema.pre("save", async function (next) {

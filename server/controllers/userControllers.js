@@ -126,6 +126,7 @@ const getUserByName = async (req, res) => {
 }
 
 
+
 const updateUser = async (req, res) => {
   console.log(req.body)
   var dataToUpdate = {};
@@ -166,10 +167,31 @@ const updateUser = async (req, res) => {
 
 
 
+const searchUserByName = async (req, res) => {
+  console.log('works');
+
+  const regex = req.params.username;
+
+  try {
+    const usersFound = await User.find({
+      username: {
+        $regex: `${regex}` + '{1,}?'
+      }
+    })
+    res.json(usersFound)
+  } catch (err) {
+    res.json(err)
+  }
+}
+
+
+
+
 module.exports = {
   signup,
   login,
   // getUser,
   updateUser,
-  getUserByName
+  getUserByName,
+  searchUserByName
 };

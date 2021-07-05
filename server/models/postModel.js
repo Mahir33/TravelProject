@@ -21,7 +21,11 @@ const postSchema = new mongoose.Schema({
     type: Date,
     default: new Date(),
   },
-  comments: [commentSchema]
+  comments: [commentSchema],
+  likes: {
+    type: Number,
+    default: 0
+  }
 });
 
 const Post = mongoose.model("Post", postSchema);
