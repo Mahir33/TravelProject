@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Input} from "semantic-ui-react";
 import {PropContainer} from "../../PropContainer";
-import {Link, useHistory} from "react-router-dom";
+import {Link, useHistory, Redirect} from "react-router-dom";
 import {FaRegArrowAltCircleLeft} from "react-icons/fa";
 import {FiSettings, FiLogOut} from "react-icons/fi";
 import {List, ListItem, ListItemAvatar, ListItemText} from "@material-ui/core";
@@ -44,6 +44,11 @@ function NavLinks() {
     }
   };
 
+  const handleClick = (name, url) => {
+    setUserVisited(name);
+    history.push(`/${name}`);
+  };
+
   return (
     <div className="profile-container">
       <div className="back">
@@ -69,9 +74,9 @@ function NavLinks() {
                     <img src={user["profilePicture"]} className="avatar" />{" "}
                   </ListItemAvatar>
                   <ListItemText
-                    className="list-text"
-                    onClick={setUserVisited(user.username)}>
-                    <a href={userUrl}>{user.username}</a>
+                    className="list-item-text"
+                    onClick={() => handleClick(user.username, userUrl)}>
+                    {user.username}
                   </ListItemText>
                 </ListItem>
               );

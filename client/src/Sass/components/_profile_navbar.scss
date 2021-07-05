@@ -24,6 +24,11 @@
         }
 
       }
+      .list-item-text{
+        button{
+          style: none;
+        }
+      }
       .list-item:hover{
         cursor: pointer;
       }

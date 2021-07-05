@@ -5,11 +5,13 @@ import axios from "axios";
 
 function Profile() {
   const {userVisited} = useContext(PropContainer);
+  console.log(userVisited);
 
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState();
 
   const getUser = async () => {
+    console.log("here");
     await axios
       .get(`http://localhost:3001/user/${userVisited}`, {
         headers: {
@@ -18,7 +20,7 @@ function Profile() {
           "user-id": sessionStorage.getItem("id"),
         },
       })
-      .then((res) => console.log(res.data))
+      .then((res) => setUser(res.data))
       .catch((err) => console.log(err));
   };
 
@@ -31,7 +33,7 @@ function Profile() {
           "user-id": sessionStorage.getItem("id"),
         },
       })
-      .then((res) => setPosts(res.data))
+      .then((res) => console.log(res.data))
       .catch((err) => console.log(err, "err"));
   };
 
@@ -39,9 +41,9 @@ function Profile() {
     getUser();
   }, []);
 
-  useEffect(() => {
-    getPosts();
-  }, []);
+  //   useEffect(() => {
+  //     getPosts();
+  //   }, []);
 
   console.log(posts, "posts");
   console.log(user, "user");

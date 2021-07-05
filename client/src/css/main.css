@@ -543,6 +543,10 @@
   border-radius: 1000px;
 }
 
+.profile-navbar .profile-container .search-input .search-list-appear .list-item-text button {
+  style: none;
+}
+
 .profile-navbar .profile-container .search-input .search-list-appear .list-item:hover {
   cursor: pointer;
 }
