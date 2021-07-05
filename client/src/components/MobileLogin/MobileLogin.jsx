@@ -1,10 +1,10 @@
-import {Link, Redirect} from "react-router-dom";
-import {FaRegArrowAltCircleLeft} from "react-icons/fa";
-import {useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
-import {schema} from "./mobileLoginSchema";
-import {useContext} from "react";
-import {PropContainer} from "../../PropContainer";
+import { Link, Redirect } from "react-router-dom";
+import { FaRegArrowAltCircleLeft } from "react-icons/fa";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { schema } from "./mobileLoginSchema";
+import { useContext } from "react";
+import { PropContainer } from "../../PropContainer";
 
 function MobileLogin() {
   const {
@@ -24,12 +24,12 @@ function MobileLogin() {
   const {
     register,
     handleSubmit,
-    formState: {errors},
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
   const onSubmit = async (data) => {
-    const {email, password} = data;
+    const { email, password } = data;
     await fetch("http://localhost:3001/login", {
       method: "post",
       headers: {
@@ -60,8 +60,7 @@ function MobileLogin() {
 
         sessionStorage.setItem("user", JSON.stringify(res.user));
       })
-      .catch((e) => console.log(e))  
-      
+      .catch((e) => console.log(e));
   };
   return (
     <div className="log-in">
@@ -84,10 +83,13 @@ function MobileLogin() {
           <button
             onClick={handleSubmit(onSubmit)}
             className="btn-next"
-            type="submit">
+            type="submit"
+          >
             log in
           </button>
-          <span className="errorStyleShow">{message}</span>
+          {message === "Successfully logged in!" ? null : (
+            <span className="errorStyleShow">{message}</span>
+          )}
         </form>
         <p className="forget-register">
           If you don't have an account, Register{" "}

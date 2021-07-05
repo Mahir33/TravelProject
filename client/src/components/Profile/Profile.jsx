@@ -1,10 +1,10 @@
-import React, {useContext, useState, useEffect} from "react";
-import {PropContainer} from "../../PropContainer";
+import React, { useContext, useState, useEffect } from "react";
+import { PropContainer } from "../../PropContainer";
 import ProfileNavbar from "../ProfileNavbar/ProfileNavbar";
 import axios from "axios";
 
 function Profile() {
-  const {username, picture, location, album} = useContext(PropContainer);
+  const { username, picture, location, album } = useContext(PropContainer);
 
   const [posts, setPosts] = useState([]);
 
@@ -30,14 +30,14 @@ function Profile() {
   return (
     <div className="profile">
       <ProfileNavbar />
-
       <div className="profile-display">
         <div className="profile-picture-container">
           <div
             className="profile-image"
             style={{
               backgroundImage: `url(${picture})`,
-            }}></div>
+            }}
+          ></div>
         </div>
         <h2>{username}</h2>
         <h5>{location}</h5>
