@@ -1,15 +1,14 @@
-import React, {useContext, useState} from "react";
-import {PropContainer} from "../../PropContainer";
-import {FiSettings} from "react-icons/fi";
-import {FaRegArrowAltCircleLeft} from "react-icons/fa";
-import {Link, Redirect} from "react-router-dom";
-import {Input} from "semantic-ui-react";
-import {useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
-import {schema} from "./profileSettingsSchema";
+import React, { useContext, useState } from "react";
+import { PropContainer } from "../../PropContainer";
+import { Redirect } from "react-router-dom";
+import ProfileNavbar from "../ProfileNavbar/ProfileNavbar";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { schema } from "./profileSettingsSchema";
 import PlacesAutocomplete from "react-places-autocomplete";
 import axios from "axios";
-import {v4 as uuidv4} from "uuid";
+import { v4 as uuidv4 } from "uuid";
+import MobileNavbar from "../MobileNavbar/MobileNavbar";
 
 const ProfileSettings = () => {
   const {
@@ -32,7 +31,7 @@ const ProfileSettings = () => {
   const {
     register,
     handleSubmit,
-    formState: {errors},
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -140,7 +139,12 @@ const ProfileSettings = () => {
     if (name === "location") {
       return (
         <PlacesAutocomplete value={location} onChange={setLocation}>
-          {({getInputProps, suggestions, getSuggestionItemProps, loading}) => (
+          {({
+            getInputProps,
+            suggestions,
+            getSuggestionItemProps,
+            loading,
+          }) => (
             <div className="rightTab">
               <input
                 name={name}
@@ -156,13 +160,14 @@ const ProfileSettings = () => {
                 {loading ? <div>...Loading</div> : null}
                 {suggestions.map((suggestion) => {
                   const style = suggestion.active
-                    ? {backgroundColor: "#41b6e6", cursor: "pointer"}
-                    : {backgroundColor: "#fff", cursor: "pointer"};
+                    ? { backgroundColor: "#41b6e6", cursor: "pointer" }
+                    : { backgroundColor: "#fff", cursor: "pointer" };
 
                   return (
                     <div
-                      {...getSuggestionItemProps(suggestion, {style})}
-                      key={uuidv4()}>
+                      {...getSuggestionItemProps(suggestion, { style })}
+                      key={uuidv4()}
+                    >
                       {suggestion.description}
                     </div>
                   );
@@ -218,23 +223,7 @@ const ProfileSettings = () => {
   return (
     <div>
       <div className="profile-container">
-        <div className="back">
-          <Link to={`/profile/${username}`}>
-            <FaRegArrowAltCircleLeft />
-          </Link>
-        </div>
-        <div className="search-input">
-          <Input
-            icon="search"
-            placeholder="Search..."
-            className="semantic-input"
-          />
-        </div>
-        <div className="profile-settings-button">
-          <Link to="/profile-settings">
-            <FiSettings />
-          </Link>
-        </div>
+        <ProfileNavbar />
       </div>
 
       <div className="profile-display">
@@ -243,7 +232,8 @@ const ProfileSettings = () => {
             className="profile-image"
             style={{
               backgroundImage: `url(${picture})`,
-            }}></div>
+            }}
+          ></div>
         </div>
         <h2>{username}</h2>
         <h6>{location}</h6>
@@ -254,16 +244,19 @@ const ProfileSettings = () => {
           className="profile-form"
           onSubmit={handleSubmit(onSubmit)}
           method="put"
-          encType="multipart/form-data">
-          {inputsMap.map(({label, name, type, placeholder, className, ref}) => (
-            <div className="rowTab" key={name}>
-              <div className="labels">
-                <label htmlFor={name}>{label}</label>
-              </div>
+          encType="multipart/form-data"
+        >
+          {inputsMap.map(
+            ({ label, name, type, placeholder, className, ref }) => (
+              <div className="rowTab" key={name}>
+                <div className="labels">
+                  <label htmlFor={name}>{label}</label>
+                </div>
 
-              {displayInputs(name, type, placeholder, className, ref)}
-            </div>
-          ))}
+                {displayInputs(name, type, placeholder, className, ref)}
+              </div>
+            )
+          )}
           <div className="rowTab">
             <div className="labels">
               <button className="btn-next" type="submit">
@@ -274,6 +267,7 @@ const ProfileSettings = () => {
         </form>
       </div>
       {updated ? <Redirect to={`/home`} /> : null}
+      <MobileNavbar />
     </div>
   );
 };

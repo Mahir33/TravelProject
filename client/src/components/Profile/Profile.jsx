@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { PropContainer } from "../../PropContainer";
 import ProfileNavbar from "../ProfileNavbar/ProfileNavbar";
+import MobileNavbar from "../MobileNavbar/MobileNavbar";
 import axios from "axios";
 
 function Profile() {
@@ -49,6 +50,7 @@ function Profile() {
           ))}
         </div>
       </div>
+      <MobileNavbar />
     </div>
   );
 }
