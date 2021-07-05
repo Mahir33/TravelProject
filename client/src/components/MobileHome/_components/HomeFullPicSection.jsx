@@ -6,11 +6,13 @@ function NewPicScroller() {
 
   const fullPictureSection = dataMobileHome.map(profile => 
     <GalleryCard 
-     src={profile.imgUrl}
-     picDescUser={profile.picDescUser}
-     name={profile.name}
-     username={profile.username}
-     likesNum={profile.likesNum}
+      location={profile.location}
+      date={profile.date}
+      src={profile.imgUrl}
+      picDescUser={profile.picDescUser}
+      name={profile.name}
+      username={profile.username}
+      likesNum={profile.likesNum}
      />
   )
 

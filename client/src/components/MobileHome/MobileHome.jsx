@@ -12,10 +12,9 @@ function MobileHome() {
     <>
       <div className="home-container">
         <ProfileNavBar />
-        <ShowMoreTest />
         <HomeHeader />
         <HomeFullPicSection />
-        <LoadMoreBtn />
+        <ShowMoreTest />
         <MobileNavbar />
       </div>
     </>

@@ -606,6 +606,10 @@
   text-indent: 10px;
 }
 
+.popup .upload-form .rowTab .rightTab input#file-upload-button {
+  padding: 20px;
+}
+
 .home-container {
   width: 100vw;
   padding: 16px 16px 16px 16px;
@@ -656,23 +660,11 @@
 
 .full-card-section {
   width: 290px;
-  margin-bottom: 50px;
 }
 
 .full-card-section .photo {
   position: relative;
   margin-top: 20px;
-}
-
-.full-card-section .photo__toggle-icon {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  width: 40px;
-  height: 40px;
-  color: white;
-  text-shadow: 2px 2px 2px gray;
-  transform: rotate(-45deg);
 }
 
 .full-card-section .photo img {
@@ -711,7 +703,8 @@
 }
 
 .card .airplane {
-  font-size: 1rem;
+  font-size: 1.2rem;
+  margin-left: 5px;
 }
 
 .card .text-one {
@@ -757,6 +750,8 @@
 }
 
 .card .profile__container--likes {
+  display: inline-block;
+  width: 20%;
   font-size: 0.8rem;
 }
 
@@ -766,6 +761,9 @@
 
 .card .profile__container .like-ico {
   font-size: 1.1rem;
+  background: none;
+  border: none;
+  margin: 0 10px;
 }
 
 .card:hover .text {
@@ -790,6 +788,8 @@
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  margin-bottom: 80px;
+  max-width: 300px;
 }
 
 .show-more-btn:active {
