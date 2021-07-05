@@ -5,7 +5,6 @@ import GalleryCard from "./GalleryCardComponent";
 function NewPicScroller() {
 
   const fullPictureSection = dataMobileHome.map(profile => 
-  
     <GalleryCard 
      src={profile.imgUrl}
      picDescUser={profile.picDescUser}
