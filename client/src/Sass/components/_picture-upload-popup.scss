@@ -39,7 +39,11 @@
         .input-field {
           @include abstracts.inputStyle;
         }
+        input#file-upload-button{
+          padding: 20px;
+        }
       }
     }
   }
 }
+

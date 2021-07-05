@@ -1,18 +1,27 @@
 import React from 'react';
-import {FaTelegramPlane} from "react-icons/fa";
-import {FaRegComment} from "react-icons/fa";
 import {AiOutlineLike} from "react-icons/ai";
-import {CgArrowsExchangeAlt} from "react-icons/cg";
 import {GiAirplaneDeparture} from 'react-icons/gi';
+import MobileComments from './MobileComments';
+
+
 
 function GalleryCard(props){
+
+  
+  const addLike = () => {
+    return (
+      <>
+      
+      </>
+    )
+  }
     return (
     <div className="card">
         <img className="img one" src={props.src} alt="" />
 
           <div className="text text-one">
-            <p className="card-date">December 2021</p>
-            <h3 className="card-header">Name, location {props.placeName} 
+            <p className="card-date">{props.date}</p>
+            <h3 className="card-header">{props.location} 
               <GiAirplaneDeparture 
                 className="airplane" 
                 />
@@ -21,7 +30,7 @@ function GalleryCard(props){
             
             <div className="description">
               <p className="description__from-user">
-              <span className="bold">{props.username}</span>: Example comment from uploader{props.picDescUser}
+              <span className="bold">{props.username}</span>: {props.picDescUser}
               </p>
             </div>
       
@@ -38,11 +47,13 @@ function GalleryCard(props){
                 </div>
                 <div className="profile__container--likes">
                   <p>Likes: {props.likesNum}</p>
-                  <button className="like-ico">
-                    <AiOutlineLike />
-                  </button>
+                  
+                  
                   
                 </div>
+                <button className="like-ico">
+                    <AiOutlineLike onClick={addLike}/>
+                  </button>
               </div>
             </div>
 
