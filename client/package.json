@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@hookform/resolvers": "^2.5.0",
+    "@material-ui/core": "^4.11.4",
+    "@material/list": "^11.0.0",
     "axios": "^0.21.1",
     "express-fileupload": "^1.2.1",
     "formik": "^2.2.9",

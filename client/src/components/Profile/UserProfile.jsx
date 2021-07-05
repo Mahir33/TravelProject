@@ -3,28 +3,14 @@ import {PropContainer} from "../../PropContainer";
 import ProfileNavbar from "../ProfileNavbar/ProfileNavbar";
 import axios from "axios";
 
-function Profile() {
-  const {userVisited} = useContext(PropContainer);
+function UserProfile() {
+  const {username, picture, location, album} = useContext(PropContainer);
 
   const [posts, setPosts] = useState([]);
-  const [user, setUser] = useState();
-
-  const getUser = async () => {
-    await axios
-      .get(`http://localhost:3001/user/${userVisited}`, {
-        headers: {
-          "Content-Type": "application/json",
-          "x-access-token": sessionStorage.getItem("token"),
-          "user-id": sessionStorage.getItem("id"),
-        },
-      })
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
-  };
 
   const getPosts = async () => {
     await axios
-      .get(`http://localhost:3001/post/album/${JSON.stringify(user.album)}`, {
+      .get(`http://localhost:3001/post/album/${JSON.stringify(album)}`, {
         headers: {
           "Content-Type": "application/json",
           "x-access-token": sessionStorage.getItem("token"),
@@ -36,15 +22,10 @@ function Profile() {
   };
 
   useEffect(() => {
-    getUser();
-  }, []);
-
-  useEffect(() => {
     getPosts();
   }, []);
 
-  console.log(posts, "posts");
-  console.log(user, "user");
+  console.log(posts);
 
   return (
     <div className="profile">
@@ -54,13 +35,13 @@ function Profile() {
           <div
             className="profile-image"
             style={{
-              backgroundImage: `url(${user.profilePicture})`,
+              backgroundImage: `url(${picture})`,
             }}></div>
         </div>
-        <h2>{user.username}</h2>
-        <h5>{user.location}</h5>
-        <button className="follow-btn">Follow</button>
-        <button>Message</button>
+        <h2>{username}</h2>
+        <h5>{location}</h5>
+        {/* <button className="follow-btn">Follow</button>
+        <button>Message</button> */}
         <div className="album">
           {posts.map((post) => (
             <img src={post.picture} key={post._id}></img>
@@ -71,4 +52,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default UserProfile;

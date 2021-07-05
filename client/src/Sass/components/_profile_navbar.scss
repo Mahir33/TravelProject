@@ -12,6 +12,27 @@
       @include abstracts.backButtonDiv;
       position: static;
     }
+    .search-input{
+      .search-list-appear{
+        border: 0.5px solid lightgray;
+        border-radius: 5px;
+      .list-item{        
+        .avatar{
+          height: 40px;
+          width: 40px;
+          border-radius: 1000px;
+        }
+
+      }
+      .list-item:hover{
+        cursor: pointer;
+      }
+
+      .search-list-disappear{
+        visibility: hidden;
+      }
+    }
+    }
     .rightside {
       display: flex;
       .profile-settings-button {

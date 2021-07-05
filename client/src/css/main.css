@@ -532,6 +532,25 @@
   position: static;
 }
 
+.profile-navbar .profile-container .search-input .search-list-appear {
+  border: 0.5px solid lightgray;
+  border-radius: 5px;
+}
+
+.profile-navbar .profile-container .search-input .search-list-appear .list-item .avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 1000px;
+}
+
+.profile-navbar .profile-container .search-input .search-list-appear .list-item:hover {
+  cursor: pointer;
+}
+
+.profile-navbar .profile-container .search-input .search-list-appear .search-list-disappear {
+  visibility: hidden;
+}
+
 .profile-navbar .profile-container .rightside {
   display: flex;
 }

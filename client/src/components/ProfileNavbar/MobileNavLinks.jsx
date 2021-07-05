@@ -1,12 +1,13 @@
-import React from "react";
-import { Input } from "semantic-ui-react";
-import { PropContainer } from "../../PropContainer";
-import { Link, useHistory } from "react-router-dom";
-import { FiSettings, FiLogOut } from "react-icons/fi";
+import React, {useState} from "react";
+import {Input} from "semantic-ui-react";
+import {PropContainer} from "../../PropContainer";
+import {Link, useHistory} from "react-router-dom";
+import {FiSettings, FiLogOut} from "react-icons/fi";
 
 function MobileNavLinks() {
-  const { setUsername, setRegistered } = React.useContext(PropContainer);
+  const {setUsername, setRegistered} = React.useContext(PropContainer);
   const history = useHistory();
+  const [searchInput, setSearchInput] = useState("");
 
   const handleLogout = () => {
     sessionStorage.setItem("userToken", "");
@@ -16,13 +17,20 @@ function MobileNavLinks() {
     history.push("/");
   };
 
+  const handleInputChange = (e) => {
+    setSearchInput(e.target.value);
+    console.log(searchInput);
+  };
+
   return (
     <div className="profile-container">
       <div className="search-input">
         <Input
           icon="search"
+          type="text"
           placeholder="Search..."
           className="semantic-input"
+          onChange={handleInputChange}
         />
       </div>
       <div className="profile-settings-button">

@@ -1,16 +1,17 @@
-import React, { useContext, useEffect } from "react";
+import React, {useContext, useEffect} from "react";
 import "../src/css/main.css";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import {BrowserRouter, Switch, Route} from "react-router-dom";
 import MobileIndex from "./components/MobileIndex/MobileIndex";
 import MobileLogin from "./components/MobileLogin/MobileLogin";
 import MobileRegister1 from "./components/MobileRegister/MobileRegister1";
 import MobileHome from "./components/MobileHome/MobileHome";
-import Profile from "./components/Profile/Profile";
+import UserProfile from "./components/Profile/UserProfile";
 import MobileSearch from "./components/MobileSearch/MobileSearch";
 import RegisterSuccess from "./components/RegisterSuccess/RegisterSuccess";
 import MobileNavbar from "./components/MobileNavbar/MobileNavbar";
 import ProfileSettings from "./components/ProfileSettings/ProfileSettings";
-import { PropContainer } from "./PropContainer";
+import Profile from "./components/Profile/Profile";
+import {PropContainer} from "./PropContainer";
 
 function App() {
   const {
@@ -63,8 +64,9 @@ function App() {
           <MobileHome />
         </Route>
         <Route path="/profile/:username">
-          <Profile />
+          <UserProfile />
         </Route>
+        <Route path="/:username" component={Profile} />
         <Route path="/search/:username" component={MobileSearch} />
         <Route path="/register-success" component={RegisterSuccess} />
         <Route path="/profile-settings" component={ProfileSettings} />

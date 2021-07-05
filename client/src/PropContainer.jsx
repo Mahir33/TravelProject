@@ -17,6 +17,7 @@ export const PropProvider = ({children}) => {
   const [buttonPopup, setButtonPopup] = useState(false);
   const [imageLocation, setImageLocation] = useState("");
   const [imagesData, setImagesData] = useState({});
+  const [userVisited, setUserVisited] = useState(); //used to find the user being visited by the user
 
   return (
     <PropContainer.Provider
@@ -34,6 +35,7 @@ export const PropProvider = ({children}) => {
         buttonPopup,
         imageLocation,
         imagesData,
+        userVisited,
         setUsername,
         setEmail,
         setId,
@@ -47,6 +49,7 @@ export const PropProvider = ({children}) => {
         setButtonPopup,
         setImageLocation,
         setImagesData,
+        setUserVisited,
       }}>
       {children}
     </PropContainer.Provider>
