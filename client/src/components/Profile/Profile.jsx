@@ -1,14 +1,10 @@
 import React, {useContext, useState, useEffect} from "react";
 import {PropContainer} from "../../PropContainer";
 import ProfileNavbar from "../ProfileNavbar/ProfileNavbar";
-<<<<<<< HEAD
-// import {useParams} from "react-router-dom";
-import {withRouter} from "react-router";
-=======
 import MobileNavbar from "../MobileNavbar/MobileNavbar";
->>>>>>> 30569c18aff8ef47fc44f1d18a7fe08f12b8a85c
 import axios from "axios";
 import ProfileAlbum from "./ProfileAlbum";
+import {withRouter} from "react-router";
 
 class Profile extends React.Component {
   constructor(props) {
@@ -83,15 +79,10 @@ class Profile extends React.Component {
             <ProfileAlbum album={this.state.album} />
           </div>
         </div>
+        <MobileNavbar />
       </div>
-<<<<<<< HEAD
     );
   }
-=======
-      <MobileNavbar />
-    </div>
-  );
->>>>>>> 30569c18aff8ef47fc44f1d18a7fe08f12b8a85c
 }
 
 export default withRouter(Profile);
