@@ -3,6 +3,7 @@ import HomeFullPicSection from "./_components/NewPicScroller";
 import HomeHeader from "./_components/HomeHeader";
 import ProfileNavBar from "../ProfileNavbar/ProfileNavbar";
 import LoadMoreBtn from "./_components/ShowMore";
+import ShowMoreTest from "./_components/ShowMoreTest"
 
 import React from "react";
 
@@ -13,7 +14,7 @@ function MobileHome() {
       <div className="home-container">
         <HomeHeader />
         <HomeFullPicSection />
-        <LoadMoreBtn />
+        <ShowMoreTest />
         <MobileNavbar />
       </div>
     </>

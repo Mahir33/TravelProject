@@ -1,3 +1,5 @@
+@use '../abstracts/index' as abstracts;
+
 .home-container {
   // position: relative;
   width: 100vw;
@@ -56,30 +58,17 @@
 
 .full-card-section {
   width: 290px;
-  margin-bottom: 50px;
+  
 
   .photo {
     position: relative;
     margin-top: 20px;
-
-    &__toggle-icon {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      width: 40px;
-      height: 40px;
-      color: white;
-      text-shadow: 2px 2px 2px gray;
-      transform: rotate(-45deg);
-    }
 
     img {
       width: 290px;
       height: 290px;
     }
   }
-
-  
 }
 
 .card {
@@ -112,7 +101,8 @@
   }
 
   .airplane {
-    font-size: 1rem;;
+    font-size: 1.2rem;
+    margin-left: 5px;
   }
   
   .text-one {
@@ -157,6 +147,8 @@
       }
 
       &--likes {
+        display: inline-block;
+        width: 20%;
         font-size: .8rem;
 
         p {
@@ -166,6 +158,9 @@
 
       .like-ico {
         font-size: 1.1rem;
+        background: none;
+        border: none;
+        margin: 0 10px;
       }
     }
   }
@@ -178,5 +173,12 @@
 
 .card:hover .one {
   transform: rotateY(-180deg);
+
+}
+
+.show-more-btn {
+  @include abstracts.btn-next;
+  margin-bottom: 80px;
+  max-width: 300px;
 
 }
