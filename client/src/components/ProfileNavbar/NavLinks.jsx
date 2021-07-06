@@ -1,12 +1,11 @@
 import React, {useState} from "react";
 import {Input} from "semantic-ui-react";
 import {PropContainer} from "../../PropContainer";
-import {Link, useHistory, Redirect} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import {FaRegArrowAltCircleLeft} from "react-icons/fa";
 import {FiSettings, FiLogOut} from "react-icons/fi";
 import {List, ListItem, ListItemAvatar, ListItemText} from "@material-ui/core";
 import axios from "axios";
-import {v4 as uuidv4} from "uuid";
 
 function NavLinks() {
   const {setUsername, setUserVisited, setRegistered} =
@@ -37,8 +36,7 @@ function NavLinks() {
             "user-id": sessionStorage.getItem("id"),
           },
         })
-        .then((res) => setUsersFound(res.data))
-        .then(() => console.log(usersFound, "usersFound"));
+        .then((res) => setUsersFound(res.data));
     } catch (err) {
       console.log(err);
     }
@@ -64,14 +62,15 @@ function NavLinks() {
         {usersFound ? (
           <List className={showList}>
             {usersFound.map((user) => {
-              {
-                console.log(user, "user");
-              }
               const userUrl = `http://localhost:3000/${user.username}`;
               return (
                 <ListItem className="list-item">
                   <ListItemAvatar>
-                    <img src={user["profilePicture"]} className="avatar" />{" "}
+                    <img
+                      src={user["profilePicture"]}
+                      className="avatar"
+                      alt=""
+                    />{" "}
                   </ListItemAvatar>
                   <ListItemText
                     className="list-item-text"

@@ -131,17 +131,19 @@ const deletePost = async (req, res) => {
 
 
 const getAlbum = async (req, res) => {
-  console.log(req.params.album);
-
+  console.log(req.params.album, 'here');
 
   try {
+    // console.log(JSON.parse(req.params.album), 'hello')
     const album = await Post.find({
       '_id': {
-        $in: JSON.parse(req.params.album)
+        $in: req.params.album.split(",")
       }
     })
+    console.log(album, 'album')
     return res.json(album);
   } catch (err) {
+    console.log(err)
     res.json(err)
   }
 }

@@ -115,6 +115,7 @@ const login = async (req, res) => {
 // };
 
 const getUserByName = async (req, res) => {
+  console.log(req.params)
   try {
     const usersByName = await User.find({
       username: req.params.username

@@ -10,7 +10,7 @@ function UserProfile() {
 
   const getPosts = async () => {
     await axios
-      .get(`http://localhost:3001/post/album/${JSON.stringify(album)}`, {
+      .get(`http://localhost:3001/post/album/${album}`, {
         headers: {
           "Content-Type": "application/json",
           "x-access-token": sessionStorage.getItem("token"),

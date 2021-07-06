@@ -24,6 +24,10 @@ function App() {
     website,
     bio,
     registered,
+    userVisited,
+    userVisitedAlbum,
+    setUserVisitedAlbum,
+    setUserVisited,
     setUsername,
     setEmail,
     setAlbum,
@@ -37,6 +41,7 @@ function App() {
 
   useEffect(() => {
     const user = JSON.parse(sessionStorage.getItem("user"));
+    const userVisited = JSON.parse(sessionStorage.getItem("userVisited"));
     if (user) {
       setUsername(user.username);
       setEmail(user.email);
@@ -47,6 +52,8 @@ function App() {
       setWebsite(user.website);
       setBio(user.bio);
       setRegistered(user.registered);
+    } else if (userVisited) {
+      setUserVisited(userVisited);
     } else return;
   }, []);
 
