@@ -1,8 +1,9 @@
 @use '../abstracts/index' as abstracts;
 
 .profile-navbar {
+  height: 60px;
   .mobileNavigation {
-    display: none;
+     display: none;
   }
   .profile-container {
     display: flex;
@@ -13,6 +14,7 @@
       position: static;
     }
     .search-input{
+      margin-left: 50px;
       .search-list-appear{
         border: 0.5px solid lightgray;
         border-radius: 5px;
@@ -26,16 +28,14 @@
       }
       .list-item-text{
         button{
-          style: none;
+          list-style: none;
         }
       }
       .list-item:hover{
         cursor: pointer;
       }
 
-      .search-list-disappear{
-        visibility: hidden;
-      }
+      
     }
     }
     .rightside {
@@ -64,15 +64,16 @@
 @media (max-width: 767px) {
   .profile-navbar {
     position: sticky;
-    top: 10px;
+    top: 0;
     left: 0;
     z-index: 500;
     .profile-container {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
       justify-content: center;
-      margin: 0 25px;
+      padding: 0;
+       // margin: 0 25px;
     }
     .navigation {
       display: none;
@@ -81,12 +82,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: whitesmoke;
-      padding: 0 0.7em 0 0.7em;
+      background-color: #fff;
+      padding: 0.8em;
       .profile-settings-button {
         @include abstracts.backButtonDiv;
         @include abstracts.mobile-profile-navbar-btnStyle;
-        padding: 0 1.7em 0 1.7em;
+        // padding: 0 1.7em 0 1.7em;
+        padding: 5px 10px;
+        margin: 0 .7em;
+        border: none;
         a {
           display: flex;
           color: black;
@@ -98,7 +102,10 @@
       .logout-btn {
         @include abstracts.backButtonDiv;
         @include abstracts.mobile-profile-navbar-btnStyle;
-        padding: 0 1.8em 0 1.8em;
+        // padding: 0 1.8em 0 1.8em;
+        padding: 5px 10px;
+        margin: 0;
+        border: none;
         a {
           display: flex;
           color: black;
@@ -111,14 +118,18 @@
       .back {
         @include abstracts.backButtonDiv;
         position: static;
-        padding-top: 0.1em;
+        // padding-top: 0.1em;
       }
       .hamburger {
         cursor: pointer;
+        font-size: 33px;
+        color: black;
       }
       .hamburger2 {
         cursor: pointer;
-        margin-top: -15px;
+        font-size: 33px;
+        color: black;
+        // margin-top: -15px;
       }
     }
   }

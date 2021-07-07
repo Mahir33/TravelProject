@@ -4,7 +4,7 @@
   // position: relative;
   width: 100vw;
   //   height: auto;
-  padding: 16px 16px 16px 16px;
+  padding: 0 16px 16px 16px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@
     justify-content: center;
     width: 100vw;
     height: auto;
-    padding: 16px 16px 16px 16px;
+    padding: 5px 16px;
     // overflow: hidden;
 
     &__header {

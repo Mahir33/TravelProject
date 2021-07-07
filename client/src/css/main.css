@@ -361,7 +361,6 @@
   min-height: 150px;
   width: 15vw;
   height: 15vw;
-  display: inline-block;
   background-size: cover;
   background-position: center;
 }
@@ -379,6 +378,16 @@
   width: 80vw;
   height: 5vh;
   margin-bottom: 8px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: bolder;
+  letter-spacing: 1px;
+}
+
+.profile-display .message-btn {
+  border: 2px solid black;
+  border-radius: 5px;
 }
 
 .profile-display .follow-btn {
@@ -512,6 +521,10 @@
   text-indent: 10px;
 }
 
+.profile-navbar {
+  height: 60px;
+}
+
 .profile-navbar .mobileNavigation {
   display: none;
 }
@@ -533,6 +546,10 @@
   position: static;
 }
 
+.profile-navbar .profile-container .search-input {
+  margin-left: 50px;
+}
+
 .profile-navbar .profile-container .search-input .search-list-appear {
   border: 0.5px solid lightgray;
   border-radius: 5px;
@@ -545,15 +562,11 @@
 }
 
 .profile-navbar .profile-container .search-input .search-list-appear .list-item-text button {
-  style: none;
+  list-style: none;
 }
 
 .profile-navbar .profile-container .search-input .search-list-appear .list-item:hover {
   cursor: pointer;
-}
-
-.profile-navbar .profile-container .search-input .search-list-appear .search-list-disappear {
-  visibility: hidden;
 }
 
 .profile-navbar .profile-container .rightside {
@@ -596,17 +609,17 @@
 @media (max-width: 767px) {
   .profile-navbar {
     position: sticky;
-    top: 10px;
+    top: 0;
     left: 0;
     z-index: 500;
   }
 
   .profile-navbar .profile-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin: 0 25px;
+    padding: 0;
   }
 
   .profile-navbar .navigation {
@@ -617,8 +630,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: whitesmoke;
-    padding: 0 0.7em 0 0.7em;
+    background-color: #fff;
+    padding: 0.8em;
   }
 
   .profile-navbar .mobileNavigation .profile-settings-button {
@@ -633,7 +646,9 @@
     border-radius: 13px;
     position: static;
     margin-top: 0.5em;
-    padding: 0 1.7em 0 1.7em;
+    padding: 5px 10px;
+    margin: 0 0.7em;
+    border: none;
   }
 
   .profile-navbar .mobileNavigation .profile-settings-button a {
@@ -658,7 +673,9 @@
     border-radius: 13px;
     position: static;
     margin-top: 0.5em;
-    padding: 0 1.8em 0 1.8em;
+    padding: 5px 10px;
+    margin: 0;
+    border: none;
   }
 
   .profile-navbar .mobileNavigation .logout-btn a {
@@ -680,16 +697,18 @@
     font-size: 2rem;
     cursor: pointer;
     position: static;
-    padding-top: 0.1em;
   }
 
   .profile-navbar .mobileNavigation .hamburger {
     cursor: pointer;
+    font-size: 33px;
+    color: black;
   }
 
   .profile-navbar .mobileNavigation .hamburger2 {
     cursor: pointer;
-    margin-top: -15px;
+    font-size: 33px;
+    color: black;
   }
 }
 .popup {
@@ -760,7 +779,7 @@
 
 .home-container {
   width: 100vw;
-  padding: 16px 16px 16px 16px;
+  padding: 0 16px 16px 16px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -772,7 +791,7 @@
   justify-content: center;
   width: 100vw;
   height: auto;
-  padding: 16px 16px 16px 16px;
+  padding: 5px 16px;
 }
 
 .home-container__header__header {

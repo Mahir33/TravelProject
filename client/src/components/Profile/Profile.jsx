@@ -71,7 +71,7 @@ class Profile extends React.Component {
           <h2>{this.state.username}</h2>
           <h5>{this.state.location}</h5>
           <button className="follow-btn">Follow</button>
-          <button>Message</button>
+          <button className="message-btn">Message</button>
           <div className="album">
             {/* {this.state.userVisitedAlbum.map((post) => (
             <img src={post.picture} key={post._id}></img>
