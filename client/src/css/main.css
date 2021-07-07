@@ -552,8 +552,8 @@
   cursor: pointer;
 }
 
-.profile-navbar .profile-container .search-input .search-list-appear .search-list-disappear {
-  visibility: hidden;
+.profile-navbar .profile-container .search-input .search-list-disappear {
+  display: none;
 }
 
 .profile-navbar .profile-container .rightside {

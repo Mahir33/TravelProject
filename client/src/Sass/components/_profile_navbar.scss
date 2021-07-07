@@ -32,10 +32,10 @@
       .list-item:hover{
         cursor: pointer;
       }
+    }
 
-      .search-list-disappear{
-        visibility: hidden;
-      }
+    .search-list-disappear{
+      display: none;
     }
     }
     .rightside {

@@ -1,27 +1,22 @@
-import React, {useContext, useState, useEffect} from "react";
-import {PropContainer} from "../../PropContainer";
+import React, {useState, useEffect} from "react";
 import ProfileNavbar from "../ProfileNavbar/ProfileNavbar";
-import MobileNavbar from "../MobileNavbar/MobileNavbar";
 import axios from "axios";
 import ProfileAlbum from "./ProfileAlbum";
-import {withRouter} from "react-router";
+import {useParams} from "react-router";
 
-class Profile extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: this.props.match.params.username,
-      userVisited: {},
-      profilePicture: "",
-      album: [],
-    };
-  }
+function Profile() {
+  const [username, setUsername] = useState(useParams().username);
+  const [userVisited, setUserVisited] = useState();
+  const [album, setAlbum] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  getUser = async () => {
-    console.log("here");
-    // try {
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  const getUser = async () => {
     await axios
-      .get(`http://localhost:3001/user/${this.state.username}`, {
+      .get(`http://localhost:3001/user/${username}`, {
         headers: {
           "Content-Type": "application/json",
           "x-access-token": sessionStorage.getItem("token"),
@@ -29,150 +24,120 @@ class Profile extends React.Component {
         },
       })
       .then((res) => {
-        this.setState(
-          {
-            profilePicture: res.data[0].profilePicture,
-            visitedUsername: res.data[0].username,
-            location: res.data[0].location,
-            album: [...res.data[0].album],
-          },
-          () => {
-            console.log(this.state);
-          }
-        );
-        console.log(res.data[0]);
-        // this.setState({userVisited: res.data[0]});
-
-        // sessionStorage.setItem("userVisited", JSON.stringify(res.data[0]));
-        // setUser(res.data[0]);
-        // setAlbum(res.data[0].album);
-      });
-    // }catch (err) {
-    //   console.log(err);
-    // }
+        console.log(res.data);
+        setUserVisited(res.data[0]);
+        setLoading(false);
+      })
+      .catch((err) => console.log(err));
   };
 
-  componentDidMount() {
-    this.getUser();
-  }
-
-  render() {
-    return (
-      <div className="profile">
-        <ProfileNavbar />
-        <div className="profile-display">
-          <div className="profile-picture-container">
-            <div
-              className="profile-image"
-              style={{
-                backgroundImage: `url(${this.state.profilePicture})`,
-              }}></div>
-          </div>
-          <h2>{this.state.username}</h2>
-          <h5>{this.state.location}</h5>
-          <button className="follow-btn">Follow</button>
-          <button>Message</button>
-          <div className="album">
-            {/* {this.state.userVisitedAlbum.map((post) => (
+  return loading ? (
+    <div>Loading...</div>
+  ) : (
+    <div className="profile">
+      <ProfileNavbar />
+      <div className="profile-display">
+        <div className="profile-picture-container">
+          <div
+            className="profile-image"
+            style={{
+              backgroundImage: `url(${userVisited.profilePicture})`,
+            }}></div>
+        </div>
+        <h2>{userVisited.username}</h2>
+        <h5>{userVisited.location}</h5>
+        <button className="follow-btn">Follow</button>
+        <button>Message</button>
+        <div className="album">
+          {/* {userVisitedAlbum.map((post) => (
             <img src={post.picture} key={post._id}></img>
           ))} */}
-            <ProfileAlbum album={this.state.album} />
-          </div>
+          <ProfileAlbum album={userVisited.album} />
         </div>
-        <MobileNavbar />
       </div>
-    );
-  }
+    </div>
+  );
 }
 
-export default withRouter(Profile);
+export default Profile;
 
-// function Profile() {
-//   const [username, setUsername] = useState(useParams().username);
-//   const {userVisited, userVisitedAlbum, setUserVisitedAlbum, setUserVisited} =
-//     useContext(PropContainer);
-//   // const [posts, setPosts] = useState();
-//   // const [user, setUser] = useState();
-//   // const [album, setAlbum] = useState([]);
+// class Profile extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       username: this.props.match.params.username,
+//       userVisited: {},
+//       profilePicture: "",
+//       album: [],
+//     };
+//   }
 
-//   useEffect(() => {
-//     getUser();
-//   }, []);
-
-//   const getUser = async () => {
+//   getUser = async () => {
 //     console.log("here");
-//     try {
-//       await axios
-//         .get(`http://localhost:3001/user/${username}`, {
-//           headers: {
-//             "Content-Type": "application/json",
-//             "x-access-token": sessionStorage.getItem("token"),
-//             "user-id": sessionStorage.getItem("id"),
-//           },
-//         })
-//         .then((res) => {
-//           console.log(res.data);
-//           setUserVisited(res.data[0]);
-//           sessionStorage.setItem("userVisited", JSON.stringify(res.data[0]));
-//           // setUser(res.data[0]);
-//           // setAlbum(res.data[0].album);
-//         });
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
-
-//   const getPosts = async () => {
-//     try {
-//       await axios
-//         .get(
-//           `http://localhost:3001/post/album/${JSON.stringify(
-//             sessionStorage.getItem("userVisited.album")
-//           )}`,
+//     // try {
+//     await axios
+//       .get(`http://localhost:3001/user/${this.state.username}`, {
+//         headers: {
+//           "Content-Type": "application/json",
+//           "x-access-token": sessionStorage.getItem("token"),
+//           "user-id": sessionStorage.getItem("id"),
+//         },
+//       })
+//       .then((res) => {
+//         this.setState(
 //           {
-//             headers: {
-//               "Content-Type": "application/json",
-//               "x-access-token": sessionStorage.getItem("token"),
-//               "user-id": sessionStorage.getItem("id"),
-//             },
+//             profilePicture: res.data[0].profilePicture,
+//             visitedUsername: res.data[0].username,
+//             location: res.data[0].location,
+//             album: [...res.data[0].album],
+//           },
+//           () => {
+//             console.log(this.state);
 //           }
-//         )
-//         .then((res) => {
-//           setUserVisitedAlbum(res.data);
-//           sessionStorage.setItem("userVisitedAlbum", res.data);
-//         });
-//     } catch (err) {
-//       console.log(err, "err");
-//     }
+//         );
+//         console.log(res.data[0]);
+//         // this.setState({userVisited: res.data[0]});
+
+//         // sessionStorage.setItem("userVisited", JSON.stringify(res.data[0]));
+//         // setUser(res.data[0]);
+//         // setAlbum(res.data[0].album);
+//       });
+//     // }catch (err) {
+//     //   console.log(err);
+//     // }
 //   };
 
-//   useEffect(() => {
-//     getPosts();
-//   }, []);
+//   componentDidMount() {
+//     this.getUser();
+//   }
 
-//   return (
-//     <div className="profile">
-//       {/* <ProfileNavbar />
-//       <div className="profile-display">
-//         <div className="profile-picture-container">
-//           <div
-//             className="profile-image"
-//             style={{
-//               backgroundImage: `url(${userVisited.profilePicture})`,
-//             }}></div>
-//         </div>
-//         <h2>{userVisited.username}</h2>
-//         <h5>{userVisited.location}</h5>
-//         <button className="follow-btn">Follow</button>
-//         <button>Message</button>
-//         <div className="album">
-//           {userVisitedAlbum.map((post) => (
+//   render() {
+//     return (
+//       <div className="profile">
+//         <ProfileNavbar />
+//         <div className="profile-display">
+//           <div className="profile-picture-container">
+//             <div
+//               className="profile-image"
+//               style={{
+//                 backgroundImage: `url(${this.state.profilePicture})`,
+//               }}></div>
+//           </div>
+//           <h2>{this.state.username}</h2>
+//           <h5>{this.state.location}</h5>
+//           <button className="follow-btn">Follow</button>
+//           <button>Message</button>
+//           <div className="album">
+//             {/* {this.state.userVisitedAlbum.map((post) => (
 //             <img src={post.picture} key={post._id}></img>
-//           ))}
+//           ))} */}
+//             <ProfileAlbum album={this.state.album} />
+//           </div>
 //         </div>
-//       </div> */}
-//     </div>
-//   );
+//         <MobileNavbar />
+//       </div>
+//     );
+//   }
 // }
 
-// export default Profile;
+// export default withRouter(Profile);
