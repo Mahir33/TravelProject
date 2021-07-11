@@ -33,6 +33,7 @@ function App() {
     setWebsite,
     setBio,
     setRegistered,
+    setFollowers,
   } = useContext(PropContainer);
 
   useEffect(() => {
@@ -47,6 +48,7 @@ function App() {
       setWebsite(user.website);
       setBio(user.bio);
       setRegistered(user.registered);
+      setFollowers(user.followers);
     } else return;
   }, []);
 

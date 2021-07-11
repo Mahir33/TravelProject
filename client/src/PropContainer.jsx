@@ -17,6 +17,7 @@ export const PropProvider = ({children}) => {
   const [buttonPopup, setButtonPopup] = useState(false);
   const [imageLocation, setImageLocation] = useState("");
   const [imagesData, setImagesData] = useState({});
+  const [followers, setFollowers] = useState([]);
 
   return (
     <PropContainer.Provider
@@ -34,6 +35,8 @@ export const PropProvider = ({children}) => {
         buttonPopup,
         imageLocation,
         imagesData,
+        followers,
+        setFollowers,
         setUsername,
         setEmail,
         setId,

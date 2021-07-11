@@ -187,6 +187,74 @@ const searchUserByName = async (req, res) => {
 }
 
 
+const followUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.headers['user-id']);
+    if (user) {
+      if (user.followers.includes(req.body.toFollowId)) {
+        res.status(400).json('You already follow this person.')
+      } else if (req.headers['user-id'] === req.body.toFollowId) {
+        res.status(400).json("You can't follow yourself.")
+      } else {
+        await User.findByIdAndUpdate(req.headers['user-id'], {
+          $addToSet: {
+            followers: req.body.toFollowId
+          }
+        }, {
+          'new': true,
+          'useFindAndModify': false
+        }, function (err, docs) {
+          if (err) {
+            console.log(err);
+            res.status(400).json('Error following the user.')
+          } else {
+            res.status(200).json(docs)
+            console.log('Updated User: ', docs)
+          };
+        })
+      }
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+const unfollowUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.headers['user-id']);
+    if (user) {
+      if (!user.followers.includes(req.body.toUnfollowId)) {
+        console.log("You don't follow this person")
+        res.json("You don't follow this person.");
+      } else if (req.headers['user-id'] === req.body.toUnfollowId) {
+        console.log("You can't unfollow yourself.")
+        res.json("You can't unfollow yourself.")
+      } else {
+        const index = await user.followers.indexOf(req.body.toUnfollowId);
+        let followers = await user.followers;
+        await followers.splice(index, 1);
+        await User.findByIdAndUpdate(req.headers['user-id'], {
+          followers: followers
+        }, {
+          'new': true,
+          'useFindAndModify': false
+        }, function (err, docs) {
+          if (err) {
+            console.log(err);
+            res.status(400).json('Error unfollowing the user.')
+          } else {
+            res.status(200).json(docs)
+            console.log('Updated User: ', docs)
+          };
+        })
+      }
+    }
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+
 
 
 module.exports = {
@@ -195,5 +263,7 @@ module.exports = {
   // getUser,
   updateUser,
   getUserByName,
-  searchUserByName
+  searchUserByName,
+  followUser,
+  unfollowUser
 };

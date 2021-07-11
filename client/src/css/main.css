@@ -379,6 +379,7 @@
   width: 80vw;
   height: 5vh;
   margin-bottom: 8px;
+  cursor: pointer;
 }
 
 .profile-display .follow-btn {

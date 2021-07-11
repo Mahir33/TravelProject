@@ -1,17 +1,92 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import ProfileNavbar from "../ProfileNavbar/ProfileNavbar";
 import axios from "axios";
 import ProfileAlbum from "./ProfileAlbum";
 import {useParams} from "react-router";
 import {PropContainer} from "../../PropContainer";
+import MobileNavbar from "../MobileNavbar/MobileNavbar";
 
 function Profile() {
   const username = useParams().username;
   const [userVisited, setUserVisited] = useState();
   const [loading, setLoading] = useState(true);
+  const {followers, setFollowers} = useContext(PropContainer);
+
+  const updateAfterFollow = (followersToUpdate) => {
+    console.log(followersToUpdate);
+    const sessionUser = JSON.parse(sessionStorage.getItem("user"));
+    sessionUser.followers = followersToUpdate;
+    sessionStorage.setItem("user", JSON.stringify(sessionUser));
+
+    setFollowers(followersToUpdate);
+  };
+
+  const updateAfterUnfollow = (followersToUpdate) => {
+    console.log(followersToUpdate);
+    // let followersToUpdate = followers;
+    // const index2 = followers.indexOf(unfollow);
+
+    // let sessionUser = JSON.parse(sessionStorage.getItem("user"));
+    // const index = sessionUser.followers.indexOf(unfollow);
+    // if (index > -1) {
+    //   sessionUser.followers.splice(index, 1);
+    // }
+    // sessionStorage.setItem("user", JSON.stringify(sessionUser));
+
+    // if (index2 > -1) {
+    //   followersToUpdate.splice(index2, 1);
+    //   setFollowers(followersToUpdate);
+    // }
+
+    let sessionUser = JSON.parse(sessionStorage.getItem("user"));
+    sessionUser.followers = followersToUpdate;
+    sessionStorage.setItem("user", JSON.stringify(sessionUser));
+    setFollowers(followersToUpdate);
+  };
+
+  const followUser = async () => {
+    try {
+      await axios
+        .put(
+          "http://localhost:3001/user/follow",
+          {toFollowId: userVisited._id},
+          {
+            headers: {
+              "Content-Type": "application/json",
+              "x-access-token": sessionStorage.getItem("token"),
+              "user-id": sessionStorage.getItem("id"),
+            },
+          }
+        )
+        .then((res) => updateAfterFollow(res.data.followers));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const unfollowUser = async () => {
+    try {
+      await axios
+        .put(
+          "http://localhost:3001/user/unfollow",
+          {toUnfollowId: userVisited._id},
+          {
+            headers: {
+              "Content-Type": "application/json",
+              "x-access-token": sessionStorage.getItem("token"),
+              "user-id": sessionStorage.getItem("id"),
+            },
+          }
+        )
+        .then((res) => {
+          if (res.data) updateAfterUnfollow(res.data.followers);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
-    console.log(username);
     const getUser = async () => {
       await axios
         .get(`http://localhost:3001/user/${username}`, {
@@ -22,7 +97,6 @@ function Profile() {
           },
         })
         .then((res) => {
-          console.log(res.data);
           setUserVisited(res.data[0]);
           setLoading(false);
         })
@@ -30,7 +104,11 @@ function Profile() {
     };
 
     getUser();
-  }, [username]);
+
+    return function cleanUp() {
+      setLoading(true);
+    };
+  }, [username, followers]);
 
   return loading ? null : (
     <div className="profile">
@@ -45,7 +123,16 @@ function Profile() {
         </div>
         <h2>{userVisited.username}</h2>
         <h5>{userVisited.location}</h5>
-        <button className="follow-btn">Follow</button>
+        {followers.includes(userVisited._id) ? (
+          <button className="follow-btn" onClick={unfollowUser}>
+            Unfollow
+          </button>
+        ) : (
+          <button className="follow-btn" onClick={followUser}>
+            Follow
+          </button>
+        )}
+
         <button>Message</button>
         <div className="album">
           {/* {userVisitedAlbum.map((post) => (
@@ -54,6 +141,7 @@ function Profile() {
           <ProfileAlbum album={userVisited.album} />
         </div>
       </div>
+      <MobileNavbar />
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React, {useContext, useState, useEffect} from "react";
 import {PropContainer} from "../../PropContainer";
 import ProfileNavbar from "../ProfileNavbar/ProfileNavbar";
 import axios from "axios";
+import MobileNavbar from "../MobileNavbar/MobileNavbar";
 
 function UserProfile() {
   const {username, picture, location, album} = useContext(PropContainer);
@@ -48,6 +49,7 @@ function UserProfile() {
           ))}
         </div>
       </div>
+      <MobileNavbar />
     </div>
   );
 }
