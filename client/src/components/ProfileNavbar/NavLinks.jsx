@@ -38,7 +38,6 @@ function NavLinks() {
   };
 
   const handleClick = (name) => {
-    setUserSearched(name);
     history.push(`/user/${name}`);
   };
 
