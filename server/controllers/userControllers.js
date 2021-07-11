@@ -120,6 +120,7 @@ const getUserByName = async (req, res) => {
     const usersByName = await User.find({
       username: req.params.username
     })
+    delete usersByName[0].password;
     res.json(usersByName)
   } catch (err) {
     res.json(err)

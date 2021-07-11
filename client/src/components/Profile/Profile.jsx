@@ -3,37 +3,36 @@ import ProfileNavbar from "../ProfileNavbar/ProfileNavbar";
 import axios from "axios";
 import ProfileAlbum from "./ProfileAlbum";
 import {useParams} from "react-router";
+import {PropContainer} from "../../PropContainer";
 
 function Profile() {
-  const [username, setUsername] = useState(useParams().username);
+  const username = useParams().username;
   const [userVisited, setUserVisited] = useState();
-  const [album, setAlbum] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log(username);
+    const getUser = async () => {
+      await axios
+        .get(`http://localhost:3001/user/${username}`, {
+          headers: {
+            "Content-Type": "application/json",
+            "x-access-token": sessionStorage.getItem("token"),
+            "user-id": sessionStorage.getItem("id"),
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+          setUserVisited(res.data[0]);
+          setLoading(false);
+        })
+        .catch((err) => console.log(err));
+    };
+
     getUser();
-  }, []);
+  }, [username]);
 
-  const getUser = async () => {
-    await axios
-      .get(`http://localhost:3001/user/${username}`, {
-        headers: {
-          "Content-Type": "application/json",
-          "x-access-token": sessionStorage.getItem("token"),
-          "user-id": sessionStorage.getItem("id"),
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-        setUserVisited(res.data[0]);
-        setLoading(false);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  return loading ? (
-    <div>Loading...</div>
-  ) : (
+  return loading ? null : (
     <div className="profile">
       <ProfileNavbar />
       <div className="profile-display">

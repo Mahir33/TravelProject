@@ -27,7 +27,7 @@ const ProfileAlbum = (props) => {
 
   useEffect(() => {
     getPosts();
-  }, []);
+  }, [props.album]);
 
   return (
     <>

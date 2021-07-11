@@ -8,7 +8,7 @@ import {List, ListItem, ListItemAvatar, ListItemText} from "@material-ui/core";
 import axios from "axios";
 
 function NavLinks() {
-  const {setUsername} = React.useContext(PropContainer);
+  const {setUsername, setUserSearched} = React.useContext(PropContainer);
   const [searchInput, setSearchInput] = useState("");
   const [usersFound, setUsersFound] = useState();
   const [showList, setShowList] = useState("search-list-disappear");
@@ -38,7 +38,8 @@ function NavLinks() {
   };
 
   const handleClick = (name) => {
-    history.replace(`/user/${name}`);
+    setUserSearched(name);
+    history.push(`/user/${name}`);
   };
 
   return (
