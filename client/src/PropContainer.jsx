@@ -18,6 +18,7 @@ export const PropProvider = ({children}) => {
   const [imageLocation, setImageLocation] = useState("");
   const [imagesData, setImagesData] = useState({});
   const [followers, setFollowers] = useState([]);
+  const [following, setFollowing] = useState([]);
 
   return (
     <PropContainer.Provider
@@ -36,6 +37,8 @@ export const PropProvider = ({children}) => {
         imageLocation,
         imagesData,
         followers,
+        following,
+        setFollowing,
         setFollowers,
         setUsername,
         setEmail,

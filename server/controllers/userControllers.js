@@ -170,8 +170,6 @@ const updateUser = async (req, res) => {
 
 
 const searchUserByName = async (req, res) => {
-  console.log('works');
-
   const regex = req.params.username;
 
   try {
@@ -191,14 +189,14 @@ const followUser = async (req, res) => {
   try {
     const user = await User.findById(req.headers['user-id']);
     if (user) {
-      if (user.followers.includes(req.body.toFollowId)) {
+      if (user.following.includes(req.body.toFollowId)) {
         res.status(400).json('You already follow this person.')
       } else if (req.headers['user-id'] === req.body.toFollowId) {
         res.status(400).json("You can't follow yourself.")
       } else {
         await User.findByIdAndUpdate(req.headers['user-id'], {
           $addToSet: {
-            followers: req.body.toFollowId
+            following: req.body.toFollowId
           }
         }, {
           'new': true,
@@ -219,22 +217,44 @@ const followUser = async (req, res) => {
   }
 }
 
+const addFollowerToUser = async (req, res) => {
+  try {
+    //adds the id of the person who followed to the followers of the just followed person
+    await User.findByIdAndUpdate(req.body.userToAddFollower, {
+      $addToSet: {
+        followers: req.headers['user-id']
+      }
+    }, {
+      'new': true,
+      'useFindAndModify': false
+    }, function (err, docs) {
+      if (err) {
+        res.json('Error adding id to follower of user just followed')
+      } else {
+        res.status(200).json(docs)
+      }
+    })
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 const unfollowUser = async (req, res) => {
   try {
     const user = await User.findById(req.headers['user-id']);
     if (user) {
-      if (!user.followers.includes(req.body.toUnfollowId)) {
+      if (!user.following.includes(req.body.toUnfollowId)) {
         console.log("You don't follow this person")
         res.json("You don't follow this person.");
       } else if (req.headers['user-id'] === req.body.toUnfollowId) {
         console.log("You can't unfollow yourself.")
         res.json("You can't unfollow yourself.")
       } else {
-        const index = await user.followers.indexOf(req.body.toUnfollowId);
-        let followers = await user.followers;
-        await followers.splice(index, 1);
+        const index = await user.following.indexOf(req.body.toUnfollowId);
+        let following = await user.following;
+        await following.splice(index, 1);
         await User.findByIdAndUpdate(req.headers['user-id'], {
-          followers: followers
+          following: following
         }, {
           'new': true,
           'useFindAndModify': false
@@ -254,6 +274,40 @@ const unfollowUser = async (req, res) => {
   }
 }
 
+const removeFollowerFromUser = async (req, res) => {
+  console.log('works')
+  try {
+    const user = await User.findById(req.body.userToRemoveFollower);
+    if (user) {
+      if (!user.followers.includes(req.headers['user-id'])) {
+        res.json("You don't follow this person")
+      } else if (req.headers['user-id'] === req.body.userToRemoveFollower) {
+        res.json("You can't unfollow yourself")
+      } else {
+        const index = await user.followers.indexOf(req.header['user-id']);
+        let followers = await user.followers;
+        await followers.splice(index, 1);
+        await User.findByIdAndUpdate(req.body.userToRemoveFollower, {
+          followers: followers
+        }, {
+          'new': true,
+          'useFindAndModify': false
+        }, function (err, docs) {
+          if (err) {
+            console.log(err);
+            res.status(400).json("Error setting followers of the user")
+          } else {
+            res.status(200).json(docs)
+          }
+        })
+      }
+    }
+
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 
 
 
@@ -265,5 +319,7 @@ module.exports = {
   getUserByName,
   searchUserByName,
   followUser,
-  unfollowUser
+  unfollowUser,
+  addFollowerToUser,
+  removeFollowerFromUser
 };

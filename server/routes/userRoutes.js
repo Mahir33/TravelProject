@@ -7,7 +7,9 @@ const {
     getUserByName,
     searchUserByName,
     followUser,
-    unfollowUser
+    unfollowUser,
+    addFollowerToUser,
+    removeFollowerFromUser
 } = require("../controllers/userControllers");
 
 const {
@@ -38,8 +40,13 @@ router.put("/user/update", verifyToken, uploadCloudinary, updateUser);
 //Follow an user by id
 router.put("/user/follow", verifyToken, followUser)
 
-//Unfollow an user by id
-router.put("/user/unfollow", verifyToken, unfollowUser)
+//Add follower to user
+router.put("/user/addfollower", verifyToken, addFollowerToUser);
 
+//Unfollow an user by id
+router.put("/user/unfollow", verifyToken, unfollowUser);
+
+//Remove follower from user
+router.put("user/remove/follower", verifyToken, removeFollowerFromUser);
 
 module.exports = router;
