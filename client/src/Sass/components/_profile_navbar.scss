@@ -13,6 +13,8 @@
       position: static;
     }
     .search-input{
+      .input-bar-list{
+        text-align: center;
       .search-list-appear{
         border: 0.5px solid lightgray;
         border-radius: 5px;
@@ -38,7 +40,9 @@
       display: none;
     }
     }
+  }
     .rightside {
+      margin-right: -60px;
       display: flex;
       .profile-settings-button {
         @include abstracts.backButtonDiv;

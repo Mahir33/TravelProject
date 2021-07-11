@@ -52,38 +52,40 @@ function NavLinks() {
       <div
         className="search-input"
         onClick={() => setShowList("search-list-appear")}>
-        <Input
-          icon="search"
-          placeholder="Search..."
-          className="semantic-input"
-          onChange={handleInputChange}
-        />
-        {usersFound ? (
-          <div className={showList}>
-            <List>
-              {usersFound.map((user) => {
-                return (
-                  <ListItem className="list-item">
-                    <ListItemAvatar>
-                      <img
-                        src={user["profilePicture"]}
-                        className="avatar"
-                        alt=""
-                      />{" "}
-                    </ListItemAvatar>
-                    <ListItemText
-                      className="list-item-text"
-                      onClick={() => handleClick(user.username)}>
-                      {user.username}
-                    </ListItemText>
-                  </ListItem>
-                );
-              })}
-            </List>
-          </div>
-        ) : (
-          <div className={showList}></div>
-        )}
+        <div className="input-bar-list">
+          <Input
+            icon="search"
+            placeholder="Search..."
+            className="semantic-input"
+            onChange={handleInputChange}
+          />
+          {usersFound ? (
+            <div className={showList}>
+              <List>
+                {usersFound.map((user) => {
+                  return (
+                    <ListItem className="list-item">
+                      <ListItemAvatar>
+                        <img
+                          src={user["profilePicture"]}
+                          className="avatar"
+                          alt=""
+                        />{" "}
+                      </ListItemAvatar>
+                      <ListItemText
+                        className="list-item-text"
+                        onClick={() => handleClick(user.username)}>
+                        {user.username}
+                      </ListItemText>
+                    </ListItem>
+                  );
+                })}
+              </List>
+            </div>
+          ) : (
+            <div className={showList}></div>
+          )}
+        </div>
       </div>
       <div className="rightside">
         <div className="profile-settings-button">
