@@ -66,7 +66,9 @@ function MobileLogin() {
     <div className="log-in">
       <div className="back">
         <Link to="/">
-          <FaRegArrowAltCircleLeft />
+          <FaRegArrowAltCircleLeft 
+            color="black"
+          />
         </Link>
       </div>
       <div className="log">
