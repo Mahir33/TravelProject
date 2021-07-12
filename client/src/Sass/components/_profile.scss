@@ -23,7 +23,7 @@
       min-height: 150px;
       width: 15vw;
       height: 15vw;
-      display: inline-block;
+      // display: inline-block;
       background-size: cover;
       background-position: center;
     }
@@ -42,6 +42,16 @@
     width: 80vw;
     height: 5vh;
     margin-bottom: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bolder;
+    letter-spacing: 1px;
+  }
+
+  .message-btn {
+    border: 2px solid black;
+    border-radius: 5px;
   }
 
   .follow-btn {

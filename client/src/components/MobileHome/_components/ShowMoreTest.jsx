@@ -3,11 +3,12 @@ import {
     slice, concat,
 } from 'lodash'
 import GalleryCard from './GalleryCardComponent';
+import userProfiles from './dataMobileHome'
 
 
 
-const LENGHT = 50;
-const DATA = [ ...Array(LENGHT).keys() ];
+const LENGTH = 50;
+const DATA = [ ...Array(LENGTH).keys() ];
 const IMAGE_SRC="https://source.unsplash.com/random";
 const LIMIT = 10;
 
@@ -18,12 +19,13 @@ const [index, setIndex] = useState(LIMIT);
 
 const loadMore = () => {
     const newIndex = index + LIMIT;
-    const newShowMore = newIndex < (LENGHT - 1);
+    const newShowMore = newIndex < (LENGTH - 1);
     const newList = concat(list, slice(DATA, index, newIndex));
     setIndex(newIndex);
     setList(newList);
     setShowMore(newShowMore)
 }
+
 
 const userProfiles = [{
     id: 1,
@@ -41,14 +43,16 @@ const userProfiles = [{
 return(
     <>
         <div className="full-card-section">
-            {list.map(() =>  <GalleryCard
-            date={userProfiles.date}
-            src={userProfiles.imgUrl}
-            picDescUser={userProfiles.picDescUser}
-            name={userProfiles.name}
-            username={userProfiles.username}
-            likesNum={userProfiles.likesNum}
-    />)}
+            {list.map(() =>  
+            <GalleryCard
+                date={userProfiles.date}
+                src={userProfiles.imgUrl}
+                userPhoto={userProfiles.photoUrl}
+                picDescUser={userProfiles.picDescUser}
+                name={userProfiles.name}
+                username={userProfiles.username}
+                likesNum={userProfiles.likesNum}
+            />)}
       </div>
         {showMore && <button class="show-more-btn" onClick={loadMore}>Show more</button>}
     </>

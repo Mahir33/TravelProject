@@ -24,15 +24,7 @@ function MobileNavLinks() {
 
   return (
     <div className="profile-container">
-      <div className="search-input">
-        <Input
-          icon="search"
-          type="text"
-          placeholder="Search..."
-          className="semantic-input"
-          onChange={handleInputChange}
-        />
-      </div>
+      
       <div className="profile-settings-button">
         <Link to="/profile-settings">
           <FiSettings />

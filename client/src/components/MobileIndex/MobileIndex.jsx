@@ -6,14 +6,14 @@ function MobileHome() {
       <div className="logo">
         <p>all roads lead to... </p>
         <h1>
-          <span className="one">p</span>
+          <span className="fisr">p</span>
           <span className="two">l</span>
           <span className="three">a</span>
           <span className="four">n</span> 
           <span className="five">n</span>
           <span className="six">e</span>
-          <span className="seven">i</span>
-          <span className="eight">r</span>
+          <span className="seven">r</span>
+          <span className="eight">i</span>
           <span className="nine">o</span>   
         </h1>
       </div>

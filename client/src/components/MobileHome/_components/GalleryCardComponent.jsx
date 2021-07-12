@@ -15,15 +15,24 @@ function GalleryCard(props){
       </>
     )
   }
+
+  const handleSkyscanner = () => {
+    return (
+      <>
+      </>
+    )
+  }
     return (
     <div className="card">
+      
         <img className="img one" src={props.src} alt="" />
 
           <div className="text text-one">
             <p className="card-date">{props.date}</p>
             <h3 className="card-header">{props.location} 
               <GiAirplaneDeparture 
-                className="airplane" 
+                className="airplane"
+                onClick={handleSkyscanner}
                 />
             </h3>
             <p>Example place description {props.placeDescr}</p>
@@ -49,7 +58,7 @@ function GalleryCard(props){
                   <p>Likes: {props.likesNum}</p>
                   
                   
-                  
+
                 </div>
                 <button className="like-ico">
                     <AiOutlineLike onClick={addLike}/>
@@ -61,7 +70,8 @@ function GalleryCard(props){
 
         </div>
         
-    </div> 
+    </div>
+    
     )
 }
 
