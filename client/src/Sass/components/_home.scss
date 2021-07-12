@@ -3,7 +3,7 @@
 .home-container {
   // position: relative;
   width: 100vw;
-  //   height: auto;
+  height: auto;
   padding: 0 16px 16px 16px;
   overflow: hidden;
   display: flex;
@@ -57,6 +57,8 @@
 }
 
 .full-card-section {
+  display: flex;
+  flex-direction: column;
   width: 290px;
   
 

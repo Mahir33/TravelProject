@@ -24,6 +24,7 @@ function GalleryCard(props){
   }
     return (
     <div className="card">
+      
         <img className="img one" src={props.src} alt="" />
 
           <div className="text text-one">
@@ -69,7 +70,8 @@ function GalleryCard(props){
 
         </div>
         
-    </div> 
+    </div>
+    
     )
 }
 

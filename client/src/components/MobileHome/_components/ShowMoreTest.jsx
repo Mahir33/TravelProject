@@ -47,6 +47,7 @@ return(
             <GalleryCard
                 date={userProfiles.date}
                 src={userProfiles.imgUrl}
+                userPhoto={userProfiles.photoUrl}
                 picDescUser={userProfiles.picDescUser}
                 name={userProfiles.name}
                 username={userProfiles.username}
