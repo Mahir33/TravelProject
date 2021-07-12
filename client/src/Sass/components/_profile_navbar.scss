@@ -3,7 +3,7 @@
 .profile-navbar {
   height: 60px;
   .mobileNavigation {
-     display: none;
+    display: none;
   }
   .profile-container {
     display: flex;
@@ -13,39 +13,35 @@
       @include abstracts.backButtonDiv;
       position: static;
     }
-    .search-input{
-<<<<<<< HEAD
-      .input-bar-list{
+    .search-input {
+      .input-bar-list {
         text-align: center;
-=======
-      margin-left: 50px;
->>>>>>> home_login5
-      .search-list-appear{
-        border: 0.5px solid lightgray;
-        border-radius: 5px;
-      .list-item{        
-        .avatar{
-          height: 40px;
-          width: 40px;
-          border-radius: 1000px;
+        margin-left: 50px;
+        .search-list-appear {
+          border: 0.5px solid lightgray;
+          border-radius: 5px;
+          .list-item {
+            .avatar {
+              height: 40px;
+              width: 40px;
+              border-radius: 1000px;
+            }
+          }
+          .list-item-text {
+            button {
+              list-style: none;
+            }
+          }
+          .list-item:hover {
+            cursor: pointer;
+          }
         }
 
-      }
-      .list-item-text{
-        button{
-          list-style: none;
+        .search-list-disappear {
+          display: none;
         }
       }
-      .list-item:hover{
-        cursor: pointer;
-      }
     }
-
-    .search-list-disappear{
-      display: none;
-    }
-    }
-  }
     .rightside {
       margin-right: -60px;
       display: flex;
@@ -83,7 +79,7 @@
       align-items: center;
       justify-content: center;
       padding: 0;
-       // margin: 0 25px;
+      // margin: 0 25px;
     }
     .navigation {
       display: none;
@@ -99,7 +95,7 @@
         @include abstracts.mobile-profile-navbar-btnStyle;
         // padding: 0 1.7em 0 1.7em;
         padding: 5px 10px;
-        margin: 0 .7em;
+        margin: 0 0.7em;
         border: none;
         a {
           display: flex;
@@ -150,7 +146,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: .5em .2em !important;
+  padding: 0.5em 0.2em !important;
   margin-right: 10px;
-  
 }
