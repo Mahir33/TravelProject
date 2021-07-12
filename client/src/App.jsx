@@ -34,6 +34,7 @@ function App() {
     setBio,
     setRegistered,
     setFollowers,
+    setFollowing,
   } = useContext(PropContainer);
 
   useEffect(() => {
@@ -49,6 +50,7 @@ function App() {
       setBio(user.bio);
       setRegistered(user.registered);
       setFollowers(user.followers);
+      setFollowing(user.following);
     } else return;
   }, []);
 

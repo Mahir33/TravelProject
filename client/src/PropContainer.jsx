@@ -38,7 +38,6 @@ export const PropProvider = ({children}) => {
         imagesData,
         followers,
         following,
-        setFollowing,
         setFollowers,
         setUsername,
         setEmail,
@@ -53,6 +52,7 @@ export const PropProvider = ({children}) => {
         setButtonPopup,
         setImageLocation,
         setImagesData,
+        setFollowing,
       }}>
       {children}
     </PropContainer.Provider>

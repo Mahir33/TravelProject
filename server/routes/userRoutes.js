@@ -9,7 +9,8 @@ const {
     followUser,
     unfollowUser,
     addFollowerToUser,
-    removeFollowerFromUser
+    removeFollowerFromUser,
+    getAllFollowings
 } = require("../controllers/userControllers");
 
 const {
@@ -47,6 +48,9 @@ router.put("/user/addfollower", verifyToken, addFollowerToUser);
 router.put("/user/unfollow", verifyToken, unfollowUser);
 
 //Remove follower from user
-router.put("user/remove/follower", verifyToken, removeFollowerFromUser);
+router.put("/user/remove/follower", verifyToken, removeFollowerFromUser);
+
+//Get all following users
+router.put("/user/getallfollowings", verifyToken, getAllFollowings);
 
 module.exports = router;

@@ -21,6 +21,7 @@ function MobileLogin() {
     setBio,
     setRegistered,
     setFollowers,
+    setFollowing,
   } = useContext(PropContainer);
   const {
     register,
@@ -55,6 +56,7 @@ function MobileLogin() {
           setBio(res.user.bio);
           setRegistered(true);
           setFollowers(res.user.followers);
+          setFollowing(res.user.following);
         }
         setMessage(res.message);
         sessionStorage.setItem("token", res.token);
