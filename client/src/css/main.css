@@ -560,19 +560,11 @@
   position: static;
 }
 
-<<<<<<< HEAD
 .profile-navbar .profile-container .search-input .input-bar-list {
   text-align: center;
 }
 
 .profile-navbar .profile-container .search-input .input-bar-list .search-list-appear {
-=======
-.profile-navbar .profile-container .search-input {
-  margin-left: 50px;
-}
-
-.profile-navbar .profile-container .search-input .search-list-appear {
->>>>>>> home_login5
   border: 0.5px solid lightgray;
   border-radius: 5px;
 }
@@ -583,26 +575,18 @@
   border-radius: 1000px;
 }
 
-<<<<<<< HEAD
 .profile-navbar .profile-container .search-input .input-bar-list .search-list-appear .list-item-text button {
-  style: none;
-=======
-.profile-navbar .profile-container .search-input .search-list-appear .list-item-text button {
   list-style: none;
->>>>>>> home_login5
 }
 
 .profile-navbar .profile-container .search-input .input-bar-list .search-list-appear .list-item:hover {
   cursor: pointer;
 }
 
-<<<<<<< HEAD
 .profile-navbar .profile-container .search-input .input-bar-list .search-list-disappear {
   display: none;
 }
 
-=======
->>>>>>> home_login5
 .profile-navbar .profile-container .rightside {
   margin-right: -60px;
   display: flex;
@@ -746,16 +730,16 @@
     font-size: 33px;
     color: black;
   }
-}
-.ui.icon.input {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 0.5em 0.2em !important;
-  margin-right: 10px;
-}
 
+  .ui.icon.input {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.5em 0.2em !important;
+    margin-right: 10px;
+  }
+}
 .popup {
   position: fixed;
   top: 0;
@@ -873,8 +857,11 @@
 
 .full-card-section {
   display: flex;
-  flex-direction: column;
-  width: 290px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0 auto;
 }
 
 .full-card-section .photo {
@@ -887,14 +874,14 @@
   height: 290px;
 }
 
-.card {
+.full-card-section .card {
   position: relative;
-  margin: 20px 0;
+  margin: 10px 10px;
   width: 290px;
   height: 390px;
 }
 
-.card .img {
+.full-card-section .card .img {
   width: 100%;
   height: 100%;
   background-position: center;
@@ -903,7 +890,7 @@
   transition: 0.8s;
 }
 
-.card .text {
+.full-card-section .card .text {
   position: absolute;
   top: 0;
   left: 0;
@@ -917,35 +904,35 @@
   transition: 0.8s;
 }
 
-.card .airplane {
+.full-card-section .card .airplane {
   font-size: 1.2rem;
   margin-left: 5px;
 }
 
-.card .text-one {
+.full-card-section .card .text-one {
   transform: rotateY(-180deg);
 }
 
-.card .profile {
+.full-card-section .card .profile {
   position: absolute;
   bottom: 20px;
   left: 20px;
 }
 
-.card .profile__container {
+.full-card-section .card .profile__container {
   position: relative;
   display: flex;
   flex-direction: row;
   align-content: space-around;
 }
 
-.card .profile__container--photo {
+.full-card-section .card .profile__container--photo {
   width: 40px;
   height: 40px;
   border-radius: 25px;
 }
 
-.card .profile__container--user-data {
+.full-card-section .card .profile__container--user-data {
   display: flex;
   flex-direction: column;
   margin: 0 10px;
@@ -953,28 +940,28 @@
   width: 50%;
 }
 
-.card .profile__container--user-data .full-name {
+.full-card-section .card .profile__container--user-data .full-name {
   font-size: 0.8rem;
   margin-bottom: 0;
   font-weight: 900;
 }
 
-.card .profile__container--user-data .username {
+.full-card-section .card .profile__container--user-data .username {
   font-size: 0.8rem;
   font-style: italic;
 }
 
-.card .profile__container--likes {
+.full-card-section .card .profile__container--likes {
   display: inline-block;
   width: 20%;
   font-size: 0.8rem;
 }
 
-.card .profile__container--likes p {
+.full-card-section .card .profile__container--likes p {
   margin-bottom: 0;
 }
 
-.card .profile__container .like-ico {
+.full-card-section .card .profile__container .like-ico {
   font-size: 1.1rem;
   background: none;
   border: none;

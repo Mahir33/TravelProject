@@ -15,8 +15,8 @@ function MobileHome() {
         <HomeHeader />
         <HomeFullPicSection />
         <ShowMoreTest />
-        <MobileNavbar />
       </div>
+      <MobileNavbar />
     </>
   );
 }

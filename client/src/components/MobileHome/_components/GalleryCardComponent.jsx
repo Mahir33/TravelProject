@@ -23,9 +23,10 @@ function GalleryCard(props){
     )
   }
     return (
+  
     <div className="card">
       
-        <img className="img one" src={props.src} alt="" />
+        <img className="img one" src={props.upPic} alt="" />
 
           <div className="text text-one">
             <p className="card-date">{props.date}</p>
@@ -48,7 +49,7 @@ function GalleryCard(props){
               <div className="profile__container">
                   <img 
                     className="profile__container--photo" 
-                    src={props.src} alt="" 
+                    src={props.src} alt="/" 
                   />
                 <div className="profile__container--user-data">
                   <p className="full-name">{props.name}</p>

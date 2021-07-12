@@ -8,7 +8,8 @@ function NewPicScroller() {
     <GalleryCard 
       location={profile.location}
       date={profile.date}
-      src={profile.imgUrl}
+      src={profile.photoUrl}
+      upPic={profile.imgUrl}
       picDescUser={profile.picDescUser}
       name={profile.name}
       username={profile.username}
@@ -18,7 +19,9 @@ function NewPicScroller() {
 
   return (
       <section className="full-card-section">
+        
         {fullPictureSection}
+        
       </section>
   );
 }
