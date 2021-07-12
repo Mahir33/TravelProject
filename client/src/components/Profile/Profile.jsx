@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import ProfileNavbar from "../ProfileNavbar/ProfileNavbar";
 import axios from "axios";
 import ProfileAlbum from "./ProfileAlbum";
-import {useParams} from "react-router";
-import {PropContainer} from "../../PropContainer";
+import { useParams } from "react-router";
+import { PropContainer } from "../../PropContainer";
 
 function Profile() {
   const username = useParams().username;
@@ -32,7 +32,6 @@ function Profile() {
     getUser();
   }, [username]);
 
-<<<<<<< HEAD
   return loading ? null : (
     <div className="profile">
       <ProfileNavbar />
@@ -42,7 +41,8 @@ function Profile() {
             className="profile-image"
             style={{
               backgroundImage: `url(${userVisited.profilePicture})`,
-            }}></div>
+            }}
+          ></div>
         </div>
         <h2>{userVisited.username}</h2>
         <h5>{userVisited.location}</h5>
@@ -50,26 +50,6 @@ function Profile() {
         <button>Message</button>
         <div className="album">
           {/* {userVisitedAlbum.map((post) => (
-=======
-  render() {
-    return (
-      <div className="profile">
-        <ProfileNavbar />
-        <div className="profile-display">
-          <div className="profile-picture-container">
-            <div
-              className="profile-image"
-              style={{
-                backgroundImage: `url(${this.state.profilePicture})`,
-              }}></div>
-          </div>
-          <h2>{this.state.username}</h2>
-          <h5>{this.state.location}</h5>
-          <button className="follow-btn">Follow</button>
-          <button className="message-btn">Message</button>
-          <div className="album">
-            {/* {this.state.userVisitedAlbum.map((post) => (
->>>>>>> home_login5
             <img src={post.picture} key={post._id}></img>
           ))} */}
           <ProfileAlbum album={userVisited.album} />
