@@ -148,6 +148,24 @@ const getAlbum = async (req, res) => {
   }
 }
 
+const getAllPosts = async (req, res) => {
+  console.log(req.body, 'req getallposts')
+  try {
+    await Post.find({
+      '_id': {
+        $in: req.body.arrayOfAlbums
+      }
+    }, (err, docs) => {
+      if (err) {
+        console.log(err);
+        res.status(400).json("Something went wrong.")
+      } else res.status(200).json(docs)
+    })
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 
 
 module.exports = {
@@ -155,5 +173,6 @@ module.exports = {
   createPost,
   editPost,
   deletePost,
-  getAlbum
+  getAlbum,
+  getAllPosts
 };

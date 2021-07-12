@@ -309,33 +309,45 @@ const removeFollowerFromUser = async (req, res) => {
 }
 
 const getAllFollowings = async (req, res) => {
-  //req.body = array of followings
-  // console.log(req.body)
-  let arr = [];
-  try {
-    let promise = new Promise(function (resolve, reject) {
-      req.body.arrayOfFollowings.map((id) => {
-        const user = User.findById(id);
-        if (user) {
-          console.log(user)
-          arr.push(user);
-        }
-      })
-      resolve(arr)
-    })
+  await User.find({
+    '_id': {
+      $in: req.body.arrayOfFollowings
+    }
+  }, (err, docs) => {
+    console.log(docs, 'docs');
+    if (err) {
+      console.log(err);
+      res.status(400).json("Something went wrong")
+    } else res.status(200).json(docs)
+  });
 
-    promise.then((arr) => {
-      console.log(arr, 'array result')
-      if (arr.length > 0) {
-        res.status(200).json(arr);
-      }
-    })
-  } catch (err) {
-    res.status(400).json('Something went wrong')
-    console.log(err);
-  }
 
 }
+//   let arr = [];
+//   try {
+//     let promise = new Promise(function (resolve, reject) {
+//       req.body.arrayOfFollowings.map((id) => {
+//         const user = User.findById(id);
+//         if (user) {
+//           console.log(user)
+//           arr.push(user);
+//         }
+//       })
+//       resolve(arr)
+//     })
+
+//     promise.then((arr) => {
+//       console.log(arr, 'array result')
+//       if (arr.length > 0) {
+//         res.status(200).json(arr);
+//       }
+//     })
+//   } catch (err) {
+//     res.status(400).json('Something went wrong')
+//     console.log(err);
+//   }
+
+// }
 
 
 
