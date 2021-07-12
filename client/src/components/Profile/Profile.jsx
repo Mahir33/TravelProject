@@ -32,7 +32,6 @@ function Profile() {
     getUser();
   }, [username]);
 
-<<<<<<< HEAD
   return loading ? null : (
     <div className="profile">
       <ProfileNavbar />
@@ -50,26 +49,6 @@ function Profile() {
         <button>Message</button>
         <div className="album">
           {/* {userVisitedAlbum.map((post) => (
-=======
-  render() {
-    return (
-      <div className="profile">
-        <ProfileNavbar />
-        <div className="profile-display">
-          <div className="profile-picture-container">
-            <div
-              className="profile-image"
-              style={{
-                backgroundImage: `url(${this.state.profilePicture})`,
-              }}></div>
-          </div>
-          <h2>{this.state.username}</h2>
-          <h5>{this.state.location}</h5>
-          <button className="follow-btn">Follow</button>
-          <button className="message-btn">Message</button>
-          <div className="album">
-            {/* {this.state.userVisitedAlbum.map((post) => (
->>>>>>> home_login5
             <img src={post.picture} key={post._id}></img>
           ))} */}
           <ProfileAlbum album={userVisited.album} />
