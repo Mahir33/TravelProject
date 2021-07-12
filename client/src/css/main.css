@@ -1012,6 +1012,57 @@
   background-color: #fff;
 }
 
+.airlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.airlines .airlines-inner {
+  position: relative;
+  padding: 32px;
+  width: 100%;
+  max-width: 900px;
+  height: 640px;
+  background-color: #fff;
+}
+
+.airlines .airlines-inner .close {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+
+.airlines .airlines-inner .widget {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.airlines .airlines-inner .widget .iframe {
+  padding: 1em;
+  width: 800px;
+  height: 500px;
+}
+
+@media (max-width: 767px) {
+  .airlines-inner {
+    position: relative;
+    top: 60px;
+  }
+
+  .airlines-inner .widget {
+    justify-content: center;
+  }
+}
 :root {
   font-size: 16px;
 }
