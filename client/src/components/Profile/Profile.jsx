@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import ProfileNavbar from "../ProfileNavbar/ProfileNavbar";
 import axios from "axios";
 import ProfileAlbum from "./ProfileAlbum";
-import {useParams} from "react-router";
-import {PropContainer} from "../../PropContainer";
+import { useParams } from "react-router";
+import { PropContainer } from "../../PropContainer";
 
 function Profile() {
   const username = useParams().username;
@@ -41,7 +41,8 @@ function Profile() {
             className="profile-image"
             style={{
               backgroundImage: `url(${userVisited.profilePicture})`,
-            }}></div>
+            }}
+          ></div>
         </div>
         <h2>{userVisited.username}</h2>
         <h5>{userVisited.location}</h5>
