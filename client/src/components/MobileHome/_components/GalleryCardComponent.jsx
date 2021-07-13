@@ -34,7 +34,8 @@ function GalleryCard(props) {
 
         <div className="description">
           <p className="description__from-user">
-            <span className="bold">{props.authorName}</span>:{" "}
+            {/* <span className="bold">{props.authorName}</span>:{" "} */}
+            {/* //comment section */}
           </p>
         </div>
 

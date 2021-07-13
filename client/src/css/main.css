@@ -907,7 +907,7 @@
 
 .card {
   position: relative;
-  margin: 20px 0;
+  margin: 20px 20px;
   width: 290px;
   height: 390px;
 }

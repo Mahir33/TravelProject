@@ -92,7 +92,7 @@ function NewPicScroller() {
   ));
 
   return loading ? null : (
-    <section className="full-card-section">{fullPictureSection}</section>
+    <div className="full-card-section">{fullPictureSection}</div>
   );
 }
 export default NewPicScroller;
