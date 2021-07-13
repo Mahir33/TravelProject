@@ -732,16 +732,16 @@
     font-size: 33px;
     color: black;
   }
-}
-.ui.icon.input {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 0.5em 0.2em !important;
-  margin-right: 10px;
-}
 
+  .ui.icon.input {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.5em 0.2em !important;
+    margin-right: 10px;
+  }
+}
 .popup {
   position: fixed;
   top: 0;
