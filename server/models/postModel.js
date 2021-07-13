@@ -34,7 +34,7 @@ const postSchema = new mongoose.Schema({
     type: String,
   },
   authorId: {
-    type: Number,
+    type: String,
     required: true
   }
 });

@@ -50,12 +50,16 @@ const getPost = async (req, res) => {
 
 
 const createPost = async (req, res) => {
+  console.log(req.body)
   let id;
 
   const {
     description,
     picture,
-    location
+    location,
+    authorName,
+    authorPicture,
+    authorId
   } = req.body;
 
 
@@ -63,9 +67,12 @@ const createPost = async (req, res) => {
     Post.create({
       description,
       picture,
-      location
+      location,
+      authorName,
+      authorPicture,
+      authorId
     }, function (err, post) {
-      console.log(post)
+      console.log(err)
       if (err) res.json(errHandler(err));
       User.findByIdAndUpdate(req.headers['user-id'], {
         $push: {
