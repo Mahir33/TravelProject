@@ -58,25 +58,15 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={MobileIndex} />
-        <Route path="/login">
-          <MobileLogin />
-        </Route>
-        <Route path="/register">
-          <MobileRegister1 />
-        </Route>
-        <Route path="/home">
-          <MobileHome />
-        </Route>
-        <Route path="/profile/:username">
-          <UserProfile />
-        </Route>
+        <Route path="/login" component={MobileLogin} />
+        <Route path="/register" component={MobileRegister1} />
+        <Route path="/home" component={MobileHome} />
+        <Route path="/profile/:username" component={UserProfile} />
         <Route path="/user/:username" component={Profile} />
         <Route path="/search/:username" component={MobileSearch} />
         <Route path="/register-success" component={RegisterSuccess} />
         <Route path="/profile-settings" component={ProfileSettings} />
-        <Route path="/navbar">
-          <MobileNavbar />
-        </Route>
+        <Route path="/navbar" component={MobileNavbar} />
       </Switch>
     </BrowserRouter>
   );

@@ -25,6 +25,17 @@ const postSchema = new mongoose.Schema({
   likes: {
     type: Number,
     default: 0
+  },
+  authorName: {
+    type: String,
+    required: true
+  },
+  authorPicture: {
+    type: String,
+  },
+  authorId: {
+    type: Number,
+    required: true
   }
 });
 

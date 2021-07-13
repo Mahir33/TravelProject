@@ -4,11 +4,16 @@ import HomeHeader from "./_components/HomeHeader";
 import ProfileNavBar from "../ProfileNavbar/ProfileNavbar";
 import LoadMoreBtn from "./_components/ShowMore";
 import ShowMoreTest from "./_components/ShowMoreTest";
-
-import React from "react";
+import React, {useState} from "react";
 
 function MobileHome() {
-  return (
+  const [loading, setLoading] = useState(true);
+
+  setTimeout(() => setLoading(false), 500);
+
+  return loading ? (
+    <div>Loading...</div>
+  ) : (
     <>
       <ProfileNavBar />
       <div className="home-container">

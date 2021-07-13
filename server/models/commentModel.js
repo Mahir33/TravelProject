@@ -1,9 +1,18 @@
 const mongoose = require("mongoose");
 
 const commentSchema = new mongoose.Schema({
-  authorEmail: {
+  authorName: {
     type: String,
     required: true,
+  },
+
+  authorPicture: {
+    type: String
+  },
+
+  authorId: {
+    type: String,
+    required: true
   },
 
   comment: {

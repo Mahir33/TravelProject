@@ -30,6 +30,7 @@ function MobileLogin() {
   } = useForm({
     resolver: yupResolver(schema),
   });
+
   const onSubmit = async (data) => {
     const {email, password} = data;
     await fetch("http://localhost:3001/login", {
@@ -61,7 +62,6 @@ function MobileLogin() {
         setMessage(res.message);
         sessionStorage.setItem("token", res.token);
         sessionStorage.setItem("id", res.user._id);
-
         sessionStorage.setItem("user", JSON.stringify(res.user));
       })
       .catch((e) => console.log(e));

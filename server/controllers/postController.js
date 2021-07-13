@@ -132,9 +132,7 @@ const deletePost = async (req, res) => {
 
 const getAlbum = async (req, res) => {
   console.log(req.params.album, 'here');
-
   try {
-    // console.log(JSON.parse(req.params.album), 'hello')
     const album = await Post.find({
       '_id': {
         $in: req.params.album.split(",")
@@ -153,7 +151,7 @@ const getAllPosts = async (req, res) => {
   try {
     await Post.find({
       '_id': {
-        $in: req.body.arrayOfAlbums
+        $in: req.body.arrayOfPosts
       }
     }, (err, docs) => {
       if (err) {
