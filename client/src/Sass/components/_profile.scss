@@ -1,4 +1,4 @@
-@use '../abstracts/index' as abstracts;
+return (@use '../abstracts/index' as abstracts;
 
 .profile-display {
   padding-top: 10vh;
@@ -52,6 +52,7 @@
   .message-btn {
     border: 2px solid black;
     border-radius: 5px;
+    cursor: pointer;
   }
 
   .follow-btn {

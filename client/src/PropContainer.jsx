@@ -1,9 +1,9 @@
-import { createContext, useState } from "react";
-import { useParams } from "react-router-dom";
+import {createContext, useState} from "react";
+import {useParams} from "react-router-dom";
 
 export const PropContainer = createContext();
 
-export const PropProvider = ({ children }) => {
+export const PropProvider = ({children}) => {
   const [username, setUsername] = useState(useParams.username);
   const [email, setEmail] = useState("");
   const [album, setAlbum] = useState();
@@ -18,6 +18,8 @@ export const PropProvider = ({ children }) => {
   const [imageLocation, setImageLocation] = useState("");
   const [imagesData, setImagesData] = useState({});
   const [airlines, setAirlines] = useState(false);
+  const [followers, setFollowers] = useState([]);
+  const [following, setFollowing] = useState([]);
 
   return (
     <PropContainer.Provider
@@ -36,6 +38,9 @@ export const PropProvider = ({ children }) => {
         imageLocation,
         imagesData,
         airlines,
+        followers,
+        following,
+        setFollowers,
         setUsername,
         setEmail,
         setId,
@@ -50,8 +55,8 @@ export const PropProvider = ({ children }) => {
         setImageLocation,
         setImagesData,
         setAirlines,
-      }}
-    >
+        setFollowing,
+      }}>
       {children}
     </PropContainer.Provider>
   );

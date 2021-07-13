@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+return (import {Link} from "react-router-dom";
 
 function MobileHome() {
   return (
@@ -9,12 +9,12 @@ function MobileHome() {
           <span className="fisr">p</span>
           <span className="two">l</span>
           <span className="three">a</span>
-          <span className="four">n</span> 
+          <span className="four">n</span>
           <span className="five">n</span>
           <span className="six">e</span>
           <span className="seven">r</span>
           <span className="eight">i</span>
-          <span className="nine">o</span>   
+          <span className="nine">o</span>
         </h1>
       </div>
       <div className="login-reg-button">
