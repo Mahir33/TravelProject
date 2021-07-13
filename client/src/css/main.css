@@ -570,6 +570,7 @@
   display: flex;
   justify-content: space-evenly;
   padding-top: 1.5em;
+  padding-right: 63px;
 }
 
 .profile-navbar .profile-container .back {

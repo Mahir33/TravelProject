@@ -23,7 +23,7 @@ function MobileHome() {
       <div className="home-container">
         <HomeHeader />
         <NewPicScroller />
-        <ShowMoreTest />
+        {/* <ShowMoreTest /> */}
       </div>
       <MobileNavbar />
     </>
