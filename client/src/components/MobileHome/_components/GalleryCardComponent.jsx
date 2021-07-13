@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {AiOutlineLike} from "react-icons/ai";
 import {GiAirplaneDeparture} from 'react-icons/gi';
 import MobileComments from './MobileComments';
@@ -7,21 +7,12 @@ import MobileComments from './MobileComments';
 
 function GalleryCard(props){
 
-  
+  const [count, setCount] = useState(props.likesNum);
+
   const addLike = () => {
-    return (
-      <>
-      
-      </>
-    )
+    setCount(count + 1)
   }
 
-  const handleSkyscanner = () => {
-    return (
-      <>
-      </>
-    )
-  }
     return (
   
     <div className="card">
@@ -31,10 +22,7 @@ function GalleryCard(props){
           <div className="text text-one">
             <p className="card-date">{props.date}</p>
             <h3 className="card-header">{props.location} 
-              <GiAirplaneDeparture 
-                className="airplane"
-                onClick={handleSkyscanner}
-                />
+              <GiAirplaneDeparture className="airplane" />
             </h3>
             <p>Example place description {props.placeDescr}</p>
             
@@ -56,7 +44,7 @@ function GalleryCard(props){
                   <p className="username">{props.username}</p>
                 </div>
                 <div className="profile__container--likes">
-                  <p>Likes: {props.likesNum}</p>
+                  <p>Likes: {count}</p>
                   
                   
 

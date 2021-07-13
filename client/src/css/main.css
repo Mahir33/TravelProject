@@ -829,15 +829,8 @@
   margin: 10px 0 10px;
 }
 
-.home-container__header__header h1 {
-  font-size: 1.6rem;
-  font-weight: lighter;
-  text-transform: capitalize;
-  letter-spacing: 1px;
-}
-
 .home-container__header h1 {
-  font-size: 1.6rem;
+  font-size: 3rem;
   font-weight: lighter;
   text-transform: capitalize;
   letter-spacing: 1px;
@@ -848,7 +841,7 @@
 }
 
 .home-container__p-home p {
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   font-weight: 900;
   text-transform: uppercase;
   text-shadow: 0.6px 0 black;
