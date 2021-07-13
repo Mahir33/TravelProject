@@ -21,6 +21,8 @@ export const PropProvider = ({ children }) => {
   const [showList, setShowList] = useState("search-list-disappear");
   const [searchInput, setSearchInput] = useState("");
   const [usersFound, setUsersFound] = useState();
+  const [followers, setFollowers] = useState([]);
+  const [following, setFollowing] = useState([]);
 
   return (
     <PropContainer.Provider
@@ -42,6 +44,9 @@ export const PropProvider = ({ children }) => {
         showList,
         searchInput,
         usersFound,
+        followers,
+        following,
+        setFollowers,
         setUsername,
         setEmail,
         setId,
@@ -59,6 +64,7 @@ export const PropProvider = ({ children }) => {
         setShowList,
         setSearchInput,
         setUsersFound,
+        setFollowing,
       }}
     >
       {children}

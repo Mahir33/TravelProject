@@ -11,6 +11,7 @@ const PictureUploadPopup2 = () => {
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
   const [picture, setPicture] = useState();
+  const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("user")));
 
   const handleFile = (e) => {
     setPicture(e.target.files[0]);
@@ -26,6 +27,9 @@ const PictureUploadPopup2 = () => {
     form_data.append("location", location);
     form_data.append("description", description);
     form_data.append("picture", picture, picture.name);
+    form_data.append("authorName", user.username);
+    form_data.append("authorPicture", user.profilePicture);
+    form_data.append("authorId", user._id);
     var userToUpdate = JSON.parse(sessionStorage.getItem("user"));
     await axios
       .put("http://localhost:3001/post/create", form_data, {
