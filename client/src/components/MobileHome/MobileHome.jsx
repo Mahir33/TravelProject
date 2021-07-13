@@ -1,19 +1,28 @@
 import MobileNavbar from "../MobileNavbar/MobileNavbar";
-import HomeFullPicSection from "./_components/NewPicScroller";
+import NewPicScroller from "./_components/NewPicScroller";
 import HomeHeader from "./_components/HomeHeader";
 import ProfileNavBar from "../ProfileNavbar/ProfileNavbar";
 import LoadMoreBtn from "./_components/ShowMore";
-import ShowMoreTest from "./_components/ShowMoreTest"
+import ShowMoreTest from "./_components/ShowMoreTest";
 
-import React from "react";
+import React, {useContext, useState} from "react";
+import {PropContainer} from "../../PropContainer";
+import ShowAirlinesPopup from "./_components/ShowAirlinesPopup";
 
 function MobileHome() {
-  return (
+  const {airlines} = useContext(PropContainer);
+  const [loading, setLoading] = useState(true);
+
+  setTimeout(() => setLoading(false), 500);
+
+  return loading ? (
+    <div>Loading...</div>
+  ) : (
     <>
       <ProfileNavBar />
       <div className="home-container">
         <HomeHeader />
-        <HomeFullPicSection />
+        <NewPicScroller />
         <ShowMoreTest />
       </div>
       <MobileNavbar />

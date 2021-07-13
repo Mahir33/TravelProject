@@ -17,6 +17,9 @@ export const PropProvider = ({children}) => {
   const [buttonPopup, setButtonPopup] = useState(false);
   const [imageLocation, setImageLocation] = useState("");
   const [imagesData, setImagesData] = useState({});
+  const [airlines, setAirlines] = useState(false);
+  const [followers, setFollowers] = useState([]);
+  const [following, setFollowing] = useState([]);
 
   return (
     <PropContainer.Provider
@@ -34,6 +37,10 @@ export const PropProvider = ({children}) => {
         buttonPopup,
         imageLocation,
         imagesData,
+        airlines,
+        followers,
+        following,
+        setFollowers,
         setUsername,
         setEmail,
         setId,
@@ -47,6 +54,8 @@ export const PropProvider = ({children}) => {
         setButtonPopup,
         setImageLocation,
         setImagesData,
+        setAirlines,
+        setFollowing,
       }}>
       {children}
     </PropContainer.Provider>

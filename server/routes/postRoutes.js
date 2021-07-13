@@ -8,6 +8,7 @@ const {
   editPost,
   deletePost,
   getAlbum,
+  getAllPosts,
   createComment,
 } = require("../controllers/postController");
 const verifyToken = require('../authentication/verifyToken');
@@ -23,6 +24,9 @@ router.delete("/delete", verifyToken, deletePost);
 
 //album
 router.get("/album/:album", verifyToken, getAlbum);
+
+//Get all posts
+router.put("/allposts", verifyToken, getAllPosts);
 
 // Comment handling
 // router.post("/post/comment", createComment);

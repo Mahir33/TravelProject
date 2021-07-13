@@ -2,6 +2,7 @@ var jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 function verifyToken(req, res, next) {
+    console.log('Verifying token')
     var token = req.headers['x-access-token'];
     if (!token)
         return res.status(403).send({

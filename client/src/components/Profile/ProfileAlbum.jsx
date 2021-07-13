@@ -26,7 +26,8 @@ const ProfileAlbum = (props) => {
   };
 
   useEffect(() => {
-    getPosts();
+    if (props.album.length > 0) getPosts();
+    else setUserVisitedAlbum([]);
   }, [props.album]);
 
   return (

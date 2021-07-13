@@ -132,9 +132,7 @@ const deletePost = async (req, res) => {
 
 const getAlbum = async (req, res) => {
   console.log(req.params.album, 'here');
-
   try {
-    // console.log(JSON.parse(req.params.album), 'hello')
     const album = await Post.find({
       '_id': {
         $in: req.params.album.split(",")
@@ -148,6 +146,24 @@ const getAlbum = async (req, res) => {
   }
 }
 
+const getAllPosts = async (req, res) => {
+  console.log(req.body, 'req getallposts')
+  try {
+    await Post.find({
+      '_id': {
+        $in: req.body.arrayOfPosts
+      }
+    }, (err, docs) => {
+      if (err) {
+        console.log(err);
+        res.status(400).json("Something went wrong.")
+      } else res.status(200).json(docs)
+    })
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 
 
 module.exports = {
@@ -155,5 +171,6 @@ module.exports = {
   createPost,
   editPost,
   deletePost,
-  getAlbum
+  getAlbum,
+  getAllPosts
 };
