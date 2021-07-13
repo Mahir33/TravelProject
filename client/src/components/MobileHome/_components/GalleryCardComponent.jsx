@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
-import {AiOutlineLike} from "react-icons/ai";
-import {GiAirplaneDeparture} from "react-icons/gi";
+import React, { useState, useContext } from "react";
+import { PropContainer } from "../../../PropContainer";
+import { AiOutlineLike } from "react-icons/ai";
+import { GiAirplaneDeparture } from "react-icons/gi";
 import MobileComments from "./MobileComments";
 
 function GalleryCard(props) {
-  
+  const { setAirlines } = useContext(PropContainer);
 
   const [count, setCount] = useState(props.likesNum);
 
   const addLike = () => {
-    setCount(count + 1)
-  }
-  
+    setCount(count + 1);
+  };
+
   return (
     <div className="card">
       <img className="img one" src={props.postPicture} alt="" />
@@ -22,7 +23,12 @@ function GalleryCard(props) {
         </p>
         <h3 className="card-header">
           {props.location}
-          <GiAirplaneDeparture className="airplane" />
+          <div className="airplane-button">
+            <GiAirplaneDeparture
+              className="airplane"
+              onClick={() => setAirlines(true)}
+            />
+          </div>
         </h3>
         <p>{props.description}</p>
 

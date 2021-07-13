@@ -5,12 +5,12 @@ import ProfileNavBar from "../ProfileNavbar/ProfileNavbar";
 import LoadMoreBtn from "./_components/ShowMore";
 import ShowMoreTest from "./_components/ShowMoreTest";
 
-import React, {useContext, useState} from "react";
-import {PropContainer} from "../../PropContainer";
+import React, { useContext, useState } from "react";
+import { PropContainer } from "../../PropContainer";
 import ShowAirlinesPopup from "./_components/ShowAirlinesPopup";
 
 function MobileHome() {
-  const {airlines} = useContext(PropContainer);
+  const { airlines } = useContext(PropContainer);
   const [loading, setLoading] = useState(true);
 
   setTimeout(() => setLoading(false), 500);
@@ -26,6 +26,7 @@ function MobileHome() {
         {/* <ShowMoreTest /> */}
       </div>
       <MobileNavbar />
+      <ShowAirlinesPopup trigger={airlines} />
     </>
   );
 }
