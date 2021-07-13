@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react";
-import { PropContainer } from "../../../PropContainer";
-import { AiOutlineLike } from "react-icons/ai";
-import { GiAirplaneDeparture } from "react-icons/gi";
+import React, {useState, useContext} from "react";
+import {PropContainer} from "../../../PropContainer";
+import {AiOutlineLike} from "react-icons/ai";
+import {GiAirplaneDeparture} from "react-icons/gi";
 import MobileComments from "./MobileComments";
 
 function GalleryCard(props) {
-  const { setAirlines } = useContext(PropContainer);
+  const {setAirlines} = useContext(PropContainer);
 
   const [count, setCount] = useState(props.likesNum);
 
@@ -35,7 +35,6 @@ function GalleryCard(props) {
         <div className="description">
           <p className="description__from-user">
             <span className="bold">{props.authorName}</span>:{" "}
-            {props.authorPicture}
           </p>
         </div>
 
