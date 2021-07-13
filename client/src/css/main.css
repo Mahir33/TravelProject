@@ -424,38 +424,54 @@
   max-height: 375px;
 }
 
-.search-container {
-  padding-top: 5vh;
-  height: auto;
+.profile-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  padding-top: 1.5em;
 }
 
-.search-container .semantic-input {
-  margin-bottom: 5vh;
-  width: 100%;
+.profile-container .back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: black;
+  text-decoration: none;
+  font-size: 2rem;
+  cursor: pointer;
+  position: static;
+}
+
+.profile-container .search-input .input-bar-list {
+  text-align: center;
+  margin-left: 50px;
+}
+
+.profile-container .search-input .input-bar-list .search-list-appear {
+  border: 0.5px solid lightgray;
+  border-radius: 5px;
+}
+
+.profile-container .search-input .input-bar-list .search-list-appear .list-item {
+  z-index: 1000;
+  background-color: #fff;
+}
+
+.profile-container .search-input .input-bar-list .search-list-appear .list-item .avatar {
   height: 40px;
-  margin: 5px 0;
-  border: 2.5px solid black;
-  text-indent: 10px;
-  max-width: 69vw;
+  width: 40px;
+  border-radius: 1000px;
 }
 
-.search-container .album {
-  max-width: 80vw;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+.profile-container .search-input .input-bar-list .search-list-appear .list-item-text button {
+  list-style: none;
 }
 
-.search-container .album img {
-  margin: 20px;
-  width: 80vw;
-  max-width: 300px;
-  max-height: 375px;
+.profile-container .search-input .input-bar-list .search-list-appear .list-item:hover {
+  cursor: pointer;
+}
+
+.profile-container .search-input .input-bar-list .search-list-disappear {
+  display: none;
 }
 
 .main-container {
@@ -535,6 +551,12 @@
   text-indent: 10px;
 }
 
+.avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 1000px;
+}
+
 .profile-navbar {
   height: 60px;
 }
@@ -568,6 +590,11 @@
 .profile-navbar .profile-container .search-input .input-bar-list .search-list-appear {
   border: 0.5px solid lightgray;
   border-radius: 5px;
+}
+
+.profile-navbar .profile-container .search-input .input-bar-list .search-list-appear .list-item {
+  z-index: 1000;
+  background-color: #fff;
 }
 
 .profile-navbar .profile-container .search-input .input-bar-list .search-list-appear .list-item .avatar {
@@ -629,8 +656,6 @@
 @media (max-width: 767px) {
   .profile-navbar {
     position: sticky;
-    top: 0;
-    left: 0;
     z-index: 500;
   }
 
@@ -641,6 +666,16 @@
     align-items: center;
     justify-content: center;
     padding: 0;
+  }
+
+  .profile-navbar .profile-container .search-input {
+    border: 3px solid red;
+  }
+
+  .profile-navbar .profile-container .search-input .input-bar-list {
+    position: absolute;
+    top: 1.6em;
+    right: -7.7em;
   }
 
   .profile-navbar .navigation {
@@ -731,16 +766,16 @@
     font-size: 33px;
     color: black;
   }
-}
-.ui.icon.input {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 0.5em 0.2em !important;
-  margin-right: 10px;
-}
 
+  .ui.icon.input {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.5em 0.2em !important;
+    margin-right: 10px;
+  }
+}
 .popup {
   position: fixed;
   top: 0;

@@ -1,18 +1,28 @@
-import React, {useState} from "react";
-import {Input} from "semantic-ui-react";
-import {PropContainer} from "../../PropContainer";
-import {Link, useHistory} from "react-router-dom";
-import {FaRegArrowAltCircleLeft} from "react-icons/fa";
-import {FiSettings, FiLogOut} from "react-icons/fi";
-import {List, ListItem, ListItemAvatar, ListItemText} from "@material-ui/core";
+import React, { useState } from "react";
+import { Input } from "semantic-ui-react";
+import { PropContainer } from "../../PropContainer";
+import { Link, useHistory } from "react-router-dom";
+import { FaRegArrowAltCircleLeft } from "react-icons/fa";
+import { FiSettings, FiLogOut } from "react-icons/fi";
+import {
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+} from "@material-ui/core";
 import axios from "axios";
 
 function NavLinks() {
-  const {setUsername, setUserSearched} = React.useContext(PropContainer);
-  const [searchInput, setSearchInput] = useState("");
-  const [usersFound, setUsersFound] = useState();
-  const [showList, setShowList] = useState("search-list-disappear");
-
+  const {
+    setUsername,
+    setUserSearched,
+    showList,
+    setShowList,
+    searchInput,
+    setSearchInput,
+    usersFound,
+    setUsersFound,
+  } = React.useContext(PropContainer);
   const history = useHistory();
 
   const handleLogout = () => {
@@ -44,13 +54,15 @@ function NavLinks() {
   return (
     <div
       className="profile-container"
-      onClick={() => setShowList("search-list-disappear")}>
+      onClick={() => setShowList("search-list-disappear")}
+    >
       <div className="back">
         <FaRegArrowAltCircleLeft onClick={() => history.goBack()} />
       </div>
       <div
         className="search-input"
-        onClick={() => setShowList("search-list-appear")}>
+        onClick={() => setShowList("search-list-appear")}
+      >
         <div className="input-bar-list">
           <Input
             icon="search"
@@ -73,7 +85,8 @@ function NavLinks() {
                       </ListItemAvatar>
                       <ListItemText
                         className="list-item-text"
-                        onClick={() => handleClick(user.username)}>
+                        onClick={() => handleClick(user.username)}
+                      >
                         {user.username}
                       </ListItemText>
                     </ListItem>

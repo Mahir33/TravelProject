@@ -18,6 +18,9 @@ export const PropProvider = ({ children }) => {
   const [imageLocation, setImageLocation] = useState("");
   const [imagesData, setImagesData] = useState({});
   const [airlines, setAirlines] = useState(false);
+  const [showList, setShowList] = useState("search-list-disappear");
+  const [searchInput, setSearchInput] = useState("");
+  const [usersFound, setUsersFound] = useState();
 
   return (
     <PropContainer.Provider
@@ -36,6 +39,9 @@ export const PropProvider = ({ children }) => {
         imageLocation,
         imagesData,
         airlines,
+        showList,
+        searchInput,
+        usersFound,
         setUsername,
         setEmail,
         setId,
@@ -50,6 +56,9 @@ export const PropProvider = ({ children }) => {
         setImageLocation,
         setImagesData,
         setAirlines,
+        setShowList,
+        setSearchInput,
+        setUsersFound,
       }}
     >
       {children}
