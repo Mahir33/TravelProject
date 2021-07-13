@@ -19,6 +19,7 @@
       .rightTab {
         .input-field {
           @include abstracts.inputStyle;
+          border-radius: 5px;
         }
       }
     }
